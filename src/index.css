@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --primary: #3d65af;
+  --accept: #3162d3;
+  --success: rgb(0, 154, 68);
+  --warning: rgb(255, 184, 48);
+  --danger: rgb(225, 44, 63);
+  --page-color: #fff;
+  --font-color: #000;
+  --page-padding: 0 2em;
+}
+
+.no-selection {
+  user-select: none; /* standard syntax */
+  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+  -moz-user-select: none; /* mozilla browsers */
+  -khtml-user-select: none; /* webkit (konqueror) browsers */
+  -ms-user-select: none; /* IE10+ */
+}
+
+html {
+  font-family: Helvetica, Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #1f1f23;
+  color: #f3f3f3;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+body {
+  position: relative;
+}
