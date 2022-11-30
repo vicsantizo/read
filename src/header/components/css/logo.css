@@ -1,0 +1,15 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo__svg {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  padding: 10%;
+  fill: currentColor;
+  border: 2px solid currentColor;
+}
