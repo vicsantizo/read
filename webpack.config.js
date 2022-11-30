@@ -39,12 +39,12 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './src/index.html'),
+      template: path.resolve(__dirname, 'public/index.html'),
     }),
     new CleanWebpackPlugin(),
   ],
   devServer: {
-    static: path.join(__dirname, './src'),
+    static: path.join(__dirname, 'public/'),
     port: 3001,
     historyApiFallback: true,
     hot: 'only',
