@@ -1,10 +1,18 @@
+import { LocalStoragePersistentStorage } from '../library/dataStores/localStoragePersistentStorage';
+import { PersistentStorageProvider } from '../library/dataStores/persistentStorageContext';
+import { Library } from '../library';
+
 import './css/home.css';
 
 const Home = () => {
+  const localStoragePersistentStorage = new LocalStoragePersistentStorage();
+
   return (
-    <div className="home">
-      <div>Home</div>
-    </div>
+    <PersistentStorageProvider value={localStoragePersistentStorage}>
+      <div className="home">
+        <Library />
+      </div>
+    </PersistentStorageProvider>
   );
 };
 
