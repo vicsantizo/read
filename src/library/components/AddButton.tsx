@@ -1,6 +1,6 @@
 const AddButton = () => {
   return (
-    <button>
+    <button title="Add book">
       <svg
         className={'fill-white hover:opacity-50 stroke-2'}
         width={22}

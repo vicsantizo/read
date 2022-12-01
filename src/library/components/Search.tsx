@@ -34,6 +34,7 @@ const Search = ({ searchValue, setSearchValue }: SearchProps) => {
         className="rounded-3xl bg-[#1f1f23] py-2 pl-10 pr-7 border border-gray-500 w-[35ch] min-w-[25ch] xl:w-[45ch] 2xl:w-[55ch] focus:border-[#3d65af] outline-none"
       />
       <button
+        title="Delete text"
         onClick={deleteInputValue}
         className="absolute right-0 top-[50%] translate-y-[-50%] right-[14px] text-gray-500 hover:text-gray-300 outline-none focus:text-gray-200"
       >

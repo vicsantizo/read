@@ -30,7 +30,11 @@ const MenuButton = () => {
       <path d="M1 1h4v4H1V1zm5 0h4v4H6V1zm5 0h4v4h-4V1zM1 6h4v4H1V6zm5 0h4v4H6V6zm5 0h4v4h-4V6zM1 11h4v4H1v-4zm5 0h4v4H6v-4zm5 0h4v4h-4v-4z" />
     </svg>
   );
-  return <button onClick={handleClick}>{isActive ? listViewIcon : gridViewIcon}</button>;
+  return (
+    <button title={`${isActive ? 'Go to List view' : 'Go to Grid view'}`} onClick={handleClick}>
+      {isActive ? listViewIcon : gridViewIcon}
+    </button>
+  );
 };
 
 export default MenuButton;
