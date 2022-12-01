@@ -5,10 +5,27 @@ import MenuButton from './MenuButton';
 import AddButton from './AddButton';
 import Search from './Search';
 import { useState, useEffect } from 'react';
+import { Book as BookType } from '../models';
 
 export const Library = () => {
   const { data, error, createBook } = useBooksStore();
   const [searchValue, setSearchValue] = useState<string>('');
+  const [filteredBooks, setFilteredBooks] = useState<BookType[]>([]);
+
+  // filter books depending value from search input
+  useEffect(() => {
+    if (searchValue) {
+      setFilteredBooks(data);
+    }
+    setFilteredBooks(
+      data.filter((book) => {
+        return (
+          book.getTitle().toLowerCase().includes(searchValue.toLowerCase()) ||
+          book.getAuthor().toLowerCase().includes(searchValue.toLowerCase())
+        );
+      }),
+    );
+  }, [searchValue, data]);
 
   return (
     <div className="library">
@@ -23,7 +40,7 @@ export const Library = () => {
       </div>
       <div className="library__body">
         <div className="library__books flex gap-3 flex-wrap justify-center ">
-          {data.map((book) => (
+          {filteredBooks.map((book) => (
             <Book key={book.getIdentifier()} title={book.getTitle()} author={book.getAuthor()} />
           ))}
         </div>
