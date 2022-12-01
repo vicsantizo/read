@@ -1,14 +1,17 @@
-import { useState, ChangeEvent } from 'react';
+import { ChangeEvent } from 'react';
 
-const Search = () => {
-  const [value, setValue] = useState<string>('');
+type SearchProps = {
+  searchValue: string;
+  setSearchValue: (value: string) => void;
+};
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+const Search = ({ searchValue, setSearchValue }: SearchProps) => {
+  const deleteInputValue = () => {
+    setSearchValue('');
   };
 
-  const deleteInputValue = () => {
-    setValue('');
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
   };
 
   return (
@@ -25,7 +28,7 @@ const Search = () => {
         </svg>
       </button>
       <input
-        value={value}
+        value={searchValue}
         onChange={handleChange}
         placeholder="Search book..."
         className="rounded-3xl bg-[#1f1f23] py-2 pl-10 pr-7 border border-gray-500 w-[35ch] min-w-[25ch] xl:w-[45ch] 2xl:w-[55ch] focus:border-[#3d65af] outline-none"
