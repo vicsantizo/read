@@ -37,11 +37,11 @@ export const Library = ({ books }: LibraryProps) => {
 
   return (
     <div className="library">
-      <h1 className="library__title font-bold text-[1.25rem] text-center mb-4 mt-5 ">My Library</h1>
-      <div className="library__filter flex justify-center align-center mt-5 mb-5">
+      <div className="library__filter flex justify-center align-center mt-10 mb-12">
         <Search setSearchValue={setSearchValue} searchValue={searchValue} ref={searchElement} />
       </div>
-      <div className="library__actions flex gap-3 justify-center mb-6 items-center">
+      <h1 className="library__title font-bold text-[1.25rem] text-center mb-4 mt-5">My Library</h1>
+      <div className="library__actions flex gap-3 justify-center mb-4 items-center">
         <MenuButton />
         <EditButton />
         <AddButton />

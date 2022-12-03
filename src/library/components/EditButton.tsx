@@ -10,7 +10,7 @@ const EditButton = () => {
   return (
     <button onClick={handleClick} title="Edit books">
       <svg
-        className={`mt-[-4px] ml-1 hover:opacity-50 ${isActive ? 'fill-[#246EB9]' : 'fill-white'}`}
+        className={`mb-1 ml-1 hover:opacity-50 ${isActive ? 'fill-[#246EB9]' : 'fill-white'}`}
         aria-hidden="true"
         width={22}
         xmlns="http://www.w3.org/2000/svg"
