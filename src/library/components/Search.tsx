@@ -1,11 +1,12 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, forwardRef } from 'react';
 
 type SearchProps = {
   searchValue: string;
   setSearchValue: (value: string) => void;
 };
 
-const Search = ({ searchValue, setSearchValue }: SearchProps) => {
+const Search = forwardRef<HTMLInputElement, SearchProps>((props, ref) => {
+  const { setSearchValue, searchValue } = props;
   const deleteInputValue = () => {
     setSearchValue('');
   };
@@ -28,6 +29,7 @@ const Search = ({ searchValue, setSearchValue }: SearchProps) => {
         </svg>
       </button>
       <input
+        ref={ref}
         value={searchValue}
         onChange={handleChange}
         placeholder="Search book..."
@@ -42,6 +44,8 @@ const Search = ({ searchValue, setSearchValue }: SearchProps) => {
       </button>
     </div>
   );
-};
+});
+
+Search.displayName = 'Search';
 
 export default Search;
