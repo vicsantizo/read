@@ -38,7 +38,7 @@ export const BookForm = () => {
     switch (action.type) {
       case ActionKind.INPUT: {
         return {
-          element: 'Add...',
+          element: 'Add',
         };
       }
       case ActionKind.LOADING: {
