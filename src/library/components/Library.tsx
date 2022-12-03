@@ -16,11 +16,6 @@ export const Library = ({ books }: LibraryProps) => {
   const searchElement = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
-    // Focus the search input on render
-    if (searchElement.current) searchElement.current.focus();
-  }, []);
-
-  useEffect(() => {
     // filter books depending value from search input
     if (searchValue) {
       setFilteredBooks(books);
@@ -41,7 +36,7 @@ export const Library = ({ books }: LibraryProps) => {
         <Search setSearchValue={setSearchValue} searchValue={searchValue} ref={searchElement} />
       </div>
       <h1 className="library__title font-bold text-[1.25rem] text-center mb-4 mt-5">My Library</h1>
-      <div className="library__actions flex gap-3 justify-center mb-4 items-center">
+      <div className="library__actions flex sm:gap-5 md:gap-5 gap-3 justify-center mb-4 items-center">
         <MenuButton />
         <EditButton />
         <AddButton />
