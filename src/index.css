@@ -32,3 +32,11 @@ html {
 body {
   position: relative;
 }
+
+.input {
+  @apply px-2 py-1;
+}
+
+.input-dark {
+  @apply bg-[#1f1f23] border border-gray-500 focus:border-[#3d65af] outline-none;
+}
