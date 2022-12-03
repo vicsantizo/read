@@ -1,10 +1,13 @@
 import { Route, Routes, Outlet } from 'react-router-dom';
 import { Dropdown } from './dropdown';
 import { Header } from './header';
+import { PersistentStorageProvider } from './library/dataStores/persistentStorageContext';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import { Sidebar, useSidebar } from './sidebar';
 import { Toggle } from './toggle';
+import { LocalStoragePersistentStorage } from './library/dataStores/localStoragePersistentStorage';
+import { BookForm } from './createBook';
 
 const AppLayout = () => {
   const { isSidebarActive, setIsSidebarActive } = useSidebar();
@@ -22,11 +25,19 @@ const AppLayout = () => {
 };
 
 function App() {
+  const localStoragePersistentStorage = new LocalStoragePersistentStorage();
   return (
     <>
       <Routes>
-        <Route element={<AppLayout />}>
+        <Route
+          element={
+            <PersistentStorageProvider value={localStoragePersistentStorage}>
+              <AppLayout />
+            </PersistentStorageProvider>
+          }
+        >
           <Route path="/" element={<Home />} />
+          <Route path="/new" element={<BookForm />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />
