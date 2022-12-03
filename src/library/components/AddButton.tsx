@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
+
 const AddButton = () => {
   return (
-    <button title="Add book">
+    <Link to="/new" title="Add book">
       <svg
         className={'fill-white hover:opacity-50 stroke-2'}
         width={22}
@@ -13,7 +15,7 @@ const AddButton = () => {
           fill="currentColor"
         />
       </svg>
-    </button>
+    </Link>
   );
 };
 
