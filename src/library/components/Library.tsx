@@ -36,8 +36,8 @@ export const Library = ({ books }: LibraryProps) => {
         <Search setSearchValue={setSearchValue} searchValue={searchValue} ref={searchElement} />
       </div>
       <div className="relative flex mb-2 items-center mt-5">
-        <h1 className="font-bold text-[1.25rem] text-center mx-auto">My Library</h1>
-        <span className="flex items-center self-end absolute gap-2 right-0">
+        <h1 className="font-bold text-[1.25rem] text-center sm:mx-auto">My Library</h1>
+        <span className="flex items-center absolute gap-2 right-0">
           <MenuButton />
           <EditButton />
           <AddButton />
