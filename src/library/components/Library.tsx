@@ -48,6 +48,7 @@ export const Library = ({ books }: LibraryProps) => {
           {filteredBooks.map((book) => (
             <Book key={book.getIdentifier()} title={book.getTitle()} author={book.getAuthor()} />
           ))}
+          {filteredBooks.length === 0 && 'Empty...'}
         </div>
       </div>
     </div>
