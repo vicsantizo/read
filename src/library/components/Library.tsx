@@ -32,17 +32,19 @@ export const Library = ({ books }: LibraryProps) => {
 
   return (
     <div className="library">
-      <div className="library__filter flex justify-center align-center mt-10 mb-12">
+      <div className="library__filter flex justify-center items-center mt-10 mb-12">
         <Search setSearchValue={setSearchValue} searchValue={searchValue} ref={searchElement} />
       </div>
-      <h1 className="library__title font-bold text-[1.5rem] md:text-[1.25rem] text-center mb-4 mt-5">My Library</h1>
-      <div className="library__actions flex gap-5 justify-center mb-4 items-center">
-        <MenuButton />
-        <EditButton />
-        <AddButton />
+      <div className="relative flex mb-2 items-center mt-5">
+        <h1 className="font-bold text-[1.25rem] text-center mx-auto">My Library</h1>
+        <span className="flex items-center self-end absolute gap-2 right-0">
+          <MenuButton />
+          <EditButton />
+          <AddButton />
+        </span>
       </div>
       <div className="library__body">
-        <div className="library__books flex gap-3 flex-wrap justify-center ">
+        <div className="border border-[#242526] library__books py-[1rem] flex gap-3 flex-wrap justify-center ">
           {filteredBooks.map((book) => (
             <Book key={book.getIdentifier()} title={book.getTitle()} author={book.getAuthor()} />
           ))}
