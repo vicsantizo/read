@@ -12,7 +12,7 @@ const EditButton = () => {
       <svg
         className={`mb-1 ml-1 hover:opacity-50 ${isActive ? 'fill-[#246EB9]' : 'fill-white'}`}
         aria-hidden="true"
-        width={22}
+        width={24}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 489.627 489.627"
         xmlSpace="preserve"

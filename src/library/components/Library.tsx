@@ -35,8 +35,8 @@ export const Library = ({ books }: LibraryProps) => {
       <div className="library__filter flex justify-center align-center mt-10 mb-12">
         <Search setSearchValue={setSearchValue} searchValue={searchValue} ref={searchElement} />
       </div>
-      <h1 className="library__title font-bold text-[1.25rem] text-center mb-4 mt-5">My Library</h1>
-      <div className="library__actions flex sm:gap-5 md:gap-5 gap-3 justify-center mb-4 items-center">
+      <h1 className="library__title font-bold text-[1.5rem] md:text-[1.25rem] text-center mb-4 mt-5">My Library</h1>
+      <div className="library__actions flex gap-5 justify-center mb-4 items-center">
         <MenuButton />
         <EditButton />
         <AddButton />
