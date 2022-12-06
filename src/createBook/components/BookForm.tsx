@@ -95,7 +95,7 @@ export const BookForm = () => {
   return (
     <form className="relative flex flex-col mx-auto p-[var(--page-padding)] w-[100%] max-w-[400px] h-[90vh]">
       <h1 className="font-bold text-lg mb-6 mt-8">Add Book</h1>
-      <label className="" htmlFor="title">
+      <label className="text-sm mb-1" htmlFor="title">
         Title
       </label>
       <input
@@ -107,7 +107,9 @@ export const BookForm = () => {
         name="title"
         autoComplete="off"
       />
-      <label htmlFor="author">Author</label>
+      <label className="text-sm mb-1" htmlFor="author">
+        Author
+      </label>
       <input
         onChange={handleChange}
         value={bookFields.author}
