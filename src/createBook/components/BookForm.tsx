@@ -5,10 +5,12 @@ import { Spinner } from './Spinner';
 
 type ButtonTextState = {
   element: string | ReactElement;
+  disabled: boolean;
 };
 
 const initialButtonState: ButtonTextState = {
   element: 'Add',
+  disabled: false,
 };
 
 enum ActionKind {
@@ -39,21 +41,25 @@ export const BookForm = () => {
       case ActionKind.INPUT: {
         return {
           element: 'Add',
+          disabled: false,
         };
       }
       case ActionKind.LOADING: {
         return {
           element: 'Loading...',
+          disabled: true,
         };
       }
       case ActionKind.FAILURE: {
         return {
           element: <Spinner success={false} />,
+          disabled: true,
         };
       }
       case ActionKind.SUCCESS: {
         return {
           element: <Spinner success={true} />,
+          disabled: true,
         };
       }
       default: {
@@ -119,7 +125,7 @@ export const BookForm = () => {
         autoComplete="off"
       />
       <button
-        disabled={false}
+        disabled={buttonText.disabled}
         onClick={handleClick}
         className="mt-7 bg-[var(--accept)] text-sm text-white font-semibold py-2 rounded-md mb-3"
       >
