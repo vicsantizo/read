@@ -1,28 +1,7 @@
-import { useState, useReducer, ChangeEvent, MouseEvent, useRef, useEffect, ReactElement } from 'react';
+import { useState, ChangeEvent, MouseEvent, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useBooksStore } from '../../library/dataStores/useBookStore';
-import { Spinner } from './Spinner';
-
-type ButtonTextState = {
-  element: string | ReactElement;
-  disabled: boolean;
-};
-
-const initialButtonState: ButtonTextState = {
-  element: 'Add',
-  disabled: false,
-};
-
-enum ActionKind {
-  INPUT = 'ADD',
-  LOADING = 'LOADING',
-  SUCCESS = 'SUCCESS',
-  FAILURE = 'FAILURE',
-}
-
-type Action = {
-  type: ActionKind;
-};
+import { useButton } from './hooks/useButton';
 
 export const BookForm = () => {
   const initialState = { title: '', author: '' };
@@ -34,39 +13,7 @@ export const BookForm = () => {
     titleInput.current?.focus();
   }, []);
 
-  const [buttonText, setButtonText] = useReducer(reducer, initialButtonState);
-
-  function reducer(state: ButtonTextState, action: Action): ButtonTextState {
-    switch (action.type) {
-      case ActionKind.INPUT: {
-        return {
-          element: 'Add',
-          disabled: false,
-        };
-      }
-      case ActionKind.LOADING: {
-        return {
-          element: 'Loading...',
-          disabled: true,
-        };
-      }
-      case ActionKind.FAILURE: {
-        return {
-          element: <Spinner success={false} />,
-          disabled: true,
-        };
-      }
-      case ActionKind.SUCCESS: {
-        return {
-          element: <Spinner success={true} />,
-          disabled: true,
-        };
-      }
-      default: {
-        throw Error('Unknown action: ' + action.type);
-      }
-    }
-  }
+  const { buttonState, setButtonState, ActionKind } = useButton();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setBookFields({
@@ -79,19 +26,19 @@ export const BookForm = () => {
     e.preventDefault();
     if (bookFields.title !== '' && bookFields.author !== '') {
       try {
-        setButtonText({ type: ActionKind.LOADING });
+        setButtonState({ type: ActionKind.LOADING });
         await createBook(bookFields.title, bookFields.author);
-        setButtonText({ type: ActionKind.SUCCESS });
+        setButtonState({ type: ActionKind.SUCCESS });
         setTimeout(() => {
-          setButtonText({ type: ActionKind.INPUT });
+          setButtonState({ type: ActionKind.INPUT });
           setBookFields(initialState);
           titleInput.current?.focus();
         }, 3000);
       } catch {
-        setButtonText({ type: ActionKind.FAILURE });
+        setButtonState({ type: ActionKind.FAILURE });
         setTimeout(() => {
           setBookFields(initialState);
-          setButtonText({ type: ActionKind.INPUT });
+          setButtonState({ type: ActionKind.INPUT });
           titleInput.current?.focus();
         }, 3000);
       }
@@ -125,11 +72,11 @@ export const BookForm = () => {
         autoComplete="off"
       />
       <button
-        disabled={buttonText.disabled}
+        disabled={buttonState.disabled}
         onClick={handleClick}
         className="mt-7 bg-[var(--accept)] text-sm text-white font-semibold py-2 rounded-md mb-3"
       >
-        {buttonText.element}
+        {buttonState.content}
       </button>
       <Link to="/" title="Go back">
         <button className="text-white text-sm py-2 rounded-md w-[100%]">Back</button>
