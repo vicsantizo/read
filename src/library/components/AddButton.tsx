@@ -5,7 +5,7 @@ const AddButton = () => {
     <Link to="/new" title="Add book">
       <svg
         className={'fill-white hover:opacity-50 stroke-2'}
-        width={22}
+        width={24}
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
         viewBox="0 0 100 100"
