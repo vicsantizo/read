@@ -2,18 +2,24 @@ import { Book } from './Book';
 import EditButton from './EditButton';
 import MenuButton from './MenuButton';
 import AddButton from './AddButton';
+import { DeleteButton } from './DeleteButton';
 import Search from './Search';
 import { useState, useEffect, useRef } from 'react';
 import { Book as BookType } from '../models';
+import { BooksStore } from '../dataStores/useBookStore';
 
-type LibraryProps = {
-  books: BookType[];
-};
-
-export const Library = ({ books }: LibraryProps) => {
+export const Library = ({ data: books, error, createBook, removeBook }: BooksStore) => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [filteredBooks, setFilteredBooks] = useState<BookType[]>([]);
   const searchElement = useRef<HTMLInputElement | null>(null);
+  const [editionMode, setEditionMode] = useState<boolean>(false);
+
+  // Stores books that are checkbox selected, used to not trigger re-renders
+  const booksSelected = useRef<Record<string, boolean>>({});
+
+  function handleEditionMode() {
+    setEditionMode((p) => !p);
+  }
 
   useEffect(() => {
     // filter books depending value from search input
@@ -39,14 +45,22 @@ export const Library = ({ books }: LibraryProps) => {
         <h1 className="font-bold text-[1.25rem] text-center sm:mx-auto">My Library</h1>
         <span className="flex items-center absolute gap-2 right-0">
           <MenuButton />
-          <EditButton />
+          <EditButton setEditionMode={handleEditionMode} />
           <AddButton />
+          <DeleteButton editionMode={editionMode} removeBook={removeBook} booksSelected={booksSelected} />
         </span>
       </div>
       <div className="library__body">
         <div className="border border-[#242526] library__books py-[1rem] flex gap-3 flex-wrap justify-center ">
           {filteredBooks.map((book) => (
-            <Book key={book.getIdentifier()} title={book.getTitle()} author={book.getAuthor()} />
+            <Book
+              key={book.getIdentifier()}
+              bookId={book.getIdentifier()}
+              title={book.getTitle()}
+              author={book.getAuthor()}
+              booksSelected={booksSelected}
+              editionMode={editionMode}
+            />
           ))}
           {filteredBooks.length === 0 && 'Empty...'}
         </div>
