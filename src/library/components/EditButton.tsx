@@ -1,6 +1,10 @@
 import { useState } from 'react';
 
-const EditButton = () => {
+type EditButtonProps = {
+  setEditionMode: () => void;
+};
+
+const EditButton = ({ setEditionMode }: EditButtonProps) => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
   const handleClick = () => {
@@ -8,7 +12,13 @@ const EditButton = () => {
   };
 
   return (
-    <button onClick={handleClick} title="Edit books">
+    <button
+      onClick={() => {
+        handleClick();
+        setEditionMode();
+      }}
+      title="Edit books"
+    >
       <svg
         className={`mb-1 ml-1 hover:opacity-50 ${isActive ? 'fill-[#246EB9]' : 'fill-white'}`}
         aria-hidden="true"
