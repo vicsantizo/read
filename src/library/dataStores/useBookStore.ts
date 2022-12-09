@@ -3,10 +3,11 @@ import { Book } from '../models';
 import { IBookPersistentStorage } from './IBookPersistentStorage';
 import { usePersistentStorage } from './persistentStorageContext';
 
-type BooksStore = {
+export type BooksStore = {
   data: Book[];
   error?: string;
   createBook: (title: string, author: string) => Promise<void>;
+  removeBook: (id: Record<string, boolean>) => Promise<void>;
 };
 
 const fetchAllBooks = async (persistentStorage: IBookPersistentStorage) => {
@@ -15,6 +16,10 @@ const fetchAllBooks = async (persistentStorage: IBookPersistentStorage) => {
 
 const saveAllBooks = async (persistentStorage: IBookPersistentStorage, books: Book[]) => {
   return persistentStorage.saveAllBooks(books);
+};
+
+const deleteBook = async (persistentStorage: IBookPersistentStorage, id: Record<string, boolean>) => {
+  return persistentStorage.deleteBook(id);
 };
 
 export const useBooksStore = (): BooksStore => {
@@ -35,9 +40,16 @@ export const useBooksStore = (): BooksStore => {
       .catch(() => setError('Something happened...'));
   };
 
+  const removeBook = async (id: Record<string, boolean>) => {
+    deleteBook(persistentStorage, id).then((books) => {
+      setBooks(books);
+    });
+  };
+
   return {
     data: books,
     error,
     createBook,
+    removeBook,
   };
 };
