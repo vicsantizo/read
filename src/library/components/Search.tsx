@@ -38,7 +38,7 @@ const Search = forwardRef<HTMLInputElement, SearchProps>((props, ref) => {
       <button
         title="Delete text"
         onClick={deleteInputValue}
-        className="absolute right-0 top-[50%] translate-y-[-50%] right-[14px] text-gray-500 hover:text-gray-300 outline-none focus:text-gray-200"
+        className="absolute right-0 top-[50%] translate-y-[-50%] right-[14px] text-gray-500 hover:text-gray-300 outline-none focus:outline-[#3d65af]"
       >
         x
       </button>
