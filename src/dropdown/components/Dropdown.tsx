@@ -14,7 +14,7 @@ export function Dropdown(props: DropdownProps) {
     <div className="dropdown">
       <span className="dropdown__push">
         <button className="dropdown__button" onClick={handleSetShowContent}>
-          <span className="dropdown__text">{props.text}</span>
+          <span className="dropdown__text max-w-[16ch] md:max-w-[40ch]">{props.text}</span>
         </button>
         <span role="presentation" className={arrowType} onClick={handleSetShowContent}></span>
       </span>
