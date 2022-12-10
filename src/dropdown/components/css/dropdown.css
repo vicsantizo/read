@@ -26,11 +26,11 @@
 }
 
 .arrow--down {
-  border-top: 5px solid var(--font-color);
+  border-top: 5px solid currentColor;
 }
 
 .arrow--up {
-  border-bottom: 5px solid var(--font-color);
+  border-bottom: 5px solid currentColor;
 }
 
 .dropdown__content {
