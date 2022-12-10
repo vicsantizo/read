@@ -18,7 +18,7 @@ export function Dropdown(props: DropdownProps) {
         </button>
         <span role="presentation" className={arrowType} onClick={handleSetShowContent}></span>
       </span>
-      <div className="dropdown__content">{showContent && props.children}</div>
+      {showContent && <div className="dropdown__content">{props.children}</div>}
     </div>
   );
 }
