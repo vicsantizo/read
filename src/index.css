@@ -23,6 +23,7 @@
 
 html {
   font-family: Helvetica, Verdana, Geneva, Tahoma, sans-serif;
+  color-scheme: dark;
   background-color: #1f1f23;
   color: #f3f3f3;
   min-width: 320px;
@@ -39,4 +40,8 @@ body {
 
 .input-dark {
   @apply bg-[#1f1f23] border border-gray-500 focus:border-[#3d65af] outline-none;
+}
+
+.checkbox-bg-dark:not(:checked) {
+  filter: opacity(10%);
 }
