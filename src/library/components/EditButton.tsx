@@ -2,9 +2,10 @@ import { useState } from 'react';
 
 type EditButtonProps = {
   setEditionMode: () => void;
+  defaultView: boolean;
 };
 
-const EditButton = ({ setEditionMode }: EditButtonProps) => {
+const EditButton = ({ setEditionMode, defaultView }: EditButtonProps) => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
   const handleClick = () => {
@@ -13,6 +14,7 @@ const EditButton = ({ setEditionMode }: EditButtonProps) => {
 
   return (
     <button
+      disabled={!defaultView}
       onClick={() => {
         handleClick();
         setEditionMode();
@@ -20,7 +22,9 @@ const EditButton = ({ setEditionMode }: EditButtonProps) => {
       title="Edit books"
     >
       <svg
-        className={`mb-1 ml-1 hover:opacity-50 ${isActive ? 'fill-[#246EB9]' : 'fill-white'}`}
+        className={`mb-1 ml-1 hover:opacity-50 ${isActive ? 'fill-[#246EB9]' : 'fill-white'} ${
+          !defaultView && 'opacity-10'
+        }`}
         aria-hidden="true"
         width={24}
         xmlns="http://www.w3.org/2000/svg"
