@@ -1,6 +1,10 @@
 import { useState } from 'react';
 
-const MenuButton = () => {
+type MenuButtonProps = {
+  handleView: () => void;
+};
+
+const MenuButton = ({ handleView }: MenuButtonProps) => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const handleClick = () => {
     setIsActive((prev) => !prev);
@@ -31,8 +35,14 @@ const MenuButton = () => {
     </svg>
   );
   return (
-    <button title={`${isActive ? 'Go to List view' : 'Go to Grid view'}`} onClick={handleClick}>
-      {isActive ? listViewIcon : gridViewIcon}
+    <button
+      onClick={() => {
+        handleClick();
+        handleView();
+      }}
+      title={`${isActive ? 'Go to List view' : 'Go to Grid view'}`}
+    >
+      {isActive ? gridViewIcon : listViewIcon}
     </button>
   );
 };
