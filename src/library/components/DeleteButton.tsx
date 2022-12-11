@@ -4,18 +4,29 @@ type DeleteButtonProps = {
   removeBook: (ids: Record<string, boolean>) => Promise<void>;
   booksSelected: MutableRefObject<Record<string, boolean>>;
   editionMode: boolean;
+  defaultView: boolean;
 };
 
-export const DeleteButton = ({ removeBook, booksSelected, editionMode }: DeleteButtonProps) => {
+export const DeleteButton = ({ defaultView, removeBook, booksSelected, editionMode }: DeleteButtonProps) => {
+  function isDeleteButtonDisabled() {
+    if (!defaultView) {
+      return false;
+    } else if (defaultView && editionMode) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   return (
     <button
-      disabled={!editionMode}
+      disabled={isDeleteButtonDisabled()}
       onClick={() => {
         removeBook(booksSelected.current);
       }}
     >
       <svg
-        className={`${editionMode ? 'hover:opacity-50' : 'opacity-20'} fill-white stroke-2 mb-[2px]`}
+        className={`${!isDeleteButtonDisabled() ? 'hover:opacity-50' : 'opacity-20'} fill-white stroke-2 mb-[2px]`}
         width={22}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 172.541 172.541"
