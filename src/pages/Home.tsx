@@ -7,7 +7,7 @@ const Home = () => {
   const { data, error, createBook, removeBook } = useBooksStore();
   return (
     <>
-      <div className="home">
+      <div className="home container mx-auto">
         <Library data={data} error={error} createBook={createBook} removeBook={removeBook} />
       </div>
     </>
