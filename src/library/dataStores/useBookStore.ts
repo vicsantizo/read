@@ -6,7 +6,15 @@ import { usePersistentStorage } from './persistentStorageContext';
 export type BooksStore = {
   data: Book[];
   error?: string;
-  createBook: (title: string, author: string) => Promise<void>;
+  createBook: (
+    title: string,
+    author: string,
+    description?: string,
+    category?: string,
+    pages?: number,
+    isFavorite?: boolean,
+    isFinished?: boolean,
+  ) => Promise<void>;
   removeBook: (id: Record<string, boolean>) => Promise<void>;
 };
 
@@ -33,8 +41,19 @@ export const useBooksStore = (): BooksStore => {
       .catch(() => setError('Something happened...'));
   }, [persistentStorage]);
 
-  const createBook = async (title: string, author: string) => {
-    const newBooks = [...books, new Book(title, author)];
+  const createBook = async (
+    title: string,
+    author: string,
+    description?: string,
+    category?: string,
+    pages?: number,
+    isFavorite?: boolean,
+    isFinished?: boolean,
+  ) => {
+    const newBooks = [
+      ...books,
+      new Book(title, author, undefined, description, category, pages, isFavorite, isFinished),
+    ];
     saveAllBooks(persistentStorage, newBooks)
       .then(() => setBooks(newBooks))
       .catch(() => setError('Something happened...'));
