@@ -13,10 +13,10 @@ export function Dropdown(props: DropdownProps) {
   return (
     <div className="dropdown">
       <span className="dropdown__push">
-        <button className="dropdown__button" onClick={handleSetShowContent}>
+        <button tabIndex={-1} className="dropdown__button" onClick={handleSetShowContent}>
           <span className="dropdown__text max-w-[16ch] md:max-w-[40ch]">{props.text}</span>
         </button>
-        <span role="presentation" className={arrowType} onClick={handleSetShowContent}></span>
+        <button className={arrowType} onClick={handleSetShowContent}></button>
       </span>
       {showContent && <div className="dropdown__content">{props.children}</div>}
     </div>
