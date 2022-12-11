@@ -1,7 +1,8 @@
 import { MutableRefObject } from 'react';
 import './css/book.css';
+import { cutString } from '../../helper';
 
-type BookProps = {
+export type BookProps = {
   title: string;
   author: string;
   bookId: string;
@@ -17,15 +18,15 @@ export const Book = (props: BookProps) => {
         <input
           className={`${
             editionMode ? 'visible' : 'invisible'
-          } h-[1.5rem] w-[1.5rem] md:h-[1.25rem] md:w-[1.25rem] z-[1] mr-auto`}
+          } h-[1.5rem] w-[1.5rem] md:h-[1.25rem] md:w-[1.25rem] z-[3] mr-auto`}
           type={'checkbox'}
           onChange={(e) => {
             booksSelected.current[bookId] = e.target.checked;
           }}
         />
       </div>
-      <span className="book__title">{title}</span>
-      <span className="book__author">{author}</span>
+      <span className="book__title">{cutString(title, 65)}</span>
+      <span className="book__author">{cutString(author, 25)}</span>
     </div>
   );
 };
