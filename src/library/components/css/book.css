@@ -28,3 +28,13 @@
   color: #fff;
   z-index: 1;
 }
+
+.book__title::selection {
+  color: white;
+  background-color: #272626;
+}
+
+.book__author::selection {
+  color: white;
+  background-color: #272626;
+}
