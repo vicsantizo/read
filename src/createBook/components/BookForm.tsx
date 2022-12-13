@@ -142,7 +142,7 @@ export const BookForm = () => {
         inputMode="numeric"
         pattern="\d*"
         type="number"
-        min={1}
+        min={0}
         className="input input-dark mb-3 rounded-md"
         id="pages"
         name="pages"
