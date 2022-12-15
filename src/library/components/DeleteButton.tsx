@@ -1,28 +1,20 @@
-import { MutableRefObject } from 'react';
-
 type DeleteButtonProps = {
   removeBook: (ids: Record<string, boolean>) => Promise<void>;
-  booksSelected: MutableRefObject<Record<string, boolean>>;
-  editionMode: boolean;
+  booksSelected: Record<string, boolean>;
   defaultView: boolean;
 };
 
-export const DeleteButton = ({ defaultView, removeBook, booksSelected, editionMode }: DeleteButtonProps) => {
+export const DeleteButton = ({ removeBook, booksSelected }: DeleteButtonProps) => {
   function isDeleteButtonDisabled() {
-    if (!defaultView) {
-      return false;
-    } else if (defaultView && editionMode) {
-      return false;
-    } else {
-      return true;
-    }
+    // implement depending book selection
+    return false;
   }
 
   return (
     <button
       disabled={isDeleteButtonDisabled()}
       onClick={() => {
-        removeBook(booksSelected.current);
+        removeBook(booksSelected);
       }}
     >
       <svg
