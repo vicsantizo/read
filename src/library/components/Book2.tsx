@@ -1,6 +1,8 @@
 import { BookProps } from './Book';
 import { Dropdown } from '../../dropdown';
 import { cutString } from '../../helper';
+import EditButton from './EditButton';
+import { Book } from '../models';
 
 type Book2Props = {
   description: string;
@@ -9,11 +11,24 @@ type Book2Props = {
   isFavorite: boolean;
   isFinished: boolean;
   removeBook: (ids: Record<string, boolean>) => Promise<void>;
+  booksSelected: Record<string, boolean>;
+  getBookById: (id: string) => Promise<Book | undefined>;
 } & BookProps;
 
 export const Book2 = (props: Book2Props) => {
-  const { title, author, description, category, pages, isFavorite, isFinished, bookId, booksSelected, removeBook } =
-    props;
+  const {
+    title,
+    author,
+    description,
+    category,
+    pages,
+    isFavorite,
+    isFinished,
+    bookId,
+    removeBook,
+    booksSelected,
+    getBookById,
+  } = props;
   return (
     <div className="w-[100%] border border-[#5B5B5B] rounded px-[1rem] py-3 font-bold">
       <div className="flex items-center justify-between">
@@ -21,14 +36,17 @@ export const Book2 = (props: Book2Props) => {
         <div className="flex gap-2 items-center">
           <input
             onChange={(e) => {
-              booksSelected.current[bookId] = e.target.checked;
+              booksSelected[bookId] = e.target.checked;
             }}
             className="h-[1.5rem] w-[1.5rem] checkbox-bg-dark"
             type="checkbox"
           />
-          <button className="h-[1.5rem] w-[1.5rem] bg-gray-500 text-white text-center flex items-center justify-center hover:opacity-50 rounded">
-            ✎
-          </button>
+          <EditButton
+            defaultView={true}
+            booksSelected={{ [bookId]: true }}
+            getBookById={getBookById}
+            alternativeIcon={true}
+          />
           <button
             onClick={() => {
               removeBook({ [bookId]: true });
