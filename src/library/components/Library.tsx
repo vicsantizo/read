@@ -9,19 +9,14 @@ import { Book as BookType } from '../models';
 import { BooksStore } from '../dataStores/useBookStore';
 import { Book2 } from './Book2';
 
-export const Library = ({ data: books, error, createBook, removeBook }: BooksStore) => {
+export const Library = ({ data: books, error, createBook, removeBook, getBookById }: BooksStore) => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [filteredBooks, setFilteredBooks] = useState<BookType[]>([]);
   const searchElement = useRef<HTMLInputElement | null>(null);
-  const [editionMode, setEditionMode] = useState<boolean>(false);
   const [defaultView, setDefaultView] = useState<boolean>(true);
 
   // Stores books that are checkbox selected, used to not trigger re-renders
   const booksSelected = useRef<Record<string, boolean>>({});
-
-  function handleEditionMode() {
-    setEditionMode((p) => !p);
-  }
 
   function handleView() {
     setDefaultView((p) => !p);
@@ -51,14 +46,9 @@ export const Library = ({ data: books, error, createBook, removeBook }: BooksSto
         <h1 className="font-bold text-[1.25rem] text-center sm:mx-auto">My Library</h1>
         <span className="flex items-center absolute gap-2 right-0">
           <MenuButton handleView={handleView} />
-          <EditButton setEditionMode={handleEditionMode} defaultView={defaultView} />
+          <EditButton defaultView={defaultView} booksSelected={booksSelected.current} getBookById={getBookById} />
           <AddButton />
-          <DeleteButton
-            defaultView={defaultView}
-            editionMode={editionMode}
-            removeBook={removeBook}
-            booksSelected={booksSelected}
-          />
+          <DeleteButton defaultView={defaultView} removeBook={removeBook} booksSelected={booksSelected.current} />
         </span>
       </div>
       <div className="library__body">
@@ -70,8 +60,7 @@ export const Library = ({ data: books, error, createBook, removeBook }: BooksSto
                 bookId={book.getIdentifier()}
                 title={book.getTitle()}
                 author={book.getAuthor()}
-                booksSelected={booksSelected}
-                editionMode={editionMode}
+                booksSelected={booksSelected.current}
               />
             ))}
           {!defaultView &&
@@ -86,9 +75,9 @@ export const Library = ({ data: books, error, createBook, removeBook }: BooksSto
                 pages={book.getPages()}
                 isFavorite={book.getIsFavorite()}
                 isFinished={book.getIsFinished()}
-                booksSelected={booksSelected}
-                editionMode={editionMode}
+                booksSelected={booksSelected.current}
                 removeBook={removeBook}
+                getBookById={getBookById}
               />
             ))}
           {filteredBooks.length === 0 && 'Empty...'}
