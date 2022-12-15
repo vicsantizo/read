@@ -1,10 +1,24 @@
 import { useState, ChangeEvent, MouseEvent, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useBooksStore } from '../../library/dataStores/useBookStore';
+import { SerializedBook } from '../../library/models';
 import { useButton } from './hooks/useButton';
 
-export const BookForm = () => {
+type BookFormProps = {
+  state?: SerializedBook;
+};
+
+export const BookForm = ({ state }: BookFormProps) => {
   const initialState = {
+    title: state?.title ?? '',
+    author: state?.author ?? '',
+    category: state?.category ?? 'None',
+    description: state?.description ?? '',
+    pages: state?.pages ?? 0,
+    isFavorite: state?.isFavorite ?? false,
+    isFinished: state?.isFinished ?? false,
+  };
+  const restartFields = {
     title: '',
     author: '',
     category: 'None',
@@ -14,11 +28,18 @@ export const BookForm = () => {
     isFinished: false,
   };
   const [bookFields, setBookFields] = useState(initialState);
+  const [isEditionMode, setIsEditionMode] = useState<boolean>(false);
   const titleInput = useRef<HTMLInputElement | null>(null);
-  const { createBook } = useBooksStore();
+  const { createBook, updateBook } = useBooksStore();
 
   useEffect(() => {
     titleInput.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    if (state) {
+      setIsEditionMode(true);
+    }
   }, []);
 
   const { buttonState, setButtonState, ActionKind } = useButton();
@@ -49,25 +70,40 @@ export const BookForm = () => {
     if (bookFields.title !== '' && bookFields.author !== '') {
       try {
         setButtonState({ type: ActionKind.LOADING });
-        await createBook(
-          bookFields.title,
-          bookFields.author,
-          bookFields.description,
-          bookFields.category,
-          bookFields.pages,
-          bookFields.isFavorite,
-          bookFields.isFinished,
-        );
+        if (!isEditionMode) {
+          await createBook(
+            bookFields.title,
+            bookFields.author,
+            bookFields.description,
+            bookFields.category,
+            bookFields.pages,
+            bookFields.isFavorite,
+            bookFields.isFinished,
+          );
+        } else {
+          if (state) {
+            await updateBook(
+              { [state?.id]: true },
+              bookFields.title,
+              bookFields.author,
+              bookFields.description,
+              bookFields.category,
+              bookFields.pages,
+              bookFields.isFavorite,
+              bookFields.isFinished,
+            );
+          }
+        }
         setButtonState({ type: ActionKind.SUCCESS });
         setTimeout(() => {
           setButtonState({ type: ActionKind.INPUT });
-          setBookFields(initialState);
+          setBookFields(restartFields);
           titleInput.current?.focus();
         }, 3000);
       } catch {
         setButtonState({ type: ActionKind.FAILURE });
         setTimeout(() => {
-          setBookFields(initialState);
+          setBookFields(restartFields);
           setButtonState({ type: ActionKind.INPUT });
           titleInput.current?.focus();
         }, 3000);
@@ -77,7 +113,7 @@ export const BookForm = () => {
 
   return (
     <form className="relative flex flex-col mx-auto p-[var(--page-padding)] w-[100%] max-w-[400px] h-[90vh]">
-      <h1 className="font-bold text-lg mb-6 mt-8">Add Book</h1>
+      <h1 className="font-bold text-lg mb-6 mt-8">{isEditionMode ? 'Edit Book' : 'Add Book'}</h1>
       <label className="text-sm mb-1" htmlFor="title">
         Title *
       </label>
@@ -106,7 +142,7 @@ export const BookForm = () => {
       </label>
       <select
         onChange={handleSelectChange}
-        defaultValue={'None'}
+        defaultValue={state?.category || 'None'}
         name="category"
         id="category"
         multiple={false}
