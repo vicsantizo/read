@@ -7,6 +7,19 @@ export class LocalStoragePersistentStorage implements IBookPersistentStorage {
     return jsonBooks.map((book: SerializedBook) => Book.deserialize(book));
   };
 
+  fetchBookById = async (id: string) => {
+    try {
+      const books = await this.fetchAllBooks();
+      const bookIndex = await this.findBook(id, books);
+      if (bookIndex !== undefined) {
+        return books[bookIndex];
+      }
+      return undefined;
+    } catch (err) {
+      throw Error('Unsuccessful book retrieval');
+    }
+  };
+
   saveAllBooks = async (books: Book[]) => {
     localStorage.setItem('books', JSON.stringify(books.map((book) => Book.serialize(book))));
   };
