@@ -1,4 +1,4 @@
-import { MutableRefObject, useRef } from 'react';
+import { useRef } from 'react';
 import './css/book.css';
 import { cutString } from '../../helper';
 
@@ -16,7 +16,7 @@ export const Book = (props: BookProps) => {
     <button
       ref={bookButton}
       className="book relative"
-      onClick={(e) => {
+      onClick={() => {
         bookButton.current?.classList.toggle('border');
         booksSelected[bookId] = !booksSelected[bookId];
       }}
