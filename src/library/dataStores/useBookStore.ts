@@ -16,10 +16,25 @@ export type BooksStore = {
     isFinished?: boolean,
   ) => Promise<void>;
   removeBook: (id: Record<string, boolean>) => Promise<void>;
+  getBookById: (id: string) => Promise<Book | undefined>;
+  updateBook: (
+    id: Record<string, boolean>,
+    title: string,
+    author: string,
+    description?: string,
+    category?: string,
+    pages?: number,
+    isFavorite?: boolean,
+    isFinished?: boolean,
+  ) => Promise<void>;
 };
 
 const fetchAllBooks = async (persistentStorage: IBookPersistentStorage) => {
   return persistentStorage.fetchAllBooks();
+};
+
+const fetchBookById = async (persistentStorage: IBookPersistentStorage, id: string) => {
+  return persistentStorage.fetchBookById(id);
 };
 
 const saveAllBooks = async (persistentStorage: IBookPersistentStorage, books: Book[]) => {
@@ -65,10 +80,32 @@ export const useBooksStore = (): BooksStore => {
     });
   };
 
+  const updateBook = async (
+    id: Record<string, boolean>,
+    title: string,
+    author: string,
+    description?: string,
+    category?: string,
+    pages?: number,
+    isFavorite?: boolean,
+    isFinished?: boolean,
+  ) => {
+    createBook(title, author, description, category, pages, isFavorite, isFinished).then(() => {
+      deleteBook(persistentStorage, id);
+    });
+  };
+
+  const getBookById = async (id: string) => {
+    const foundBook = await fetchBookById(persistentStorage, id);
+    return foundBook;
+  };
+
   return {
     data: books,
     error,
     createBook,
     removeBook,
+    getBookById,
+    updateBook,
   };
 };
