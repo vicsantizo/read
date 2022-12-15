@@ -7,7 +7,7 @@ type ButtonState = {
 };
 
 const initalButtonState: ButtonState = {
-  content: 'Add',
+  content: 'Accept',
   disabled: false,
 };
 
@@ -26,7 +26,7 @@ function reducer(state: ButtonState, action: Action): ButtonState {
   switch (action.type) {
     case ActionKind.INPUT: {
       return {
-        content: 'Add',
+        content: 'Accept',
         disabled: false,
       };
     }
