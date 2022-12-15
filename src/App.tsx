@@ -3,11 +3,11 @@ import { Dropdown } from './dropdown';
 import { Header } from './header';
 import { PersistentStorageProvider } from './library/dataStores/persistentStorageContext';
 import Home from './pages/Home';
+import Create from './pages/Create';
 import NotFound from './pages/NotFound';
 import { Sidebar, useSidebar } from './sidebar';
 import { Toggle } from './toggle';
 import { LocalStoragePersistentStorage } from './library/dataStores/localStoragePersistentStorage';
-import { BookForm } from './createBook';
 
 const AppLayout = () => {
   const { isSidebarActive, setIsSidebarActive } = useSidebar();
@@ -37,7 +37,7 @@ function App() {
           }
         >
           <Route path="/" element={<Home />} />
-          <Route path="/new" element={<BookForm />} />
+          <Route path="/books/create" element={<Create />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />
