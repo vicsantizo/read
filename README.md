@@ -1,4 +1,11 @@
 <h1 align="center">Read - Book Tracker</h1>
+
+<div align="center">
+<img align="center" alt="Website Logo" src="https://github.com/vicsantizo/read/raw/main/read-logo.png">
+<br>
+<br>
+</div>
+
 <p align="center">Easily keep track of all the books you read.</p>
 <div align="center">
 
@@ -9,7 +16,7 @@
  
 </div>
 
-<img align="right" alt="Website Logo" src="https://github.com/vicsantizo/read/raw/main/read-logo.png">
+
 
 Personal tool to keep track of the books you're reading or have read in the past. 
 
