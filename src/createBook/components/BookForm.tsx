@@ -220,7 +220,7 @@ export const BookForm = ({ state }: BookFormProps) => {
         {buttonState.content}
       </button>
       <Link to="/" title="Go back">
-        <button className="text-white text-sm py-2 rounded-md w-[100%]">Back</button>
+        <button className="text-white text-sm py-2 rounded-md w-[100%] mb-7">Back</button>
       </Link>
     </form>
   );
