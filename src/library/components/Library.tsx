@@ -15,8 +15,7 @@ export const Library = ({ data: books, error, createBook, removeBook, getBookByI
   const searchElement = useRef<HTMLInputElement | null>(null);
   const [defaultView, setDefaultView] = useState<boolean>(true);
 
-  // Stores books that are checkbox selected, used to not trigger re-renders
-  const booksSelected = useRef<Record<string, boolean>>({});
+  const [selection, setSelection] = useState<Map<string, boolean>>(new Map());
 
   function handleView() {
     setDefaultView((p) => !p);
@@ -46,9 +45,14 @@ export const Library = ({ data: books, error, createBook, removeBook, getBookByI
         <h1 className="font-bold text-[1.25rem] text-center sm:mx-auto">My Library</h1>
         <span className="flex items-center absolute gap-2 right-0">
           <MenuButton handleView={handleView} />
-          <EditButton defaultView={defaultView} booksSelected={booksSelected.current} getBookById={getBookById} />
           <AddButton />
-          <DeleteButton defaultView={defaultView} removeBook={removeBook} booksSelected={booksSelected.current} />
+          <EditButton selection={selection} getBookById={getBookById} />
+          <DeleteButton
+            setSelection={setSelection}
+            selection={selection}
+            defaultView={defaultView}
+            removeBook={removeBook}
+          />
         </span>
       </div>
       <div className="library__body">
@@ -56,16 +60,19 @@ export const Library = ({ data: books, error, createBook, removeBook, getBookByI
           {defaultView &&
             filteredBooks.map((book) => (
               <Book
+                selection={selection}
+                setSelection={setSelection}
                 key={book.getIdentifier()}
                 bookId={book.getIdentifier()}
                 title={book.getTitle()}
                 author={book.getAuthor()}
-                booksSelected={booksSelected.current}
               />
             ))}
           {!defaultView &&
             filteredBooks.map((book) => (
               <Book2
+                selection={selection}
+                setSelection={setSelection}
                 key={book.getIdentifier()}
                 bookId={book.getIdentifier()}
                 title={book.getTitle()}
@@ -75,7 +82,6 @@ export const Library = ({ data: books, error, createBook, removeBook, getBookByI
                 pages={book.getPages()}
                 isFavorite={book.getIsFavorite()}
                 isFinished={book.getIsFinished()}
-                booksSelected={booksSelected.current}
                 removeBook={removeBook}
                 getBookById={getBookById}
               />

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, Dispatch, SetStateAction, useEffect } from 'react';
 import './css/book.css';
 import { cutString } from '../../helper';
 
@@ -6,19 +6,29 @@ export type BookProps = {
   title: string;
   author: string;
   bookId: string;
-  booksSelected: Record<string, boolean>;
+  setSelection: Dispatch<SetStateAction<Map<string, boolean>>>;
+  selection: Map<string, boolean>;
 };
 
 export const Book = (props: BookProps) => {
-  const { title, author, bookId, booksSelected } = props;
+  const { title, author, bookId, setSelection, selection } = props;
   const bookButton = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    if (selection.get(bookId)) {
+      bookButton.current?.classList.add('border');
+    }
+  }, []);
+
   return (
     <button
       ref={bookButton}
       className="book relative"
       onClick={() => {
         bookButton.current?.classList.toggle('border');
-        booksSelected[bookId] = !booksSelected[bookId];
+        setSelection((p) => {
+          return new Map(p).set(bookId, !p.get(bookId));
+        });
       }}
     >
       <span className="book__title">{cutString(title, 65)}</span>

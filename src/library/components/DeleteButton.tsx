@@ -1,20 +1,33 @@
+import { SetStateAction, Dispatch } from 'react';
+
 type DeleteButtonProps = {
   removeBook: (ids: Record<string, boolean>) => Promise<void>;
-  booksSelected: Record<string, boolean>;
+  selection: Map<string, boolean>;
+  setSelection: Dispatch<SetStateAction<Map<string, boolean>>>;
   defaultView: boolean;
 };
 
-export const DeleteButton = ({ removeBook, booksSelected }: DeleteButtonProps) => {
+export const DeleteButton = ({ removeBook, selection, setSelection }: DeleteButtonProps) => {
   function isDeleteButtonDisabled() {
     // implement depending book selection
-    return false;
+    for (const value of selection.values()) {
+      if (value === true) {
+        return false;
+      }
+    }
+    return true;
   }
 
   return (
     <button
       disabled={isDeleteButtonDisabled()}
       onClick={() => {
-        removeBook(booksSelected);
+        setSelection(new Map());
+        const selectionObj: Record<string, boolean> = {};
+        for (const [key, value] of selection.entries()) {
+          selectionObj[key] = value;
+        }
+        removeBook(selectionObj);
       }}
     >
       <svg

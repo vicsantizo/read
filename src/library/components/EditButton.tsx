@@ -2,24 +2,38 @@ import { useNavigate } from 'react-router-dom';
 import { Book } from '../models';
 
 type EditButtonProps = {
-  defaultView: boolean;
-  booksSelected: Record<string, boolean>;
   getBookById: (id: string) => Promise<Book | undefined>;
   alternativeIcon?: boolean;
+  selection: Map<string, boolean>;
+  singleEdit?: boolean;
 };
 
-const EditButton = ({ defaultView, booksSelected, getBookById, alternativeIcon }: EditButtonProps) => {
+const EditButton = ({ singleEdit, getBookById, alternativeIcon, selection }: EditButtonProps) => {
   const navigate = useNavigate();
+
+  function isButtonDisabled() {
+    let booksSelected = 0;
+    if (singleEdit && singleEdit === true) return false;
+
+    if (selection?.values() !== undefined) {
+      for (const value of selection.values()) {
+        if (booksSelected > 1) return true;
+        if (value === true) booksSelected++;
+      }
+    }
+    return booksSelected === 1 ? false : true;
+  }
+
   return (
     <button
       className={`${
         alternativeIcon
           ? 'h-[1.5rem] w-[1.5rem] text-white text-center flex items-center justify-center hover:opacity-50 rounded bg-gray-500'
           : ''
-      }`}
-      disabled={!defaultView}
+      } ${isButtonDisabled() && 'opacity-20'}`}
+      disabled={isButtonDisabled()}
       onClick={() => {
-        for (const [key, value] of Object.entries(booksSelected)) {
+        for (const [key, value] of selection.entries()) {
           if (value === true) {
             getBookById(key)
               .then((res) => {
@@ -39,7 +53,7 @@ const EditButton = ({ defaultView, booksSelected, getBookById, alternativeIcon }
     >
       {!alternativeIcon ? (
         <svg
-          className={`mb-1 ml-1 hover:opacity-50 fill-white ${!defaultView && 'opacity-10'}`}
+          className={`mb-1 ml-1 hover:opacity-50 fill-white`}
           aria-hidden="true"
           width={24}
           xmlns="http://www.w3.org/2000/svg"

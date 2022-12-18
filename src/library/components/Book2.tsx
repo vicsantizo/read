@@ -3,6 +3,7 @@ import { Dropdown } from '../../dropdown';
 import { cutString } from '../../helper';
 import EditButton from './EditButton';
 import { Book } from '../models';
+import { useEffect, useRef } from 'react';
 
 type Book2Props = {
   description: string;
@@ -11,7 +12,6 @@ type Book2Props = {
   isFavorite: boolean;
   isFinished: boolean;
   removeBook: (ids: Record<string, boolean>) => Promise<void>;
-  booksSelected: Record<string, boolean>;
   getBookById: (id: string) => Promise<Book | undefined>;
 } & BookProps;
 
@@ -26,29 +26,40 @@ export const Book2 = (props: Book2Props) => {
     isFinished,
     bookId,
     removeBook,
-    booksSelected,
     getBookById,
+    selection,
+    setSelection,
   } = props;
+  const inputEl = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    if (selection.get(bookId)) {
+      if (inputEl.current !== null) inputEl.current.checked = true;
+    }
+  }, []);
+
   return (
     <div className="w-[100%] border border-[#5B5B5B] rounded px-[1rem] py-3 font-bold">
       <div className="flex items-center justify-between">
         <span className="text-sm font-normal">{cutString(author, 25)}</span>
         <div className="flex gap-2 items-center">
           <input
-            onChange={(e) => {
-              booksSelected[bookId] = e.target.checked;
+            ref={inputEl}
+            onChange={() => {
+              setSelection((p) => {
+                return new Map(p).set(bookId, !p.get(bookId));
+              });
             }}
             className="h-[1.5rem] w-[1.5rem] checkbox-bg-dark"
             type="checkbox"
           />
-          <EditButton
-            defaultView={true}
-            booksSelected={{ [bookId]: true }}
-            getBookById={getBookById}
-            alternativeIcon={true}
-          />
+          <EditButton singleEdit={true} getBookById={getBookById} alternativeIcon={true} selection={selection} />
           <button
             onClick={() => {
+              setSelection((p) => {
+                p.delete(bookId);
+                return new Map(p);
+              });
               removeBook({ [bookId]: true });
             }}
             className="h-[1.5rem] w-[1.5rem] bg-[var(--danger)] text-white text-center flex items-center justify-center hover:opacity-50 rounded"
