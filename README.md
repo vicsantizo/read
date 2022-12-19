@@ -22,7 +22,7 @@ Personal tool to keep track of the books you're reading or have read in the past
 
 ## Setup
 
-Clone the repository to your computer, then run `npm install` to install packages.
+Clone the repository, then run `npm install` to install packages.
 
 ```shell
 git clone https://github.com/vicsantizo/read.git
