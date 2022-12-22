@@ -125,6 +125,7 @@ export const BookForm = ({ state }: BookFormProps) => {
         id="title"
         name="title"
         autoComplete="off"
+        required
       />
       <label className="text-sm mb-1" htmlFor="author">
         Author *
@@ -136,6 +137,7 @@ export const BookForm = ({ state }: BookFormProps) => {
         id="author"
         name="author"
         autoComplete="off"
+        required
       />
       <label className="text-sm mb-1" htmlFor="category">
         Category
