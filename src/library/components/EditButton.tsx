@@ -30,7 +30,7 @@ const EditButton = ({ singleEdit, getBookById, alternativeIcon, selection }: Edi
         alternativeIcon
           ? 'h-[1.5rem] w-[1.5rem] text-white text-center flex items-center justify-center hover:opacity-50 rounded bg-gray-500'
           : ''
-      } ${isButtonDisabled() && 'opacity-20'}`}
+      } ${isButtonDisabled() ? 'opacity-20' : 'hover:opacity-50'}`}
       disabled={isButtonDisabled()}
       onClick={() => {
         for (const [key, value] of selection.entries()) {
@@ -53,7 +53,7 @@ const EditButton = ({ singleEdit, getBookById, alternativeIcon, selection }: Edi
     >
       {!alternativeIcon ? (
         <svg
-          className={`mb-1 ml-1 hover:opacity-50 fill-white`}
+          className={`mb-1 ml-1 fill-white`}
           aria-hidden="true"
           width={24}
           xmlns="http://www.w3.org/2000/svg"
