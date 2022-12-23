@@ -33,6 +33,10 @@ export const Book = (props: BookProps) => {
     >
       <span className="book__title">{cutString(title, 65)}</span>
       <span className="book__author">{cutString(author, 25)}</span>
+      <div className="absolute bg-[#707070] h-[3px] w-[100%] bottom-0">
+        {/* Change w-[] class with book progress */}
+        <div className="bg-[#31E000] h-[100%] w-[22%]"></div>
+      </div>
     </button>
   );
 };
