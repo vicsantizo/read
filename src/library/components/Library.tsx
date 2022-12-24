@@ -1,25 +1,19 @@
 import { Book } from './Book';
 import EditButton from './EditButton';
-import MenuButton from './MenuButton';
 import AddButton from './AddButton';
 import { DeleteButton } from './DeleteButton';
 import Search from './Search';
 import { useState, useEffect, useRef } from 'react';
 import { Book as BookType } from '../models';
 import { BooksStore } from '../dataStores/useBookStore';
-import { Book2 } from './Book2';
+import { TrackerButton } from './TrackerButton';
 
 export const Library = ({ data: books, error, createBook, removeBook, getBookById }: BooksStore) => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [filteredBooks, setFilteredBooks] = useState<BookType[]>([]);
   const searchElement = useRef<HTMLInputElement | null>(null);
-  const [defaultView, setDefaultView] = useState<boolean>(true);
 
   const [selection, setSelection] = useState<Map<string, boolean>>(new Map());
-
-  function handleView() {
-    setDefaultView((p) => !p);
-  }
 
   useEffect(() => {
     // filter books depending value from search input
@@ -44,48 +38,24 @@ export const Library = ({ data: books, error, createBook, removeBook, getBookByI
       <div className="relative flex mb-2 items-center mt-5">
         <h1 className="font-bold text-[1.25rem] text-center sm:mx-auto">My Library</h1>
         <span className="flex items-center absolute gap-2 right-0">
-          <MenuButton handleView={handleView} />
           <AddButton />
+          <TrackerButton />
           <EditButton selection={selection} getBookById={getBookById} />
-          <DeleteButton
-            setSelection={setSelection}
-            selection={selection}
-            defaultView={defaultView}
-            removeBook={removeBook}
-          />
+          <DeleteButton setSelection={setSelection} selection={selection} removeBook={removeBook} />
         </span>
       </div>
       <div className="library__body">
         <div className="border border-[#242526] library__books py-[1rem] flex gap-3 flex-wrap justify-center ">
-          {defaultView &&
-            filteredBooks.map((book) => (
-              <Book
-                selection={selection}
-                setSelection={setSelection}
-                key={book.getIdentifier()}
-                bookId={book.getIdentifier()}
-                title={book.getTitle()}
-                author={book.getAuthor()}
-              />
-            ))}
-          {!defaultView &&
-            filteredBooks.map((book) => (
-              <Book2
-                selection={selection}
-                setSelection={setSelection}
-                key={book.getIdentifier()}
-                bookId={book.getIdentifier()}
-                title={book.getTitle()}
-                author={book.getAuthor()}
-                description={book.getDescription()}
-                category={book.getCategory()}
-                pages={book.getPages()}
-                isFavorite={book.getIsFavorite()}
-                isFinished={book.getIsFinished()}
-                removeBook={removeBook}
-                getBookById={getBookById}
-              />
-            ))}
+          {filteredBooks.map((book) => (
+            <Book
+              selection={selection}
+              setSelection={setSelection}
+              key={book.getIdentifier()}
+              bookId={book.getIdentifier()}
+              title={book.getTitle()}
+              author={book.getAuthor()}
+            />
+          ))}
           {filteredBooks.length === 0 && 'Empty...'}
         </div>
       </div>

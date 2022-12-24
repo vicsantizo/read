@@ -1,6 +1,6 @@
 export const TrackerButton = () => {
   return (
-    <button className={`hover:opacity-50`} title="Edit books">
+    <button className={`hover:opacity-50`} title="Track progress">
       <svg
         className={'fill-white'}
         width={22}
