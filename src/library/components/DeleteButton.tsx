@@ -4,7 +4,6 @@ type DeleteButtonProps = {
   removeBook: (ids: Record<string, boolean>) => Promise<void>;
   selection: Map<string, boolean>;
   setSelection: Dispatch<SetStateAction<Map<string, boolean>>>;
-  defaultView: boolean;
 };
 
 export const DeleteButton = ({ removeBook, selection, setSelection }: DeleteButtonProps) => {
