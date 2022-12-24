@@ -3,7 +3,7 @@ export const TrackerButton = () => {
     <button className={`hover:opacity-50`} title="Edit books">
       <svg
         className={'fill-white'}
-        width={24}
+        width={22}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 296.228 296.228"
         aria-hidden="true"
