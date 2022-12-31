@@ -59,7 +59,7 @@ module.exports = {
     static: path.join(__dirname, 'public/'),
     port: 3001,
     historyApiFallback: true,
-    hot: 'only',
+    hot: true,
     compress: true,
     open: true,
   },
