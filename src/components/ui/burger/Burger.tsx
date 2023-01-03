@@ -1,3 +1,5 @@
+import './burger.css';
+
 type BurgerProps = {
   isSidebarActive: boolean;
   setIsSidebarActive: () => void;
