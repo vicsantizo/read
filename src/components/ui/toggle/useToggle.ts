@@ -1,15 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export const useToggle = () => {
+export const useToggle = (defaultState?: boolean) => {
+  useEffect(() => {
+    if (defaultState) setIsActive(defaultState);
+    else setIsActive(false);
+  }, []);
+
   const [isActive, setIsActive] = useState<boolean>(true);
-
-  const toggle = () => {
-    setIsActive(!isActive);
-  };
 
   return {
     isActive,
-    toggle,
+    setIsActive,
   };
 };
 
