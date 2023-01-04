@@ -4,15 +4,16 @@ import './toggle.css';
 type ToggleProps = {
   text: string;
   execute?: () => void;
+  state?: boolean;
 };
 
 export const Toggle = (props: ToggleProps) => {
-  const { isActive, toggle } = useToggle();
+  const { isActive, setIsActive } = useToggle(props.state);
   const width = 40;
   const height = 18;
 
   const handleClick = () => {
-    toggle();
+    setIsActive(!isActive);
     if (props.execute) props.execute();
   };
 
