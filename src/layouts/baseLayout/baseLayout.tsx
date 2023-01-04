@@ -4,8 +4,8 @@ import { Header } from '../header';
 import { Sidebar } from '../sidebar';
 import { Toggle } from '../../components/ui/toggle';
 import { useSidebar } from '../sidebar/useSidebar';
-import { ThemeContext } from '../../context/ThemeContext';
-import { useTheme } from '../../context/useTheme';
+import { ThemeContext } from '../../context/theme/ThemeContext';
+import { useTheme } from '../../context/theme/useTheme';
 
 export const BaseLayout = () => {
   const { isSidebarActive, setIsSidebarActive } = useSidebar();
