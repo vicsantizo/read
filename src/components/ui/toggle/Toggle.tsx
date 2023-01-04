@@ -5,7 +5,7 @@ type ToggleProps = {
   text: string;
 };
 
-const Toggle = (props: ToggleProps) => {
+export const Toggle = (props: ToggleProps) => {
   const { isActive, toggle } = useToggle();
   const width = 40;
   const height = 18;
