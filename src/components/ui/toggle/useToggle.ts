@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export const useToggle = () => {
-  const [isActive, setIsActive] = useState<boolean>(false);
+  const [isActive, setIsActive] = useState<boolean>(true);
 
   const toggle = () => {
     setIsActive(!isActive);
