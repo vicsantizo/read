@@ -1,24 +1,9 @@
-import { Library } from '../library';
-import { useBooksStore } from '../library/dataStores/useBookStore';
+import { Library } from '../features/booksLibrary/components/library/Library';
+import { useBooksLibraryStore } from '../store/useBooksLibraryStore';
 
-import './css/home.css';
-
-const Home = () => {
-  const { data, error, createBook, removeBook, getBookById, updateBook } = useBooksStore();
-  return (
-    <>
-      <div className="home container mx-auto">
-        <Library
-          data={data}
-          error={error}
-          createBook={createBook}
-          updateBook={updateBook}
-          removeBook={removeBook}
-          getBookById={getBookById}
-        />
-      </div>
-    </>
-  );
+export const Home = () => {
+  const { books, error, createBook, getBookById } = useBooksLibraryStore();
+  return <Library books={books} error={error} createBook={createBook} getBookById={getBookById} />;
 };
 
 export default Home;
