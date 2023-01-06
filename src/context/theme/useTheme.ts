@@ -1,17 +1,25 @@
-import { useState } from 'react';
-import { validTheme } from './ThemeContext';
+import { useContext, useEffect } from 'react';
+import { ThemeContext } from './ThemeContext';
 
 export const useTheme = () => {
-  const [currentTheme, setCurrentTheme] = useState<validTheme>('dark');
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  useEffect(() => {
+    document.querySelector('html')?.classList.remove('light', 'dark');
+    document.querySelector('html')?.classList.add(`${theme}`);
+  }, [theme]);
 
   const changeTheme = () => {
-    if (currentTheme === 'dark') setCurrentTheme('light');
-    else if (currentTheme === 'light') setCurrentTheme('dark');
+    if (theme === 'dark') {
+      setTheme('light');
+    } else if (theme === 'light') {
+      setTheme('dark');
+    }
   };
 
   return {
-    currentTheme,
-    changeTheme,
+    theme,
+    setTheme: changeTheme,
   };
 };
 
