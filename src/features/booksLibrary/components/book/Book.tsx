@@ -1,5 +1,5 @@
 import { cutString } from '../../utils/utils';
-import { BookProgress } from '../bookProgress';
+import { BookProgress } from './BookProgress';
 import './book.css';
 
 export type BookProps = {
