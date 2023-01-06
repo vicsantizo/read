@@ -11,6 +11,8 @@ export const Library = ({ books }: BooksLibraryStore) => {
   const { theme } = useTheme();
   const { filteredBooks } = useLibraryFilter(searchValue, books);
 
+  const libraryBorder = theme === 'dark' ? '#242526' : '#f3f3f3';
+
   return (
     <div className={`library ${theme}`}>
       <div className="library__filter flex justify-center items-center pt-[4rem] mb-12">
@@ -28,7 +30,7 @@ export const Library = ({ books }: BooksLibraryStore) => {
       </div>
 
       <div className="library__body">
-        <div className="border border-[#242526] py-[1rem] flex gap-3 flex-wrap justify-center ">
+        <div className={`border border-[${libraryBorder}] py-[1rem] flex gap-3 flex-wrap justify-center `}>
           {filteredBooks.map((book) => (
             <Book key={book.getIdentifier()} title={book.getTitle()} author={book.getAuthor()} progress={100} />
           ))}
