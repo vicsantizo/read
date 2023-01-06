@@ -3,7 +3,7 @@ import './toggle.css';
 
 type ToggleProps = {
   text: string;
-  execute?: () => void;
+  execute?: (...args: unknown[]) => unknown;
   state?: boolean;
 };
 
