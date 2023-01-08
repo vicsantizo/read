@@ -7,7 +7,12 @@ export type TrackButtonProps = {
 
 export const TrackButton = ({ execute, disabled }: TrackButtonProps) => {
   return (
-    <button disabled={disabled ? true : false} className={'hover:opacity-50'} title="Track progress" onClick={execute}>
+    <button
+      disabled={disabled ? true : false}
+      className={`hover:opacity-50 ${disabled && 'opacity-20'}`}
+      title="Track progress"
+      onClick={execute}
+    >
       <TrackIcon />
     </button>
   );

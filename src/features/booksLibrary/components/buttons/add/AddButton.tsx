@@ -7,7 +7,12 @@ export type AddButtonProps = {
 
 export const AddButton = ({ execute, disabled }: AddButtonProps) => {
   return (
-    <button disabled={disabled ? true : false} className={'hover:opacity-50'} title="Add book" onClick={execute}>
+    <button
+      disabled={disabled ? true : false}
+      className={`hover:opacity-50 ${disabled && 'opacity-20'}`}
+      title="Add book"
+      onClick={execute}
+    >
       <AddIcon />
     </button>
   );
