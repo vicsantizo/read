@@ -6,11 +6,13 @@ import { useLibraryFilter } from './useLibraryFilter';
 import { useTheme } from '../../../../context/theme/useTheme';
 import { TrackButton, AddButton, EditButton, DeleteButton } from '../buttons';
 import { Link } from 'react-router-dom';
+import { useBookSelection } from './useBookSelection';
 
 export const Library = ({ books }: BooksLibraryStore) => {
   const [searchValue, setSeachValue] = useState<string>('');
   const { theme } = useTheme();
   const { filteredBooks } = useLibraryFilter(searchValue, books);
+  const { booksSelection, setBooksSelection, countElementsSelected } = useBookSelection();
 
   return (
     <div className={`library ${theme}`}>
@@ -22,11 +24,11 @@ export const Library = ({ books }: BooksLibraryStore) => {
         <h1 className="font-bold text-[1.25rem] text-center sm:mx-auto">My Library</h1>
         <span className="flex items-center absolute gap-2 right-0">
           <TrackButton disabled={true} />
-          <Link className="flex items-center" to="books/create">
+          <Link className="flex items-center" to="books/create" tabIndex={-1}>
             <AddButton />
           </Link>
-          <EditButton disabled={true} />
-          <DeleteButton disabled={true} />
+          <EditButton disabled={!(countElementsSelected() === 1)} />
+          <DeleteButton disabled={!(countElementsSelected() >= 1)} />
         </span>
       </div>
 
@@ -37,8 +39,17 @@ export const Library = ({ books }: BooksLibraryStore) => {
           } py-[1rem] flex gap-3 flex-wrap justify-center `}
         >
           {filteredBooks.map((book) => (
-            <Book key={book.getIdentifier()} title={book.getTitle()} author={book.getAuthor()} progress={100} />
+            <Book
+              booksSelection={booksSelection}
+              setBooksSelection={setBooksSelection}
+              key={book.getIdentifier()}
+              id={book.getIdentifier()}
+              title={book.getTitle()}
+              author={book.getAuthor()}
+              progress={100}
+            />
           ))}
+          {filteredBooks.length === 0 && 'Empty...'}
         </div>
       </div>
     </div>
