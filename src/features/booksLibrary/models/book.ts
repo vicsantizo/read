@@ -98,4 +98,44 @@ export class Book {
   getIsFinished() {
     return this.isFinished;
   }
+
+  setTitle(title: string) {
+    this.title = title;
+    return this;
+  }
+
+  setAuthor(author: string) {
+    this.author = author;
+    return this;
+  }
+
+  setDescription(description: string) {
+    this.description = description;
+    return this;
+  }
+
+  setCategory(category: string) {
+    this.category = category;
+    return this;
+  }
+
+  setPages(pages: number) {
+    this.pages = pages;
+    return this;
+  }
+
+  setIsFavorite(isFavorite: boolean) {
+    this.isFavorite = isFavorite;
+    return this;
+  }
+
+  setIsFinished(isFinished: boolean) {
+    this.isFinished = isFinished;
+    return this;
+  }
+
+  setIdentifier(id: string) {
+    this.id = id;
+    return this;
+  }
 }
