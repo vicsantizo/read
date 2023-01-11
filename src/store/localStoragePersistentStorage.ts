@@ -29,7 +29,40 @@ export class LocalStoragePersistentStorage implements IBookLibraryPersistentStor
       }
       return undefined;
     } catch (error) {
-      throw Error('Unsucceful book retrieval');
+      throw Error('Unsuccessful book retrieval');
+    }
+  };
+
+  deleteBook = async (ids: string[]) => {
+    try {
+      const books = await this.fetchAllBooks();
+      for (const bookId of ids) {
+        const bookToDeleteIndex = await this.findBookIndex(bookId, books);
+        if (bookToDeleteIndex !== undefined) books.splice(bookToDeleteIndex, 1);
+      }
+      await this.saveAllBooks(books);
+      return books;
+    } catch (error) {
+      throw Error('Unsuccessful book deletion');
+    }
+  };
+
+  updateBook = async (id: string, updatedBookData: Book) => {
+    try {
+      const books = (await this.fetchAllBooks()) as Book[];
+      const bookIndex = await this.findBookIndex(id, books);
+      if (bookIndex !== undefined) {
+        books[bookIndex].setTitle(updatedBookData.getTitle());
+        books[bookIndex].setAuthor(updatedBookData.getAuthor());
+        books[bookIndex].setDescription(updatedBookData.getDescription());
+        books[bookIndex].setCategory(updatedBookData.getCategory());
+        books[bookIndex].setPages(updatedBookData.getPages());
+        books[bookIndex].setIsFavorite(updatedBookData.getIsFavorite());
+        books[bookIndex].setIsFinished(updatedBookData.getIsFinished());
+      }
+      await this.saveAllBooks([...books]);
+    } catch (error) {
+      throw Error('Unsuccessful book update');
     }
   };
 
