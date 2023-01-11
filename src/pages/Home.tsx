@@ -2,10 +2,18 @@ import { Library } from '../features/booksLibrary/components/library/Library';
 import { useBooksLibraryStore } from '../store/useBooksLibraryStore';
 
 export const Home = () => {
-  const { books, error, createBook, getBookById } = useBooksLibraryStore();
+  const { books, error, createBook, getBookById, deleteBookById, updateBookById } = useBooksLibraryStore();
+
   return (
     <div className="home container mx-auto">
-      <Library books={books} error={error} createBook={createBook} getBookById={getBookById} />
+      <Library
+        books={books}
+        error={error}
+        createBook={createBook}
+        getBookById={getBookById}
+        deleteBookById={deleteBookById}
+        updateBookById={updateBookById}
+      />
     </div>
   );
 };

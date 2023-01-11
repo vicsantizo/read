@@ -5,6 +5,8 @@ import { LocalStoragePersistentStorage } from './store/localStoragePersistentSto
 import { ThemeContext } from './context/theme/ThemeContext';
 import { Home } from './pages/Home';
 import { useState } from 'react';
+import { CreateBook } from './pages/CreateBook';
+import { EditBook, loader as editBookLoader } from './pages/EditBook';
 
 const router = createBrowserRouter([
   {
@@ -13,6 +15,15 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
+      },
+      {
+        path: 'books/create',
+        element: <CreateBook />,
+      },
+      {
+        path: 'books/:bookId/edit',
+        element: <EditBook />,
+        loader: editBookLoader,
       },
     ],
   },

@@ -16,10 +16,32 @@ export const useBookSelection = () => {
     return booksSelected;
   };
 
+  const getSelectedBook = () => {
+    for (const [key, value] of booksSelection.entries()) {
+      if (value === true) return key;
+    }
+    return undefined;
+  };
+
+  const getArrayOfCurrentlySelectedBooks = () => {
+    const selectedBooks: string[] = [];
+    for (const [key, value] of booksSelection.entries()) {
+      if (value === true) selectedBooks.push(key);
+    }
+    return selectedBooks;
+  };
+
+  const resetBooksSelection = () => {
+    setBooksSelection(new Map());
+  };
+
   return {
     booksSelection,
     setBooksSelection: handleSelection,
     countElementsSelected,
+    getSelectedBook,
+    getArrayOfCurrentlySelectedBooks,
+    resetBooksSelection,
   };
 };
 

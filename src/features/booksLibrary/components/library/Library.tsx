@@ -8,11 +8,18 @@ import { TrackButton, AddButton, EditButton, DeleteButton } from '../buttons';
 import { Link } from 'react-router-dom';
 import { useBookSelection } from './useBookSelection';
 
-export const Library = ({ books }: BooksLibraryStore) => {
+export const Library = ({ books, deleteBookById }: BooksLibraryStore) => {
   const [searchValue, setSeachValue] = useState<string>('');
   const { theme } = useTheme();
   const { filteredBooks } = useLibraryFilter(searchValue, books);
-  const { booksSelection, setBooksSelection, countElementsSelected } = useBookSelection();
+  const {
+    booksSelection,
+    setBooksSelection,
+    countElementsSelected,
+    getSelectedBook,
+    getArrayOfCurrentlySelectedBooks,
+    resetBooksSelection,
+  } = useBookSelection();
 
   return (
     <div className={`library ${theme}`}>
@@ -27,8 +34,16 @@ export const Library = ({ books }: BooksLibraryStore) => {
           <Link className="flex items-center" to="books/create" tabIndex={-1}>
             <AddButton />
           </Link>
-          <EditButton disabled={!(countElementsSelected() === 1)} />
-          <DeleteButton disabled={!(countElementsSelected() >= 1)} />
+          <Link className="flex items-center" to={`books/${getSelectedBook()}/edit`} tabIndex={-1}>
+            <EditButton disabled={!(countElementsSelected() === 1)} />
+          </Link>
+          <DeleteButton
+            disabled={!(countElementsSelected() >= 1)}
+            execute={() => {
+              deleteBookById(getArrayOfCurrentlySelectedBooks());
+              resetBooksSelection();
+            }}
+          />
         </span>
       </div>
 
@@ -46,7 +61,7 @@ export const Library = ({ books }: BooksLibraryStore) => {
               id={book.getIdentifier()}
               title={book.getTitle()}
               author={book.getAuthor()}
-              progress={100}
+              progress={80}
             />
           ))}
           {filteredBooks.length === 0 && 'Empty...'}
