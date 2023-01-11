@@ -1,16 +1,7 @@
 import { useReducer } from 'react';
 
-const initialState = {
-  title: '',
-  author: '',
-  category: '',
-  description: '',
-  pages: '',
-  isFavorite: false,
-  isFinished: false,
-};
-
 export type FormState = {
+  id: string;
   title: string;
   author: string;
   category: string;
@@ -20,10 +11,22 @@ export type FormState = {
   isFinished: boolean;
 };
 
+const emptyFields = {
+  id: '',
+  title: '',
+  author: '',
+  category: '',
+  description: '',
+  pages: '',
+  isFavorite: false,
+  isFinished: false,
+};
+
 export enum FormAction {
   UPDATE = 'UPDATE',
   NUMERIC_UPDATE = 'NUMERIC_UPDATE',
   RESET = 'RESET',
+  WIPE = 'WIPE',
 }
 export type Action = {
   type: FormAction;
@@ -31,34 +34,38 @@ export type Action = {
   value: string | boolean | number;
 };
 
-const reducer = (state: FormState, action: Action) => {
-  switch (action.type) {
-    case FormAction.UPDATE: {
-      return {
-        ...state,
-        [action.field]: action.value,
-      };
-    }
-    case FormAction.NUMERIC_UPDATE: {
-      let value: number | string = '';
-      if (Number.isNaN(parseInt(action.value as string))) {
-        value = '';
-      } else {
-        value = Number(action.value);
+export const useSaveBook = (initialState: FormState) => {
+  const reducer = (state: FormState, action: Action) => {
+    switch (action.type) {
+      case FormAction.UPDATE: {
+        return {
+          ...state,
+          [action.field]: action.value,
+        };
       }
-      return {
-        ...state,
-        [action.field]: value,
-      };
-    }
+      case FormAction.NUMERIC_UPDATE: {
+        let value: number | string = '';
+        if (Number.isNaN(parseInt(action.value as string))) {
+          value = '';
+        } else {
+          value = Number(action.value);
+        }
+        return {
+          ...state,
+          [action.field]: value,
+        };
+      }
 
-    case FormAction.RESET: {
-      return initialState;
-    }
-  }
-};
+      case FormAction.RESET: {
+        return initialState;
+      }
 
-export const useSaveBook = () => {
+      case FormAction.WIPE: {
+        return emptyFields;
+      }
+    }
+  };
+
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return {

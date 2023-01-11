@@ -1,19 +1,28 @@
-import { useRef } from 'react';
-import { Form, Link } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
+import { Form, Link, useNavigate } from 'react-router-dom';
 import { AcceptButton } from '../../../components/ui/button/';
 import { useTheme } from '../../../context/theme/useTheme';
 import { useBooksLibraryStore } from '../../../store/useBooksLibraryStore';
-import { FormAction, useSaveBook } from './useSaveBook';
+import { Book } from '../../booksLibrary/models';
+import { FormAction, FormState, useSaveBook } from './useSaveBook';
 
 export type SaveBookProps = {
   title: string;
+  initialState: FormState;
+  mode: 'create' | 'update';
 };
 
-export const SaveBook = ({ title }: SaveBookProps) => {
-  const { formFields, setFormField } = useSaveBook();
-  const { createBook } = useBooksLibraryStore();
+export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
+  const { formFields, setFormField } = useSaveBook(initialState);
+  const { createBook, updateBookById } = useBooksLibraryStore();
   const { theme } = useTheme();
   const bookForm = useRef<HTMLFormElement | null>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setFormField({ type: FormAction.RESET, field: 'reset', value: 'reset' });
+  }, [initialState]);
+
   return (
     <>
       <Form
@@ -143,18 +152,29 @@ export const SaveBook = ({ title }: SaveBookProps) => {
         <AcceptButton
           disable={!Boolean(formFields.title && formFields.author)}
           cleanup={() => {
-            setFormField({ type: FormAction.RESET, field: 'none', value: 'none' });
+            setFormField({ type: FormAction.WIPE, field: 'none', value: 'none' });
           }}
           execute={() => {
-            createBook(
-              formFields.title,
-              formFields.author,
-              formFields.description,
-              formFields.category,
-              formFields.pages as number,
-              formFields.isFavorite,
-              formFields.isFinished,
-            );
+            const id = formFields.id;
+            const title = formFields.title;
+            const author = formFields.author;
+            const description = formFields.description;
+            const category = formFields.category;
+            const pages = formFields.pages as number;
+            const isFavorite = formFields.isFavorite;
+            const isFinished = formFields.isFinished;
+
+            if (mode === 'create') {
+              createBook(title, author, description, category, pages, isFavorite, isFinished);
+            }
+
+            if (mode === 'update') {
+              const newBook = new Book(title, author, undefined, description, category, pages, isFavorite, isFinished);
+              updateBookById(id, newBook);
+              setTimeout(() => {
+                navigate('/');
+              }, 3000);
+            }
           }}
         />
 
