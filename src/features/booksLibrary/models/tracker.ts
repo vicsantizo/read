@@ -35,6 +35,11 @@ export class Tracker {
     return this;
   }
 
+  getLastRecord() {
+    const lastItem = this.log.length;
+    return this.log[lastItem - 1];
+  }
+
   getRecentRecords() {
     const start = this.log.length - 5 < 0 ? 0 : this.log.length - 5;
     const end = this.log.length;
@@ -43,5 +48,9 @@ export class Tracker {
 
   getAllRecords() {
     return this.log;
+  }
+
+  isEmpty() {
+    return this.log.length === 0;
   }
 }
