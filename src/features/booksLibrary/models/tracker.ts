@@ -58,7 +58,8 @@ export class Tracker {
     const numberOfPagesRead = this.getLastRecord()?.toPage ?? 0;
     if (bookPages === 0) return 0;
     if (numberOfPagesRead !== 0) {
-      return (numberOfPagesRead / bookPages) * 100;
+      const completionPercentage = ((numberOfPagesRead / bookPages) * 100).toFixed(2);
+      return Number(completionPercentage);
     }
     return 0;
   }
