@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 
 export type TrackerData = {
-  date: Date;
+  date: string;
   fromPage: number;
   toPage: number;
   id?: string;
