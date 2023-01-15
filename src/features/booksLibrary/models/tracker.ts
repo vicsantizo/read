@@ -53,4 +53,13 @@ export class Tracker {
   isEmpty() {
     return this.log.length === 0;
   }
+
+  calculateCompletion(bookPages: number) {
+    const numberOfPagesRead = this.getLastRecord()?.toPage ?? 0;
+    if (bookPages === 0) return 0;
+    if (numberOfPagesRead !== 0) {
+      return (numberOfPagesRead / bookPages) * 100;
+    }
+    return 0;
+  }
 }
