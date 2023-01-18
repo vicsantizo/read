@@ -149,4 +149,8 @@ export class Book {
     this.id = id;
     return this;
   }
+
+  setTracker(tracker: Tracker) {
+    this.tracker = tracker;
+  }
 }
