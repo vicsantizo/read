@@ -14,7 +14,7 @@ export type SaveBookProps = {
 
 export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
   const { formFields, setFormField } = useSaveBook(initialState);
-  const { createBook, updateBookById } = useBooksLibraryStore();
+  const { createBook, updateBookById, getBookById } = useBooksLibraryStore();
   const { theme } = useTheme();
   const bookForm = useRef<HTMLFormElement | null>(null);
   const navigate = useNavigate();
@@ -160,7 +160,7 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
             const author = formFields.author;
             const description = formFields.description;
             const category = formFields.category;
-            const pages = formFields.pages as number;
+            const pages = Number(formFields.pages);
             const isFavorite = formFields.isFavorite;
             const isFinished = formFields.isFinished;
 
@@ -170,10 +170,18 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
 
             if (mode === 'update') {
               const newBook = new Book(title, author, undefined, description, category, pages, isFavorite, isFinished);
-              updateBookById(id, newBook);
-              setTimeout(() => {
-                navigate('/');
-              }, 3000);
+
+              getBookById(id)
+                .then((book) => {
+                  newBook.setTracker(book!.getTracker());
+                  updateBookById(id, newBook);
+                  setTimeout(() => {
+                    navigate('/');
+                  }, 3000);
+                })
+                .catch(() => {
+                  throw new Error('Something happened...');
+                });
             }
           }}
         />

@@ -30,13 +30,9 @@ export const Library = ({ books, deleteBookById }: BooksLibraryStore) => {
       <div className="relative flex mb-2 items-center mt-5">
         <h1 className="font-bold text-[1.25rem] text-center sm:mx-auto">My Library</h1>
         <span className="flex items-center absolute gap-2 right-0">
-          <TrackButton disabled={true} />
-          <Link className="flex items-center" to="books/create" tabIndex={-1}>
-            <AddButton />
-          </Link>
-          <Link className="flex items-center" to={`books/${getSelectedBook()}/edit`} tabIndex={-1}>
-            <EditButton disabled={!(countElementsSelected() === 1)} />
-          </Link>
+          <TrackButton to={`books/${getSelectedBook()}/track`} disabled={!(countElementsSelected() === 1)} />
+          <AddButton to="books/create" />
+          <EditButton to={`books/${getSelectedBook()}/edit`} disabled={!(countElementsSelected() === 1)} />
           <DeleteButton
             disabled={!(countElementsSelected() >= 1)}
             execute={() => {
@@ -61,7 +57,7 @@ export const Library = ({ books, deleteBookById }: BooksLibraryStore) => {
               id={book.getIdentifier()}
               title={book.getTitle()}
               author={book.getAuthor()}
-              progress={80}
+              progress={book?.getTracker().calculateCompletion(book.getPages())}
             />
           ))}
           {filteredBooks.length === 0 && 'Empty...'}

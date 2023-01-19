@@ -7,6 +7,7 @@ import { Home } from './pages/Home';
 import { useState } from 'react';
 import { CreateBook } from './pages/CreateBook';
 import { EditBook, loader as editBookLoader } from './pages/EditBook';
+import { TrackBook, loader as trackBookLoader } from './pages/TrackBook';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
         path: 'books/:bookId/edit',
         element: <EditBook />,
         loader: editBookLoader,
+      },
+      {
+        path: 'books/:bookId/track',
+        element: <TrackBook />,
+        loader: trackBookLoader,
       },
     ],
   },

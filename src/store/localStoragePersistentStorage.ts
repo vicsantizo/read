@@ -1,4 +1,5 @@
 import { SerializedBook, Book } from '../features/booksLibrary/models/book';
+import { TrackerData } from '../features/booksLibrary/models/tracker';
 import { IBookLibraryPersistentStorage } from './IBooksLibraryPersistentStorage';
 
 export class LocalStoragePersistentStorage implements IBookLibraryPersistentStorage {
@@ -59,6 +60,7 @@ export class LocalStoragePersistentStorage implements IBookLibraryPersistentStor
         books[bookIndex].setPages(updatedBookData.getPages());
         books[bookIndex].setIsFavorite(updatedBookData.getIsFavorite());
         books[bookIndex].setIsFinished(updatedBookData.getIsFinished());
+        books[bookIndex].setTracker(updatedBookData.getTracker());
       }
       await this.saveAllBooks([...books]);
     } catch (error) {
@@ -68,5 +70,17 @@ export class LocalStoragePersistentStorage implements IBookLibraryPersistentStor
 
   saveAllBooks = async (books: Book[]) => {
     localStorage.setItem('books', JSON.stringify(books.map((book) => Book.serialize(book))));
+  };
+
+  trackBook = async (id: string, trackingData: TrackerData) => {
+    try {
+      const book = await this.fetchBookById(id);
+      if (book instanceof Book) {
+        book.getTracker().insertRecord(trackingData);
+        await this.updateBook(id, book);
+      }
+    } catch (error) {
+      throw new Error('Unsuccessful book tracking');
+    }
   };
 }

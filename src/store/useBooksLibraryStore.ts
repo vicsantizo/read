@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { usePersistentStorage } from '../context/persistentStorage/usePersistentStorage';
 import { Book } from '../features/booksLibrary/models';
+import { TrackerData } from '../features/booksLibrary/models/tracker';
 import { IBookLibraryPersistentStorage } from './IBooksLibraryPersistentStorage';
 
 export type BooksLibraryStore = {
@@ -38,6 +39,10 @@ const updateBook = async (persistentStorage: IBookLibraryPersistentStorage, id: 
 
 const deleteBooks = async (persistentStorage: IBookLibraryPersistentStorage, id: string[]) => {
   return persistentStorage.deleteBook(id);
+};
+
+const trackBook = async (persistentStorage: IBookLibraryPersistentStorage, id: string, trackingData: TrackerData) => {
+  return persistentStorage.trackBook(id, trackingData);
 };
 
 export const useBooksLibraryStore = () => {
@@ -83,6 +88,10 @@ export const useBooksLibraryStore = () => {
     return updateBook(persistentStorage, id, updatedBookData);
   };
 
+  const trackBookById = async (id: string, trackingData: TrackerData) => {
+    return trackBook(persistentStorage, id, trackingData);
+  };
+
   return {
     books,
     error,
@@ -90,6 +99,7 @@ export const useBooksLibraryStore = () => {
     getBookById,
     updateBookById,
     deleteBookById,
+    trackBookById,
   };
 };
 

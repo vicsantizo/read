@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import { Tracker, TrackerData } from './tracker';
 
 export type SerializedBook = {
   id: string;
@@ -9,6 +10,7 @@ export type SerializedBook = {
   pages: number;
   isFavorite: boolean;
   isFinished: boolean;
+  tracker: TrackerData[];
 };
 
 export class Book {
@@ -20,6 +22,7 @@ export class Book {
   private pages: number;
   private isFavorite: boolean;
   private isFinished: boolean;
+  private tracker: Tracker;
 
   static serialize = (book: Book) => {
     return {
@@ -31,6 +34,7 @@ export class Book {
       pages: book.getPages(),
       isFavorite: book.getIsFavorite(),
       isFinished: book.getIsFinished(),
+      tracker: Tracker.serialize(book.getTracker()),
     };
   };
 
@@ -44,6 +48,7 @@ export class Book {
       serializedBook.pages,
       serializedBook.isFavorite,
       serializedBook.isFinished,
+      serializedBook.tracker,
     );
   };
 
@@ -56,6 +61,7 @@ export class Book {
     pages?: number,
     isFavorite?: boolean,
     isFinished?: boolean,
+    tracker?: TrackerData[],
   ) {
     this.title = title;
     this.author = author;
@@ -65,6 +71,7 @@ export class Book {
     this.pages = pages ?? 0;
     this.isFavorite = isFavorite ?? false;
     this.isFinished = isFinished ?? false;
+    this.tracker = new Tracker(tracker);
   }
 
   getTitle() {
@@ -97,6 +104,10 @@ export class Book {
 
   getIsFinished() {
     return this.isFinished;
+  }
+
+  getTracker() {
+    return this.tracker;
   }
 
   setTitle(title: string) {
@@ -137,5 +148,9 @@ export class Book {
   setIdentifier(id: string) {
     this.id = id;
     return this;
+  }
+
+  setTracker(tracker: Tracker) {
+    this.tracker = tracker;
   }
 }
