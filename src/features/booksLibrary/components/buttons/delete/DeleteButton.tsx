@@ -8,9 +8,9 @@ export type DeleteButtonProps = {
 export const DeleteButton = ({ execute, disabled }: DeleteButtonProps) => {
   return (
     <button
-      disabled={disabled ? true : false}
-      className={`hover:opacity-50 ${disabled && 'opacity-20'}`}
-      title="Edit book"
+      disabled={disabled}
+      className={`hover:opacity-50 ${disabled && 'opacity-20 hover:cursor-not-allowed'}`}
+      title="Delete book"
       onClick={execute}
     >
       <DeleteIcon />
