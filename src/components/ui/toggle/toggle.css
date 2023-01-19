@@ -1,0 +1,34 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toggle__label {
+  cursor: pointer;
+}
+
+.toggle__svg {
+  cursor: pointer;
+}
+
+.toggle__rect {
+  stroke-width: 1px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: #3b3b3b;
+  stroke: #707070;
+}
+
+.toggle__circle {
+  fill: #fff;
+}
+
+.rect--move {
+  fill: var(--primary-500);
+}
+
+.circle--move {
+  transform: translateX(52%);
+  transition: transform 0.4s;
+}
