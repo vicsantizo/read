@@ -160,7 +160,7 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
             const author = formFields.author;
             const description = formFields.description;
             const category = formFields.category;
-            const pages = formFields.pages as number;
+            const pages = Number(formFields.pages);
             const isFavorite = formFields.isFavorite;
             const isFinished = formFields.isFinished;
 
