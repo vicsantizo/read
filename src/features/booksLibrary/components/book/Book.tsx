@@ -11,10 +11,11 @@ export type BookProps = {
   progress: number;
   booksSelection: Map<string, boolean>;
   setBooksSelection: (id: string) => void;
+  disabled?: boolean;
 };
 
 export const Book = (props: BookProps) => {
-  const { title, author, progress, id, booksSelection, setBooksSelection } = props;
+  const { title, author, progress, id, booksSelection, setBooksSelection, disabled } = props;
   const { bookButtonRef } = useSelectionMark(booksSelection, id);
   const { theme } = useTheme();
 
@@ -25,6 +26,7 @@ export const Book = (props: BookProps) => {
 
   return (
     <button
+      disabled={disabled ?? false}
       ref={bookButtonRef}
       className={`book relative ${theme == 'light' && 'border-[red]'}`}
       onClick={handleSelection}
