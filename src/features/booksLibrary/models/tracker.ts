@@ -63,4 +63,20 @@ export class Tracker {
     }
     return 0;
   }
+
+  getBookCompletionDate(bookPages: number) {
+    if (this.getLastRecord()?.toPage >= bookPages) {
+      console.log(this.getLastRecord()?.date);
+      const completionDate = new Date(this.getLastRecord()?.date);
+      const formattedDate = completionDate.toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+        timeZone: 'UTC',
+      });
+      console.log(formattedDate);
+      return formattedDate;
+    }
+    return '...';
+  }
 }
