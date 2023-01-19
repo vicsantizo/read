@@ -77,4 +77,16 @@ export class Tracker {
     }
     return '...';
   }
+
+  getStartDate() {
+    if (this.isEmpty()) return '...';
+    const startDate = new Date(this.log[0].date);
+    const formattedDate = startDate.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      timeZone: 'UTC',
+    });
+    return formattedDate;
+  }
 }
