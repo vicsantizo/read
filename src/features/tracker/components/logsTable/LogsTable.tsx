@@ -4,6 +4,17 @@ type LogsTableProps = {
   trackingData: TrackerData[];
 };
 
+function formatDate(date: string) {
+  const myDate = new Date(date);
+  const formattedDate = myDate.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
+  return formattedDate;
+}
+
 export const LogsTable = ({ trackingData }: LogsTableProps) => {
   const isTrackingDataEmpty = trackingData?.length === 0;
   const logsTable = (
@@ -19,7 +30,7 @@ export const LogsTable = ({ trackingData }: LogsTableProps) => {
         {trackingData?.map((log) => {
           return (
             <tr key={log.id}>
-              <td className="py-2 border border-[var(--primary-500)]">{log.date}</td>
+              <td className="py-2 border border-[var(--primary-500)]">{formatDate(log.date)}</td>
               <td className="py-2 border border-[var(--primary-500)]">{log.fromPage}</td>
               <td className="py-2 border border-[var(--primary-500)]">{log.toPage}</td>
             </tr>
