@@ -8,7 +8,6 @@ export type FormState = {
   description: string;
   pages: string | number;
   isFavorite: boolean;
-  isFinished: boolean;
 };
 
 const emptyFields = {
@@ -19,7 +18,6 @@ const emptyFields = {
   description: '',
   pages: '',
   isFavorite: false,
-  isFinished: false,
 };
 
 export enum FormAction {

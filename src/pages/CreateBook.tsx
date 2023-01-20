@@ -8,7 +8,6 @@ const initialFormState = {
   description: '',
   pages: '',
   isFavorite: false,
-  isFinished: false,
 };
 
 export const CreateBook = () => {

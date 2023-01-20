@@ -14,7 +14,6 @@ export type BooksLibraryStore = {
     category?: string,
     pages?: number,
     isFavorite?: boolean,
-    isFinished?: boolean,
   ) => Promise<void>;
   getBookById: (id: string) => Promise<Book | undefined>;
   updateBookById: (id: string, updatedBookData: Book) => Promise<void>;
@@ -63,12 +62,8 @@ export const useBooksLibraryStore = () => {
     category?: string,
     pages?: number,
     isFavorite?: boolean,
-    isFinished?: boolean,
   ) => {
-    const newBooks = [
-      ...books,
-      new Book(title, author, undefined, description, category, pages, isFavorite, isFinished),
-    ];
+    const newBooks = [...books, new Book(title, author, undefined, description, category, pages, isFavorite)];
     saveAllBooks(persistentStorage, newBooks)
       .then(() => setBooks(newBooks))
       .catch(() => setError('Something happened...'));

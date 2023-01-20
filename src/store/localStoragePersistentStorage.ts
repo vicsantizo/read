@@ -59,7 +59,6 @@ export class LocalStoragePersistentStorage implements IBookLibraryPersistentStor
         books[bookIndex].setCategory(updatedBookData.getCategory());
         books[bookIndex].setPages(updatedBookData.getPages());
         books[bookIndex].setIsFavorite(updatedBookData.getIsFavorite());
-        books[bookIndex].setIsFinished(updatedBookData.getIsFinished());
         books[bookIndex].setTracker(updatedBookData.getTracker());
       }
       await this.saveAllBooks([...books]);

@@ -9,7 +9,6 @@ export type SerializedBook = {
   category: string;
   pages: number;
   isFavorite: boolean;
-  isFinished: boolean;
   tracker: TrackerData[];
 };
 
@@ -21,7 +20,6 @@ export class Book {
   private category: string;
   private pages: number;
   private isFavorite: boolean;
-  private isFinished: boolean;
   private tracker: Tracker;
 
   static serialize = (book: Book) => {
@@ -33,7 +31,6 @@ export class Book {
       category: book.getCategory(),
       pages: book.getPages(),
       isFavorite: book.getIsFavorite(),
-      isFinished: book.getIsFinished(),
       tracker: Tracker.serialize(book.getTracker()),
     };
   };
@@ -47,7 +44,6 @@ export class Book {
       serializedBook.category,
       serializedBook.pages,
       serializedBook.isFavorite,
-      serializedBook.isFinished,
       serializedBook.tracker,
     );
   };
@@ -60,7 +56,6 @@ export class Book {
     category?: string,
     pages?: number,
     isFavorite?: boolean,
-    isFinished?: boolean,
     tracker?: TrackerData[],
   ) {
     this.title = title;
@@ -70,7 +65,6 @@ export class Book {
     this.category = category ?? '';
     this.pages = pages ?? 0;
     this.isFavorite = isFavorite ?? false;
-    this.isFinished = isFinished ?? false;
     this.tracker = new Tracker(tracker);
   }
 
@@ -100,10 +94,6 @@ export class Book {
 
   getIsFavorite() {
     return this.isFavorite;
-  }
-
-  getIsFinished() {
-    return this.isFinished;
   }
 
   getTracker() {
@@ -137,11 +127,6 @@ export class Book {
 
   setIsFavorite(isFavorite: boolean) {
     this.isFavorite = isFavorite;
-    return this;
-  }
-
-  setIsFinished(isFinished: boolean) {
-    this.isFinished = isFinished;
     return this;
   }
 
