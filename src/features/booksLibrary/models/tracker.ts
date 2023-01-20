@@ -64,29 +64,27 @@ export class Tracker {
     return 0;
   }
 
+  private formatDate(date: string) {
+    const myDate = new Date(date);
+    const formattedDate = myDate.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      timeZone: 'UTC',
+    });
+    if (formattedDate == 'Invalid Date') return 'N/A';
+    return formattedDate;
+  }
+
   getCompletionDate(bookPages: number) {
     if (this.getLastRecord()?.toPage >= bookPages) {
-      const completionDate = new Date(this.getLastRecord()?.date);
-      const formattedDate = completionDate.toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-        timeZone: 'UTC',
-      });
-      return formattedDate;
+      return this.formatDate(this.getLastRecord()?.date);
     }
     return '...';
   }
 
   getStartDate() {
     if (this.isEmpty()) return '...';
-    const startDate = new Date(this.log[0].date);
-    const formattedDate = startDate.toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-      timeZone: 'UTC',
-    });
-    return formattedDate;
+    return this.formatDate(this.log[0].date);
   }
 }

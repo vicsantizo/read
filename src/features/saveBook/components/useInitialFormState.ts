@@ -10,7 +10,6 @@ const initialForm = {
   description: '',
   pages: '',
   isFavorite: false,
-  isFinished: false,
 };
 
 export const useInitialFormState = (bookId: string) => {
@@ -27,7 +26,6 @@ export const useInitialFormState = (bookId: string) => {
         description: retrievedBook?.getDescription() || '',
         pages: retrievedBook?.getPages() || '',
         isFavorite: retrievedBook?.getIsFavorite() || false,
-        isFinished: retrievedBook?.getIsFinished() || false,
       });
     });
   }, []);

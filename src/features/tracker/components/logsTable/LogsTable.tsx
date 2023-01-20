@@ -12,6 +12,7 @@ function formatDate(date: string) {
     year: 'numeric',
     timeZone: 'UTC',
   });
+  if (formattedDate == 'Invalid Date') return 'N/A';
   return formattedDate;
 }
 

@@ -121,7 +121,7 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
           }
         />
 
-        <div className="flex items-center gap-2 mb-3 mt-3">
+        <div className="flex items-center gap-2 mb-10 mt-3">
           <input
             checked={formFields.isFavorite}
             onChange={(e) => setFormField({ type: FormAction.UPDATE, field: e.target.name, value: e.target.checked })}
@@ -132,20 +132,6 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
           />
           <label className="text-sm" htmlFor="isFavorite">
             Mark as favorite
-          </label>
-        </div>
-
-        <div className="flex items-center gap-2 mb-10">
-          <input
-            checked={formFields.isFinished}
-            onChange={(e) => setFormField({ type: FormAction.UPDATE, field: e.target.name, value: e.target.checked })}
-            className={`h-[1.25rem] w-[1.25rem] ${theme == 'dark' && 'checkbox-bg-dark'}`}
-            type="checkbox"
-            id="isFinished"
-            name="isFinished"
-          />
-          <label className="text-sm " htmlFor="isFinished">
-            Mark as finished
           </label>
         </div>
 
@@ -162,14 +148,13 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
             const category = formFields.category;
             const pages = Number(formFields.pages);
             const isFavorite = formFields.isFavorite;
-            const isFinished = formFields.isFinished;
 
             if (mode === 'create') {
-              createBook(title, author, description, category, pages, isFavorite, isFinished);
+              createBook(title, author, description, category, pages, isFavorite);
             }
 
             if (mode === 'update') {
-              const newBook = new Book(title, author, undefined, description, category, pages, isFavorite, isFinished);
+              const newBook = new Book(title, author, undefined, description, category, pages, isFavorite);
 
               getBookById(id)
                 .then((book) => {
