@@ -29,9 +29,10 @@ export const Library = ({ books, deleteBookById }: BooksLibraryStore) => {
 
       <div className="relative flex mb-2 items-center mt-5">
         <h1 className="font-bold text-[1.25rem] text-center sm:mx-auto">My Library</h1>
-        <span className="flex items-center absolute gap-2 right-0">
-          <TrackButton to={`books/${getSelectedBook()}/track`} disabled={!(countElementsSelected() === 1)} />
+        <span className="flex items-center absolute gap-2 right-0 h-full">
           <AddButton to="books/create" />
+          <span className="border border-gray-500 border-l-0 h-full"></span>
+          <TrackButton to={`books/${getSelectedBook()}/track`} disabled={!(countElementsSelected() === 1)} />
           <EditButton to={`books/${getSelectedBook()}/edit`} disabled={!(countElementsSelected() === 1)} />
           <DeleteButton
             disabled={!(countElementsSelected() >= 1)}
