@@ -5,7 +5,6 @@ import { BooksLibraryStore } from '../../../../store/useBooksLibraryStore';
 import { useLibraryFilter } from './useLibraryFilter';
 import { useTheme } from '../../../../context/theme/useTheme';
 import { TrackButton, AddButton, EditButton, DeleteButton } from '../buttons';
-import { Link } from 'react-router-dom';
 import { useBookSelection } from './useBookSelection';
 
 export const Library = ({ books, deleteBookById }: BooksLibraryStore) => {
