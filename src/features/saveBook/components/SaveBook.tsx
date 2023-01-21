@@ -93,7 +93,9 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
         <textarea
           autoCapitalize="off"
           placeholder="Type a brief description of the book..."
-          className={`mb-3 px-2 py-1 rounded-md border border-gray-500 ${theme == 'dark' && 'bg-[#1f1f23]'}`}
+          className={`mb-3 px-2 py-1 rounded-md min-h-[5rem] border border-gray-500 ${
+            theme == 'dark' && 'bg-[#1f1f23]'
+          }`}
           id="description"
           name="description"
           maxLength={600}
