@@ -137,6 +137,10 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
           </label>
         </div>
 
+        <Link to="/" title="Go Back" className="mb-3 text-sm text-center py-2 hover:opacity-50 rounded-md w-[100%]">
+          Back
+        </Link>
+
         <AcceptButton
           disable={!Boolean(formFields.title && formFields.author)}
           cleanup={() => {
@@ -172,14 +176,6 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
             }
           }}
         />
-
-        <Link
-          to="/"
-          title="Go Back"
-          className="mt-3 text-sm text-center py-2 hover:opacity-50 rounded-md w-[100%] mb-7"
-        >
-          Back
-        </Link>
       </Form>
     </>
   );
