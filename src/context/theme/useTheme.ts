@@ -5,8 +5,11 @@ export const useTheme = () => {
   const { theme, setTheme } = useContext(ThemeContext);
 
   useEffect(() => {
-    document.querySelector('html')?.classList.remove('light', 'dark');
     document.querySelector('html')?.classList.add(`${theme}`);
+
+    return () => {
+      document.querySelector('html')?.classList.remove(`${theme}`);
+    };
   }, [theme]);
 
   const changeTheme = () => {
