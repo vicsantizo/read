@@ -8,7 +8,7 @@ import { TrackButton, AddButton, EditButton, DeleteButton } from '../buttons';
 import { useBookSelection } from './useBookSelection';
 
 export const Library = ({ books, deleteBookById }: BooksLibraryStore) => {
-  const [searchValue, setSeachValue] = useState<string>('');
+  const [searchValue, setSearchValue] = useState<string>('');
   const { theme } = useTheme();
   const { filteredBooks } = useLibraryFilter(searchValue, books);
   const {
@@ -23,7 +23,7 @@ export const Library = ({ books, deleteBookById }: BooksLibraryStore) => {
   return (
     <div className={`library ${theme}`}>
       <div className="library__filter flex justify-center items-center pt-[4rem] mb-12">
-        <SearchInput searchValue={searchValue} setSearchValue={setSeachValue} />
+        <SearchInput searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
 
       <div className="relative flex mb-2 items-center mt-5">
