@@ -2,15 +2,15 @@ import { useState } from 'react';
 import { Book } from '../book';
 import { SearchInput } from '../../../../components/ui/searchInput';
 import { BooksLibraryStore } from '../../../../store/useBooksLibraryStore';
-import { useLibraryFilter } from './useLibraryFilter';
 import { useTheme } from '../../../../context/theme/useTheme';
 import { TrackButton, AddButton, EditButton, DeleteButton } from '../buttons';
 import { useBookSelection } from './useBookSelection';
+import { filterLibraryBooks } from '../../utils/utils';
+import { Book as BookType } from '../../models';
 
 export const Library = ({ books, deleteBookById }: BooksLibraryStore) => {
   const [searchValue, setSearchValue] = useState<string>('');
   const { theme } = useTheme();
-  const { filteredBooks } = useLibraryFilter(searchValue, books);
   const {
     booksSelection,
     setBooksSelection,
@@ -19,6 +19,7 @@ export const Library = ({ books, deleteBookById }: BooksLibraryStore) => {
     getArrayOfCurrentlySelectedBooks,
     resetBooksSelection,
   } = useBookSelection();
+  const filteredBooks: BookType[] = books.filter((book) => filterLibraryBooks(searchValue, book));
 
   return (
     <div className={`library ${theme}`}>
@@ -60,7 +61,8 @@ export const Library = ({ books, deleteBookById }: BooksLibraryStore) => {
               progress={book?.getTracker().calculateCompletion(book.getPages())}
             />
           ))}
-          {filteredBooks.length === 0 && 'Empty...'}
+          {books.length === 0 && 'Empty...'}
+          {books.length > 0 && filteredBooks.length === 0 && 'No results...'}
         </div>
       </div>
     </div>
