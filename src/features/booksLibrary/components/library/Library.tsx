@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Book } from '../book';
 import { SearchInput } from '../../../../components/ui/searchInput';
 import { BooksLibraryStore } from '../../../../store/useBooksLibraryStore';
@@ -19,7 +19,10 @@ export const Library = ({ books, deleteBookById }: BooksLibraryStore) => {
     getArrayOfCurrentlySelectedBooks,
     resetBooksSelection,
   } = useBookSelection();
-  const filteredBooks: BookType[] = books.filter((book) => filterLibraryBooks(searchValue, book));
+  const filteredBooks: BookType[] = useMemo(
+    () => books.filter((book) => filterLibraryBooks(searchValue, book)),
+    [searchValue, books],
+  );
 
   return (
     <div className={`library ${theme}`}>
