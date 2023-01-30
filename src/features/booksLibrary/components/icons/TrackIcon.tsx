@@ -1,8 +1,13 @@
-export const TrackIcon = () => {
+type TrackIconProps = {
+  className?: string;
+  width?: number;
+};
+
+export const TrackIcon = ({ className, width }: TrackIconProps) => {
   return (
     <svg
-      className={'fill-[currentColor]'}
-      width={22}
+      className={className}
+      width={width || 22}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 296.228 296.228"
       aria-hidden="true"

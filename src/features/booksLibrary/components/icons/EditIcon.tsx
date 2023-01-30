@@ -1,9 +1,14 @@
-export const EditIcon = () => {
+type EditIconProps = {
+  className: string;
+  width: number;
+};
+
+export const EditIcon = ({ className, width }: EditIconProps) => {
   return (
     <svg
-      className={`mb-1 ml-1 fill-[currentColor]`}
+      className={className}
       aria-hidden="true"
-      width={24}
+      width={width || 24}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 489.627 489.627"
       xmlSpace="preserve"

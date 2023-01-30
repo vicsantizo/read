@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { TrackIcon } from './TrackIcon';
+import { TrackIcon } from '../../icons';
 
 export type TrackButtonProps = {
   to: string;
@@ -18,7 +18,7 @@ export const TrackButton = ({ execute, disabled, to }: TrackButtonProps) => {
         if (execute) execute();
       }}
     >
-      <TrackIcon />
+      <TrackIcon className="fill-[currentColor]" width={22} />
     </Link>
   );
 };

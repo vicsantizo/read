@@ -1,4 +1,4 @@
-import { DeleteIcon } from './DeleteIcon';
+import { DeleteIcon } from '../../icons';
 
 export type DeleteButtonProps = {
   execute?: (...arg: unknown[]) => unknown;
@@ -13,7 +13,7 @@ export const DeleteButton = ({ execute, disabled }: DeleteButtonProps) => {
       title="Delete book"
       onClick={execute}
     >
-      <DeleteIcon />
+      <DeleteIcon className={'fill-[currentColor] stroke-2 mb-[2px]'} width={22} />
     </button>
   );
 };
