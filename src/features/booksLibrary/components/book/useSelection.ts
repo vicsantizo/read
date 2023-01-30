@@ -7,7 +7,11 @@ export const useSelectionMark = (booksSelection: Map<string, boolean>, bookId: s
 
   useEffect(() => {
     if (booksSelection.get(bookId)) bookButtonRef.current?.classList.add('border');
-  }, [theme]);
+
+    return () => {
+      bookButtonRef.current?.classList.remove('border');
+    };
+  }, [theme, booksSelection]);
 
   return {
     bookButtonRef,
