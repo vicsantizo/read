@@ -1,8 +1,13 @@
-export const DeleteIcon = () => {
+type DeleteIconProps = {
+  className?: string;
+  width?: number;
+};
+
+export const DeleteIcon = ({ className, width }: DeleteIconProps) => {
   return (
     <svg
-      className="fill-[currentColor] stroke-2 mb-[2px]"
-      width={22}
+      className={className}
+      width={width || 22}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 172.541 172.541"
       xmlSpace="preserve"

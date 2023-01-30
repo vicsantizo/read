@@ -1,8 +1,13 @@
-export const AddIcon = () => {
+type AddIconProps = {
+  className?: string;
+  width?: number;
+};
+
+export const AddIcon = ({ className, width }: AddIconProps) => {
   return (
     <svg
-      className={'fill-white stroke-2'}
-      width={24}
+      className={className}
+      width={width || 24}
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
       viewBox="0 0 100 100"

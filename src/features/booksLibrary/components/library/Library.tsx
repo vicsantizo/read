@@ -57,10 +57,13 @@ export const Library = ({ books, deleteBookById }: BooksLibraryStore) => {
             <Book
               booksSelection={booksSelection}
               setBooksSelection={setBooksSelection}
+              resetBooksSelection={resetBooksSelection}
+              deleteBookById={deleteBookById}
               key={book.getIdentifier()}
               id={book.getIdentifier()}
               title={book.getTitle()}
               author={book.getAuthor()}
+              enableActions={true}
               progress={book?.getTracker().calculateCompletion(book.getPages())}
             />
           ))}

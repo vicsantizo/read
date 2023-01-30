@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { EditIcon } from './EditIcon';
+import { EditIcon } from '../../icons';
 
 export type EditButtonProps = {
   to: string;
@@ -18,7 +18,7 @@ export const EditButton = ({ execute, disabled, to }: EditButtonProps) => {
         if (execute) execute();
       }}
     >
-      <EditIcon />
+      <EditIcon className="mb-1 ml-1 fill-[currentColor]" width={22} />
     </Link>
   );
 };

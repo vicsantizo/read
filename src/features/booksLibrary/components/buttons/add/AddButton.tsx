@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { AddIcon } from './AddIcon';
+import { AddIcon } from '../../icons';
 
 export type AddButtonProps = {
   to: string;
@@ -18,7 +18,7 @@ export const AddButton = ({ execute, disabled, to }: AddButtonProps) => {
         if (execute) execute();
       }}
     >
-      <AddIcon />
+      <AddIcon className="fill-white stroke-2" width={24} />
     </Link>
   );
 };
