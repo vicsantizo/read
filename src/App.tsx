@@ -9,10 +9,12 @@ import { CreateBook } from './pages/CreateBook';
 import { EditBook, loader as editBookLoader } from './pages/EditBook';
 import { TrackBook, loader as trackBookLoader } from './pages/TrackBook';
 import { BookInfo, loader as bookInfoLoader } from './pages/BookInfo';
+import { NotFound } from './features/notFound';
 
 const router = createBrowserRouter([
   {
     element: <BaseLayout />,
+    errorElement: <NotFound />,
     children: [
       {
         path: '/',
