@@ -5,7 +5,7 @@ export const NotFound = () => {
   const { theme } = useTheme();
   return (
     <div
-      className={`relative flex flex-col mx-auto w-[100%] max-w-[400px] items-center justify-center h-[100vh] ${
+      className={`p-[var(--page-padding)] relative flex flex-col mx-auto w-[100%] max-w-[400px] items-center justify-center h-[100vh] ${
         theme == 'dark' ? 'bg-[#1f1f23]' : 'bg-white'
       }`}
     >
