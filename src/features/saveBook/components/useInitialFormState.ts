@@ -18,6 +18,9 @@ export const useInitialFormState = (bookId: string) => {
 
   useEffect(() => {
     getBookById(bookId).then((retrievedBook) => {
+      if (retrievedBook === undefined) {
+        throw Error(`The book with the ${bookId} does not exist`);
+      }
       setInitialFormState({
         id: retrievedBook?.getIdentifier() || '',
         title: retrievedBook?.getTitle() || '',
