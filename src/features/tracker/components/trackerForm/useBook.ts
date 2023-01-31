@@ -8,6 +8,9 @@ export const useBook = (bookId: string) => {
 
   useEffect(() => {
     getBookById(bookId).then((retrievedBook) => {
+      if (retrievedBook === undefined) {
+        throw Error(`The book with the ${bookId} does not exist`);
+      }
       setBookData(retrievedBook);
     });
   }, []);
