@@ -13,7 +13,7 @@ export const DeleteButton = ({ execute, disabled }: DeleteButtonProps) => {
       title="Delete book"
       onClick={execute}
     >
-      <DeleteIcon className={'fill-[currentColor] stroke-2 mb-[2px]'} width={22} />
+      <DeleteIcon className={'mb-[2px] fill-[currentColor] stroke-2'} width={22} />
     </button>
   );
 };

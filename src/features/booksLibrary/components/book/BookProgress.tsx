@@ -5,8 +5,8 @@ export type BookProgressProps = {
 export const BookProgress = ({ progress }: BookProgressProps) => {
   const progressPercentage = String(progress).concat('%');
   return (
-    <div className="absolute bg-[#707070] h-[3px] w-[100%] bottom-0">
-      <div style={{ width: progressPercentage }} className={`bg-[var(--progress)] h-[100%]`}></div>
+    <div className="absolute bottom-0 h-[3px] w-[100%] bg-[#707070]">
+      <div style={{ width: progressPercentage }} className={`h-[100%] bg-[var(--progress)]`}></div>
     </div>
   );
 };

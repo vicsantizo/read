@@ -13,7 +13,7 @@ export const BookDescription = ({ description }: BookDescriptionProps) => {
     <div className="flex flex-col gap-1">
       <h2 className={`text-sm text-gray-500`}>Description</h2>
       <p
-        className={`p-2 max-h-[10rem] overflow-y-scroll rounded-md ${
+        className={`max-h-[10rem] overflow-y-scroll rounded-md p-2 ${
           theme == 'dark' ? descriptionDarkTheme : descriptionLightTheme
         }`}
       >

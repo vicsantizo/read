@@ -5,17 +5,17 @@ export const NotFound = () => {
   const { theme } = useTheme();
   return (
     <div
-      className={`p-[var(--page-padding)] relative flex flex-col mx-auto w-[100%] max-w-[400px] items-center justify-center h-[100vh] ${
+      className={`relative mx-auto flex h-[100vh] w-[100%] max-w-[400px] flex-col items-center justify-center p-[var(--page-padding)] ${
         theme == 'dark' ? 'bg-[#1f1f23]' : 'bg-white'
       }`}
     >
-      <div className="font-bold text-2xl mb-4">Oops!</div>
+      <div className="mb-4 text-2xl font-bold">Oops!</div>
       <h1 className="mb-4">Sorry, an unexpected error has occurred.</h1>
       <div className="italic text-gray-500">Not Found</div>
       <Link
         to="/"
         title="Go Back"
-        className="mt-[2rem] font-bold text-sm text-center py-2 px-5 hover:opacity-50 rounded-md w-[100%] bg-gray-500"
+        className="mt-[2rem] w-[100%] rounded-md bg-gray-500 py-2 px-5 text-center text-sm font-bold hover:opacity-50"
       >
         Go Home
       </Link>

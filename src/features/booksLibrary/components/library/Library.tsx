@@ -26,15 +26,15 @@ export const Library = ({ books, deleteBookById }: BooksLibraryStore) => {
 
   return (
     <div className={`library ${theme}`}>
-      <div className="library__filter flex justify-center items-center pt-[4rem] mb-12">
+      <div className="library__filter mb-12 flex items-center justify-center pt-[4rem]">
         <SearchInput searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
 
-      <div className="relative flex mb-2 items-center mt-5">
-        <h1 className="font-bold text-[1.25rem] text-center sm:mx-auto">My Library</h1>
-        <span className="flex items-center absolute gap-2 right-0 h-full">
+      <div className="relative mb-2 mt-5 flex items-center">
+        <h1 className="text-center text-[1.25rem] font-bold sm:mx-auto">My Library</h1>
+        <span className="absolute right-0 flex h-full items-center gap-2">
           <AddButton to="books/create" />
-          <span className="border border-gray-500 border-l-0 h-full"></span>
+          <span className="h-full border border-l-0 border-gray-500"></span>
           <TrackButton to={`books/${getSelectedBook()}/track`} disabled={!(countElementsSelected() === 1)} />
           <EditButton to={`books/${getSelectedBook()}/edit`} disabled={!(countElementsSelected() === 1)} />
           <DeleteButton
@@ -51,7 +51,7 @@ export const Library = ({ books, deleteBookById }: BooksLibraryStore) => {
         <div
           className={`border ${
             theme == 'dark' ? 'border-[#242526]' : 'border-[#f3f3f3]'
-          } py-[1rem] flex gap-3 flex-wrap justify-center `}
+          } flex flex-wrap justify-center gap-3 py-[1rem] `}
         >
           {filteredBooks.map((book) => (
             <Book

@@ -30,9 +30,9 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="relative flex flex-col mx-auto w-[100%] max-w-[400px] h-[90vh]"
+        className="relative mx-auto flex h-[90vh] w-[100%] max-w-[400px] flex-col"
       >
-        <h1 className="font-semibold text-lg mb-6 mt-8">{title}</h1>
+        <h1 className="mb-6 mt-8 text-lg font-semibold">{title}</h1>
         <label className="mb-1 text-sm" htmlFor="title">
           Title *
         </label>
@@ -40,7 +40,7 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
           inputMode="text"
           autoComplete="off"
           required
-          className={`mb-3 px-2 py-1 rounded-md border border-gray-500 ${theme == 'dark' && 'bg-[#1f1f23]'}`}
+          className={`mb-3 rounded-md border border-gray-500 px-2 py-1 ${theme == 'dark' && 'bg-[#1f1f23]'}`}
           id="title"
           name="title"
           value={formFields.title}
@@ -54,7 +54,7 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
           inputMode="text"
           autoComplete="off"
           required
-          className={`mb-3 px-2 py-1 rounded-md border border-gray-500 ${theme == 'dark' && 'bg-[#1f1f23]'}`}
+          className={`mb-3 rounded-md border border-gray-500 px-2 py-1 ${theme == 'dark' && 'bg-[#1f1f23]'}`}
           id="author"
           name="author"
           value={formFields.author}
@@ -65,7 +65,7 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
           Category
         </label>
         <select
-          className={`mb-3 px-1 py-1 rounded-md border border-gray-500 ${theme == 'dark' && 'bg-[#1f1f23]'}`}
+          className={`mb-3 rounded-md border border-gray-500 px-1 py-1 ${theme == 'dark' && 'bg-[#1f1f23]'}`}
           id="category"
           name="category"
           multiple={false}
@@ -93,7 +93,7 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
         <textarea
           autoCapitalize="off"
           placeholder="Type a brief description of the book..."
-          className={`mb-3 px-2 py-1 rounded-md min-h-[5rem] border border-gray-500 ${
+          className={`mb-3 min-h-[5rem] rounded-md border border-gray-500 px-2 py-1 ${
             theme == 'dark' && 'bg-[#1f1f23]'
           }`}
           id="description"
@@ -113,7 +113,7 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
           autoComplete="off"
           pattern="\d*"
           type="number"
-          className={`mb-3 px-2 py-1 rounded-md border border-gray-500 ${theme == 'dark' && 'bg-[#1f1f23]'}`}
+          className={`mb-3 rounded-md border border-gray-500 px-2 py-1 ${theme == 'dark' && 'bg-[#1f1f23]'}`}
           id="pages"
           name="pages"
           min={0}
@@ -123,7 +123,7 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
           }
         />
 
-        <div className="flex items-center gap-2 mb-10 mt-3">
+        <div className="mb-10 mt-3 flex items-center gap-2">
           <input
             checked={formFields.isFavorite}
             onChange={(e) => setFormField({ type: FormAction.UPDATE, field: e.target.name, value: e.target.checked })}
@@ -137,7 +137,7 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
           </label>
         </div>
 
-        <Link to="/" title="Go Back" className="mb-3 text-sm text-center py-2 hover:opacity-50 rounded-md w-[100%]">
+        <Link to="/" title="Go Back" className="mb-3 w-[100%] rounded-md py-2 text-center text-sm hover:opacity-50">
           Back
         </Link>
 

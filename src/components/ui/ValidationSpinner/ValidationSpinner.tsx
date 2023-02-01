@@ -8,7 +8,7 @@ export type ValidationSpinnerProps = {
 export const ValidationSpinner = ({ state }: ValidationSpinnerProps) => {
   const { icon, status, spinner } = useSpinner(state);
   return (
-    <div className="flex items-center justify-center w-[100%]">
+    <div className="flex w-[100%] items-center justify-center">
       <svg ref={icon} width={20} className="loading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path
           ref={status}

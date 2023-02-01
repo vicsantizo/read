@@ -36,10 +36,10 @@ export const TrackerForm = ({ bookData }: TrackerFormProps) => {
       onSubmit={(e) => {
         e.preventDefault();
       }}
-      className={`relative flex flex-col mx-auto w-[100%] max-w-[400px] h-[90vh]`}
+      className={`relative mx-auto flex h-[90vh] w-[100%] max-w-[400px] flex-col`}
     >
-      <h1 className="font-bold mb-8 mt-8 text-center text-gray-500 text-lg">Reading Tracker</h1>
-      <div className="flex gap-5 mb-8 justify-center">
+      <h1 className="mb-8 mt-8 text-center text-lg font-bold text-gray-500">Reading Tracker</h1>
+      <div className="mb-8 flex justify-center gap-5">
         <div className="flex">
           {/* Verifying data has been set */}
           {book && (
@@ -55,7 +55,7 @@ export const TrackerForm = ({ bookData }: TrackerFormProps) => {
           )}
         </div>
       </div>
-      <div className="flex justify-center gap-2 mb-8 flex-wrap">
+      <div className="mb-8 flex flex-wrap justify-center gap-2">
         <StatCard
           title="Progress"
           content={String(book?.getTracker().calculateCompletion(book.getPages())).concat('%')}
@@ -63,10 +63,10 @@ export const TrackerForm = ({ bookData }: TrackerFormProps) => {
         <StatCard title="Started" content={book?.getTracker().getStartDate()} />
         <StatCard title="Finished" content={book?.getTracker().getCompletionDate(book?.getPages())} />
       </div>
-      <div className="flex flex-col w-[100%] justify-start mb-5">
-        <div className="flex gap-2 mb-5 items-center">
+      <div className="mb-5 flex w-[100%] flex-col justify-start">
+        <div className="mb-5 flex items-center gap-2">
           <span className="text-gray-500">{book?.getPages()}</span>
-          <span className="mx-2 border border-gray-500 border-l-0 h-full"></span>
+          <span className="mx-2 h-full border border-l-0 border-gray-500"></span>
           <input
             value={formFields.from}
             onChange={(e) => {
@@ -76,11 +76,11 @@ export const TrackerForm = ({ bookData }: TrackerFormProps) => {
             placeholder="From"
             inputMode="numeric"
             type="number"
-            className={`w-full px-2 py-1 rounded-md border border-gray-500 ${theme == 'dark' && 'bg-[#1f1f23]'}`}
+            className={`w-full rounded-md border border-gray-500 px-2 py-1 ${theme == 'dark' && 'bg-[#1f1f23]'}`}
             name="from"
             id="from"
           />
-          <span className="flex items-center text-gray-400 text-xl">-</span>
+          <span className="flex items-center text-xl text-gray-400">-</span>
           <input
             value={formFields.to}
             onChange={(e) => {
@@ -89,13 +89,13 @@ export const TrackerForm = ({ bookData }: TrackerFormProps) => {
             required
             inputMode="numeric"
             placeholder="To"
-            className={`w-full px-2 py-1 rounded-md border border-gray-500 ${theme == 'dark' && 'bg-[#1f1f23]'}`}
+            className={`w-full rounded-md border border-gray-500 px-2 py-1 ${theme == 'dark' && 'bg-[#1f1f23]'}`}
             type="number"
             name="to"
             id="to"
           />
         </div>
-        <div className="flex mb-5 gap-3">
+        <div className="mb-5 flex gap-3">
           <input
             id="date"
             name="date"
@@ -106,7 +106,7 @@ export const TrackerForm = ({ bookData }: TrackerFormProps) => {
               setFormFields({ type: FormAction.UPDATE, field: 'date', value: e.target.value });
             }}
             style={{ flexGrow: 1 }}
-            className={`px-2 py-1 rounded-md border border-gray-500 ${theme == 'dark' && 'bg-[#1f1f23]'}`}
+            className={`rounded-md border border-gray-500 px-2 py-1 ${theme == 'dark' && 'bg-[#1f1f23]'}`}
           />
           <div className="w-[35%]">
             <AcceptButton
@@ -141,7 +141,7 @@ export const TrackerForm = ({ bookData }: TrackerFormProps) => {
       <Link
         to="/"
         title="Go Back"
-        className="mt-[2.5rem] text-sm text-center py-2 hover:opacity-50 rounded-md w-[100%] mb-8"
+        className="mt-[2.5rem] mb-8 w-[100%] rounded-md py-2 text-center text-sm hover:opacity-50"
       >
         Back
       </Link>

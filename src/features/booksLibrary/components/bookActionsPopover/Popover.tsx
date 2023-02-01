@@ -23,37 +23,37 @@ export const Popover = ({ handleClickOut, bookId, actions: { deleteBookById, res
       ref={actionsPopoverRef}
       className={`absolute ${
         theme == 'dark' ? 'bg-[#3B3B3B] text-white' : 'bg-[#FFFDFD] text-black'
-      }  w-[175px] z-[9] rounded-md top-[13%] right-0 mr-1`}
+      }  top-[13%] right-0 z-[9] mr-1 w-[175px] rounded-md`}
     >
       <ul className="flex flex-col">
-        <li className="py-2 px-3 border-b border-gray-500 hover:opacity-50">
-          <Link className="flex justify-between items-center w-full" to={`/books/${bookId}`}>
+        <li className="border-b border-gray-500 py-2 px-3 hover:opacity-50">
+          <Link className="flex w-full items-center justify-between" to={`/books/${bookId}`}>
             <div>See more</div>
-            <div className="flex justify-end items-center">
+            <div className="flex items-center justify-end">
               <BookInfoIcon className={fillIconColor} width={18} />
             </div>
           </Link>
         </li>
         <li className="py-2 px-3 hover:opacity-50">
-          <Link className="flex justify-between items-center w-full" to={`/books/${bookId}/track`}>
+          <Link className="flex w-full items-center justify-between" to={`/books/${bookId}/track`}>
             <div>Track progress</div>
-            <div className="flex justify-end items-center">
+            <div className="flex items-center justify-end">
               <TrackIcon className={fillIconColor} width={18} />
             </div>
           </Link>
         </li>
         <li className={`h-[0.5rem]  ${theme == 'dark' ? 'bg-[#1f1f23] ' : 'bg-[#f3f3f3]'}`}></li>
-        <li className="py-2 px-3 border-b border-gray-500 hover:opacity-50">
-          <Link className="flex justify-between items-center w-full" to={`/books/${bookId}/edit`}>
+        <li className="border-b border-gray-500 py-2 px-3 hover:opacity-50">
+          <Link className="flex w-full items-center justify-between" to={`/books/${bookId}/edit`}>
             <div>Edit book</div>
-            <div className="flex justify-end items-center">
+            <div className="flex items-center justify-end">
               <EditIcon className={fillIconColor} width={18} />
             </div>
           </Link>
         </li>
         <li className="py-2 px-3 hover:opacity-50">
           <button
-            className="flex justify-between items-center w-full"
+            className="flex w-full items-center justify-between"
             onClick={() => {
               if (deleteBookById) {
                 deleteBookById([bookId]);
@@ -64,7 +64,7 @@ export const Popover = ({ handleClickOut, bookId, actions: { deleteBookById, res
             }}
           >
             <div>Delete book</div>
-            <div className="flex justify-end items-center">
+            <div className="flex items-center justify-end">
               <DeleteIcon className={fillIconColor} width={18} />
             </div>
           </button>

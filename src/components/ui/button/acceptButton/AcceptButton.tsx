@@ -11,7 +11,7 @@ export const AcceptButton = ({ execute, disable, cleanup }: AcceptButtonProps) =
   return (
     <button
       disabled={buttonState.disabled || disable}
-      className={`bg-[var(--success-500)] hover:opacity-70 text-sm text-white font-semibold py-2 px-5 rounded-md w-full ${
+      className={`w-full rounded-md bg-[var(--success-500)] py-2 px-5 text-sm font-semibold text-white hover:opacity-70 ${
         disable && 'opacity-50'
       }`}
       onClick={async () => {

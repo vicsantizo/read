@@ -24,11 +24,11 @@ export const BookInfo = () => {
   }, []);
 
   return (
-    <div className="info py-10 container mx-auto flex flex-col mx-auto w-[100%] max-w-[400px] h-[90vh]">
+    <div className="info container mx-auto mx-auto flex h-[90vh] w-[100%] max-w-[400px] flex-col py-10">
       {isLoaded && (
         <div className="">
-          <h1 className="font-bold mb-8 text-center text-gray-500 text-lg">Book Information</h1>
-          <div className="relative info__book flex flex-col justify-center items-center">
+          <h1 className="mb-8 text-center text-lg font-bold text-gray-500">Book Information</h1>
+          <div className="info__book relative flex flex-col items-center justify-center">
             <Book
               id={bookData!.getIdentifier()}
               title={bookData!.getTitle()}
@@ -39,11 +39,11 @@ export const BookInfo = () => {
               booksSelection={new Map<string, boolean>()}
               setBooksSelection={(id: string) => id}
             />
-            <div className="flex mb-5 mt-3">
+            <div className="mb-5 mt-3 flex">
               {bookData!.getCategory() && <BookCategory category={bookData!.getCategory()} />}
             </div>
           </div>
-          <div className="info__cards flex flex-wrap gap-2 justify-center items-center mb-7">
+          <div className="info__cards mb-7 flex flex-wrap items-center justify-center gap-2">
             <StatCard title={'Pages'} content={bookData!.getPages().toString()} />
             <StatCard title="Started" content={bookData!.getTracker().getStartDate()} />
             <StatCard
@@ -56,7 +56,7 @@ export const BookInfo = () => {
             <Link
               to="/"
               title="Go Back"
-              className="mt-[2.5rem] text-sm text-center py-2 hover:opacity-50 rounded-md w-[100%] mb-8"
+              className="mt-[2.5rem] mb-8 w-[100%] rounded-md py-2 text-center text-sm hover:opacity-50"
             >
               Back
             </Link>
