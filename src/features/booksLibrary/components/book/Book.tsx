@@ -52,7 +52,7 @@ export const Book = (props: BookProps) => {
       <button
         disabled={disabled ?? false}
         ref={bookButtonRef}
-        className={`book relative ${theme == 'light' && 'border-[red]'}`}
+        className={`book relative ${theme == 'light' && 'border-[navy]'}`}
         onClick={handleSelection}
       >
         <span className="book__title">{cutString(title, 65)}</span>
