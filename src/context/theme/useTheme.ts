@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { ThemeContext } from './ThemeContext';
+import { setDarkModeCookie } from '../../utils/cookies';
 
 export const useTheme = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -12,8 +13,10 @@ export const useTheme = () => {
   const changeTheme = () => {
     if (theme === 'dark') {
       setTheme('light');
+      setDarkModeCookie(false);
     } else if (theme === 'light') {
       setTheme('dark');
+      setDarkModeCookie(true);
     }
   };
 
