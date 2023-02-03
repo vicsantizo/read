@@ -21,7 +21,7 @@ export const Popover = ({ handleClickOut, bookId, actions: { deleteBookById, res
   return (
     <div
       ref={actionsPopoverRef}
-      className={`absolute ${
+      className={`absolute [box-shadow:0_2px_3px_#2c2c2c] ${
         theme == 'dark' ? 'bg-[#3B3B3B] text-white' : 'bg-[#FFFDFD] text-black'
       }  top-[13%] right-0 z-[9] mr-1 w-[175px] rounded-md`}
     >
