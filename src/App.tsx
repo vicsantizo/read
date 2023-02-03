@@ -10,6 +10,7 @@ import { EditBook, loader as editBookLoader } from './pages/EditBook';
 import { TrackBook, loader as trackBookLoader } from './pages/TrackBook';
 import { BookInfo, loader as bookInfoLoader } from './pages/BookInfo';
 import { NotFound } from './features/notFound';
+import { getInitialThemeValue } from './utils/cookies';
 
 const router = createBrowserRouter([
   {
@@ -45,7 +46,8 @@ const router = createBrowserRouter([
 
 function App() {
   const localStoragePersistentStorage = new LocalStoragePersistentStorage();
-  const [theme, setTheme] = useState<string>('dark');
+  const initialTheme = getInitialThemeValue();
+  const [theme, setTheme] = useState<string>(initialTheme);
 
   return (
     <PersistentStorageProvider value={localStoragePersistentStorage}>
