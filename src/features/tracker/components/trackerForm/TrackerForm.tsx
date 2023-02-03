@@ -39,7 +39,7 @@ export const TrackerForm = ({ bookData }: TrackerFormProps) => {
       className={`relative mx-auto flex h-[90vh] w-[100%] max-w-[400px] flex-col`}
     >
       <h1 className="mb-8 mt-8 text-center text-lg font-bold text-gray-500">Reading Tracker</h1>
-      <div className="mb-3 flex justify-center gap-5">
+      <div className="mb-5 flex justify-center gap-5">
         <div className="flex flex-col">
           {/* Verifying data has been set */}
           {book && (
