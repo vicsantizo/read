@@ -21,7 +21,7 @@ export function getCookieValue(cookieName: string) {
 }
 
 export function setDarkModeCookie(value: boolean) {
-  document.cookie = `darkMode=${value}; max-age=604800; SameSite=strict`;
+  document.cookie = `darkMode=${value};max-age=604800;SameSite=strict;path=/`;
 }
 
 export function isDarkModeCookieEnabled(): boolean | undefined {
