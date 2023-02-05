@@ -24,48 +24,25 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
   }, [initialState]);
 
   return (
-    <>
+    <div className="flex h-full flex-col">
       <Form
         ref={bookForm}
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="relative mx-auto flex h-[90vh] w-[100%] max-w-[400px] flex-col"
+        className="relative mx-auto flex h-full w-[100%] max-w-[400px] flex-col md:mt-[4rem]"
       >
-        <h1 className="mb-6 mt-8 text-lg font-semibold">{title}</h1>
-        <label className="mb-1 text-sm" htmlFor="title">
-          Title *
-        </label>
-        <input
-          inputMode="text"
-          autoComplete="off"
-          required
-          className={`mb-3 rounded-md border border-gray-500 px-2 py-1 ${theme == 'dark' && 'bg-[#1f1f23]'}`}
-          id="title"
-          name="title"
-          value={formFields.title}
-          onChange={(e) => setFormField({ type: FormAction.UPDATE, field: e.target.name, value: e.target.value })}
-        />
-
-        <label className="mb-1 text-sm" htmlFor="author">
-          Author *
-        </label>
-        <input
-          inputMode="text"
-          autoComplete="off"
-          required
-          className={`mb-3 rounded-md border border-gray-500 px-2 py-1 ${theme == 'dark' && 'bg-[#1f1f23]'}`}
-          id="author"
-          name="author"
-          value={formFields.author}
-          onChange={(e) => setFormField({ type: FormAction.UPDATE, field: e.target.name, value: e.target.value })}
-        />
-
+        <h1 className="mt-8 text-lg font-semibold">{title}</h1>
+        <div className="mb-3 text-sm text-gray-500">Fill the required fields to save the book</div>
+        <div className="mb-6 border border-t-0 border-r-0 border-l-0 border-gray-700"></div>
         <label className="mb-1 text-sm" htmlFor="category">
-          Category
+          Genre
         </label>
         <select
-          className={`mb-3 rounded-md border border-gray-500 px-1 py-1 ${theme == 'dark' && 'bg-[#1f1f23]'}`}
+          className={`mb-5 rounded-md border border-gray-500 bg-white px-1 py-[0.5rem] ${
+            theme == 'dark' &&
+            'border-l-0 border-r-0 border-t-0 border-gray-700 bg-[#343434] [box-shadow:inset_0_4px_4px_hsl(0_0%_0%_/0.1)]'
+          }`}
           id="category"
           name="category"
           multiple={false}
@@ -86,15 +63,47 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
           <option value="Self-help">Self-help</option>
           <option value="Philosophy">Philosophy</option>
         </select>
-
+        <label className="mb-1 text-sm" htmlFor="title">
+          Title<span className={`${formFields.title == '' ? 'text-red-500 dark:text-red-300' : 'hidden'}`}> *</span>
+        </label>
+        <input
+          inputMode="text"
+          autoComplete="off"
+          required
+          className={`mb-5 rounded-md border  border-gray-500 px-2 py-[0.35rem] ${
+            theme == 'dark' &&
+            'border-b-1border-r-0 border-l-0 border-t-0 border-gray-700 bg-[#343434] [box-shadow:inset_0_4px_4px_hsl(0_0%_0%_/0.1)]'
+          }`}
+          id="title"
+          name="title"
+          value={formFields.title}
+          onChange={(e) => setFormField({ type: FormAction.UPDATE, field: e.target.name, value: e.target.value })}
+        />
+        <label className="mb-1 text-sm" htmlFor="author">
+          Author<span className={`${formFields.author == '' ? 'text-red-500 dark:text-red-300' : 'hidden'}`}> *</span>
+        </label>
+        <input
+          inputMode="text"
+          autoComplete="off"
+          required
+          className={`mb-5 rounded-md border  border border-gray-500 px-2 py-[0.35rem] ${
+            theme == 'dark' &&
+            'border-b-1 border-l-0 border-r-0 border-t-0 border-gray-700 bg-[#343434] [box-shadow:inset_0_4px_4px_hsl(0_0%_0%_/0.1)]'
+          }`}
+          id="author"
+          name="author"
+          value={formFields.author}
+          onChange={(e) => setFormField({ type: FormAction.UPDATE, field: e.target.name, value: e.target.value })}
+        />
         <label className="mb-1 text-sm" htmlFor="description">
           Description
         </label>
         <textarea
           autoCapitalize="off"
-          placeholder="Type a brief description of the book..."
-          className={`mb-3 min-h-[5rem] rounded-md border border-gray-500 px-2 py-1 ${
-            theme == 'dark' && 'bg-[#1f1f23]'
+          placeholder=""
+          className={`mb-5 min-h-[5rem] rounded-md  border border-gray-500 px-2 py-1 ${
+            theme == 'dark' &&
+            'border-l-0 border-r-0 border-t-0 border-gray-700 bg-[#343434] [box-shadow:inset_0_4px_4px_hsl(0_0%_0%_/0.1)]'
           }`}
           id="description"
           name="description"
@@ -104,80 +113,70 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
           value={formFields.description}
           onChange={(e) => setFormField({ type: FormAction.UPDATE, field: e.target.name, value: e.target.value })}
         ></textarea>
-
-        <label className="mb-1 text-sm" htmlFor="pages">
-          Pages
-        </label>
-        <input
-          inputMode="numeric"
-          autoComplete="off"
-          pattern="\d*"
-          type="number"
-          className={`mb-3 rounded-md border border-gray-500 px-2 py-1 ${theme == 'dark' && 'bg-[#1f1f23]'}`}
-          id="pages"
-          name="pages"
-          min={0}
-          value={formFields.pages}
-          onChange={(e) =>
-            setFormField({ type: FormAction.NUMERIC_UPDATE, field: e.target.name, value: e.target.value })
-          }
-        />
-
-        <div className="mb-10 mt-3 flex items-center gap-2">
+        <div className="flex flex-col items-end">
           <input
-            checked={formFields.isFavorite}
-            onChange={(e) => setFormField({ type: FormAction.UPDATE, field: e.target.name, value: e.target.checked })}
-            className={`h-[1.25rem] w-[1.25rem] ${theme == 'dark' && 'checkbox-bg-dark'}`}
-            type="checkbox"
-            id="isFavorite"
-            name="isFavorite"
+            inputMode="numeric"
+            autoComplete="off"
+            pattern="\d*"
+            type="number"
+            className={`max-w-[8ch] rounded-md  border border border-gray-500 px-2 py-[0.35rem] ${
+              theme == 'dark' &&
+              'border-l-0 border-r-0 border-t-0 border-gray-700 bg-[#343434] [box-shadow:inset_0_4px_4px_hsl(0_0%_0%_/0.1)]'
+            }`}
+            id="pages"
+            name="pages"
+            min={0}
+            value={formFields.pages}
+            onChange={(e) =>
+              setFormField({ type: FormAction.NUMERIC_UPDATE, field: e.target.name, value: e.target.value })
+            }
           />
-          <label className="text-sm" htmlFor="isFavorite">
-            Mark as favorite
+          <label className="text-sm text-gray-500" htmlFor="pages">
+            pages #
           </label>
         </div>
+        <div className="mt-3 flex flex-col py-5">
+          <Link to="/" title="Go Back" className="mb-3 w-[100%] rounded-md py-2 text-center text-sm hover:opacity-50">
+            Back
+          </Link>
+          <AcceptButton
+            disable={!Boolean(formFields.title && formFields.author)}
+            cleanup={() => {
+              setFormField({ type: FormAction.WIPE, field: 'none', value: 'none' });
+            }}
+            execute={() => {
+              const id = formFields.id;
+              const title = formFields.title;
+              const author = formFields.author;
+              const description = formFields.description;
+              const category = formFields.category;
+              const pages = Number(formFields.pages);
+              const isFavorite = formFields.isFavorite;
 
-        <Link to="/" title="Go Back" className="mb-3 w-[100%] rounded-md py-2 text-center text-sm hover:opacity-50">
-          Back
-        </Link>
+              if (mode === 'create') {
+                createBook(title, author, description, category, pages, isFavorite);
+              }
 
-        <AcceptButton
-          disable={!Boolean(formFields.title && formFields.author)}
-          cleanup={() => {
-            setFormField({ type: FormAction.WIPE, field: 'none', value: 'none' });
-          }}
-          execute={() => {
-            const id = formFields.id;
-            const title = formFields.title;
-            const author = formFields.author;
-            const description = formFields.description;
-            const category = formFields.category;
-            const pages = Number(formFields.pages);
-            const isFavorite = formFields.isFavorite;
+              if (mode === 'update') {
+                const newBook = new Book(title, author, undefined, description, category, pages, isFavorite);
 
-            if (mode === 'create') {
-              createBook(title, author, description, category, pages, isFavorite);
-            }
-
-            if (mode === 'update') {
-              const newBook = new Book(title, author, undefined, description, category, pages, isFavorite);
-
-              getBookById(id)
-                .then((book) => {
-                  newBook.setTracker(book!.getTracker());
-                  updateBookById(id, newBook);
-                  setTimeout(() => {
-                    navigate('/');
-                  }, 3000);
-                })
-                .catch(() => {
-                  throw new Error('Something happened...');
-                });
-            }
-          }}
-        />
+                getBookById(id)
+                  .then((book) => {
+                    newBook.setTracker(book!.getTracker());
+                    updateBookById(id, newBook);
+                    setTimeout(() => {
+                      navigate('/');
+                    }, 3000);
+                  })
+                  .catch(() => {
+                    throw new Error('Something happened...');
+                  });
+              }
+            }}
+          />
+        </div>
       </Form>
-    </>
+    </div>
   );
 };
 
