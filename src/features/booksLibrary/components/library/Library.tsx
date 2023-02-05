@@ -68,7 +68,7 @@ export const Library = ({ books, deleteBookById }: BooksLibraryStore) => {
               progress={book?.getTracker().calculateCompletion(book.getPages())}
             />
           ))}
-          {books.length === 0 && 'Empty...'}
+          {books.length === 0 && <EmptyLibrary />}
           {books.length > 0 && filteredBooks.length === 0 && 'No results...'}
         </div>
       </div>
