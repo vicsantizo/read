@@ -7,6 +7,7 @@ import { TrackButton, AddButton, EditButton, DeleteButton } from '../buttons';
 import { useBookSelection } from './useBookSelection';
 import { filterLibraryBooks } from '../../utils/utils';
 import { Book as BookType } from '../../models';
+import { EmptyLibrary } from '../emptyLibrary';
 
 export const Library = ({ books, deleteBookById }: BooksLibraryStore) => {
   const [searchValue, setSearchValue] = useState<string>('');
@@ -31,7 +32,7 @@ export const Library = ({ books, deleteBookById }: BooksLibraryStore) => {
       </div>
 
       <div className="relative mb-2 mt-5 flex items-center">
-        <h1 className="text-center text-[1.25rem] font-bold sm:mx-auto">My Library</h1>
+        <h1 className="text-center text-[1.25rem] font-bold text-gray-600 dark:text-gray-400 sm:mx-auto">My Library</h1>
         <span className="absolute right-0 flex h-full items-center gap-2">
           <AddButton to="books/create" />
           <span className="h-full border border-l-0 border-gray-500"></span>
