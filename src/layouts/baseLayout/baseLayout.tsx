@@ -18,7 +18,7 @@ export const BaseLayout = () => {
           <Toggle text="Dark mode" execute={setTheme} state={theme === 'dark' ? true : false} />
         </Dropdown>
       </Sidebar>
-      <div className={`p-[var(--page-padding)] ${theme}`}>
+      <div className={`p-[var(--page-padding)] ${theme} h-[100%]`}>
         <Outlet />
       </div>
     </>

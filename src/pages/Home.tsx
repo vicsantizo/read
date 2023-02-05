@@ -5,7 +5,7 @@ export const Home = () => {
   const { books, error, createBook, getBookById, deleteBookById, updateBookById } = useBooksLibraryStore();
 
   return (
-    <div className="home container mx-auto">
+    <div className="home container mx-auto h-full">
       <Library
         books={books}
         error={error}

@@ -51,7 +51,7 @@
 html {
   font-family: Helvetica, Verdana, Geneva, Tahoma, sans-serif;
   min-width: 320px;
-  min-height: 100vh;
+  height: 100%;
 }
 
 .dark {
@@ -70,4 +70,9 @@ html {
 
 body {
   position: relative;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
 }

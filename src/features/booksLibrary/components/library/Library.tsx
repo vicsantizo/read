@@ -26,7 +26,7 @@ export const Library = ({ books, deleteBookById }: BooksLibraryStore) => {
   );
 
   return (
-    <div className={`library ${theme}`}>
+    <div className={`library ${theme} h-full`}>
       {books.length === 0 ? (
         <EmptyLibrary />
       ) : (

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export const EmptyLibrary = () => {
   return (
-    <div className="mt-auto flex h-[80vh] h-full flex-col items-center justify-center gap-4">
+    <div className="mt-auto flex h-full flex-col items-center justify-center gap-4">
       <img
         src="https://raw.githubusercontent.com/vicsantizo/remote/main/images/students-library.png"
         width={250}
