@@ -72,7 +72,7 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
           required
           className={`mb-5 rounded-md border  border-gray-500 px-2 py-[0.35rem] ${
             theme == 'dark' &&
-            'border-b-1border-r-0 border-l-0 border-t-0 border-gray-700 bg-[#343434] [box-shadow:inset_0_4px_4px_hsl(0_0%_0%_/0.1)]'
+            'border-b-1 border-r-0 border-l-0 border-t-0 border-gray-700 bg-[#343434] [box-shadow:inset_0_4px_4px_hsl(0_0%_0%_/0.1)]'
           }`}
           id="title"
           name="title"
@@ -86,7 +86,7 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
           inputMode="text"
           autoComplete="off"
           required
-          className={`mb-5 rounded-md border  border border-gray-500 px-2 py-[0.35rem] ${
+          className={`mb-5 rounded-md border border-gray-500 px-2 py-[0.35rem] ${
             theme == 'dark' &&
             'border-b-1 border-l-0 border-r-0 border-t-0 border-gray-700 bg-[#343434] [box-shadow:inset_0_4px_4px_hsl(0_0%_0%_/0.1)]'
           }`}
@@ -101,7 +101,7 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
         <textarea
           autoCapitalize="off"
           placeholder=""
-          className={`mb-5 min-h-[5rem] rounded-md  border border-gray-500 px-2 py-1 ${
+          className={`mb-5 min-h-[5rem] rounded-md border border-gray-500 px-2 py-1 ${
             theme == 'dark' &&
             'border-l-0 border-r-0 border-t-0 border-gray-700 bg-[#343434] [box-shadow:inset_0_4px_4px_hsl(0_0%_0%_/0.1)]'
           }`}
