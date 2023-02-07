@@ -39,7 +39,7 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
           Genre
         </label>
         <select
-          className={`mb-5 rounded-md border border-gray-500 bg-white px-1 py-[0.5rem] ${
+          className={`mb-5 rounded-md border border-gray-500 ${theme == 'light' && 'bg-white'} px-1 py-[0.5rem] ${
             theme == 'dark' &&
             'border-l-0 border-r-0 border-t-0 border-gray-700 bg-[#343434] [box-shadow:inset_0_4px_4px_hsl(0_0%_0%_/0.1)]'
           }`}
@@ -70,7 +70,7 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
           inputMode="text"
           autoComplete="off"
           required
-          className={`mb-5 rounded-md border  border-gray-500 px-2 py-[0.35rem] ${
+          className={`mb-5 rounded-md border border-gray-500 px-2 py-[0.35rem] ${
             theme == 'dark' &&
             'border-b-1 border-r-0 border-l-0 border-t-0 border-gray-700 bg-[#343434] [box-shadow:inset_0_4px_4px_hsl(0_0%_0%_/0.1)]'
           }`}
