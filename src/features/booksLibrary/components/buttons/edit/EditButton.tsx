@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { EditIcon } from '../../icons';
 
 export type EditButtonProps = {
@@ -8,18 +8,20 @@ export type EditButtonProps = {
 };
 
 export const EditButton = ({ execute, disabled, to }: EditButtonProps) => {
+  const navigate = useNavigate();
   return (
-    <Link
-      to={to}
+    <button
       title="Edit Book"
+      disabled={disabled}
       className={`flex items-center hover:opacity-50 ${disabled && 'opacity-20 hover:cursor-not-allowed'}`}
       onClick={(e) => {
+        navigate(`${to}`);
         if (disabled) e.preventDefault();
         if (execute) execute();
       }}
     >
       <EditIcon className="mb-1 ml-1 fill-[currentColor]" width={22} />
-    </Link>
+    </button>
   );
 };
 
