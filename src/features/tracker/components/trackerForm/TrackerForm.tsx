@@ -36,9 +36,8 @@ export const TrackerForm = ({ bookData }: TrackerFormProps) => {
       onSubmit={(e) => {
         e.preventDefault();
       }}
-      className={`relative mx-auto flex w-[100%] max-w-[400px] flex-col`}
+      className={`relative mx-auto flex w-[100%] max-w-[400px] flex-col py-10`}
     >
-      <h1 className="mb-8 mt-8 text-center text-lg font-bold text-gray-500">Reading Tracker</h1>
       <div className="mb-5 flex justify-center gap-5">
         <div className="flex flex-col">
           {/* Verifying data has been set */}

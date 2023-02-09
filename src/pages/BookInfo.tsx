@@ -24,10 +24,9 @@ export const BookInfo = () => {
   }, []);
 
   return (
-    <div className="info container mx-auto mx-auto flex h-[90vh] w-[100%] max-w-[400px] flex-col py-10">
+    <div className="info container mx-auto flex h-[90vh] w-[100%] max-w-[400px] flex-col py-10">
       {isLoaded && (
         <div className="">
-          <h1 className="mb-8 text-center text-lg font-bold text-gray-500">Book Information</h1>
           <div className="info__book relative flex flex-col items-center justify-center">
             <Book
               id={bookData!.getIdentifier()}
