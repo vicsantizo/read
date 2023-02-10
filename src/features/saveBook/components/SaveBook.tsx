@@ -70,6 +70,7 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
           inputMode="text"
           autoComplete="off"
           required
+          enterKeyHint="next"
           className={`mb-5 rounded-md border border-gray-500 px-2 py-[0.35rem] ${
             theme == 'dark' &&
             'border-b-1 border-r-0 border-l-0 border-t-0 border-gray-700 bg-[#343434] [box-shadow:inset_0_4px_4px_hsl(0_0%_0%_/0.1)]'
@@ -86,6 +87,7 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
           inputMode="text"
           autoComplete="off"
           required
+          enterKeyHint="next"
           className={`mb-5 rounded-md border border-gray-500 px-2 py-[0.35rem] ${
             theme == 'dark' &&
             'border-b-1 border-l-0 border-r-0 border-t-0 border-gray-700 bg-[#343434] [box-shadow:inset_0_4px_4px_hsl(0_0%_0%_/0.1)]'
@@ -119,6 +121,7 @@ export const SaveBook = ({ title, initialState, mode }: SaveBookProps) => {
             autoComplete="off"
             pattern="\d*"
             type="number"
+            enterKeyHint="next"
             className={`max-w-[8ch] rounded-md  border border border-gray-500 px-2 py-[0.35rem] ${
               theme == 'dark' &&
               'border-l-0 border-r-0 border-t-0 border-gray-700 bg-[#343434] [box-shadow:inset_0_4px_4px_hsl(0_0%_0%_/0.1)]'
