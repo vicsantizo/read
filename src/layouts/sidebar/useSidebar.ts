@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useSidebar = (): { isSidebarActive: boolean; setIsSidebarActive: () => void } => {
+export const useSidebar = () => {
   const [isSidebarActive, setIsSidebarActive] = useState<boolean>(false);
 
   function handleisSidebarActive() {
@@ -10,6 +10,7 @@ export const useSidebar = (): { isSidebarActive: boolean; setIsSidebarActive: ()
   return {
     isSidebarActive,
     setIsSidebarActive: handleisSidebarActive,
+    setSidebarState: setIsSidebarActive,
   };
 };
 
