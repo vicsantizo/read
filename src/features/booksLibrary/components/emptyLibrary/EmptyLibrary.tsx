@@ -1,13 +1,11 @@
 import { Link } from 'react-router-dom';
 
 export const EmptyLibrary = () => {
-  // TO-DO
-  // - Change image for something else, more aesthetic...
   return (
     <div className="mt-auto flex h-full flex-col items-center justify-center gap-4">
       <div className="mb-1">
-        <div className="h-[12px] w-[50px] rounded-sm bg-[var(--primary-500)] md:h-[16px] md:w-[60px]"></div>
-        <div className="flex h-[80px] w-[120px] flex-col items-center justify-center rounded-sm bg-[var(--primary-500)] text-sm italic leading-tight text-gray-300 [box-shadow:0_0_5px_hsl(0_0%_0%/.7)] md:h-[100px] md:w-[165px]">
+        <div className="h-[12px] w-[50px] rounded-sm rounded-b-none bg-[var(--primary-500)] md:h-[16px] md:w-[60px]"></div>
+        <div className="flex h-[80px] w-[120px] flex-col items-center justify-center rounded-sm rounded-tl-none bg-[var(--primary-500)] text-sm italic leading-tight text-gray-300 [box-shadow:0_0_5px_hsl(0_0%_0%/.7)] md:h-[100px] md:w-[165px]">
           books
         </div>
       </div>
