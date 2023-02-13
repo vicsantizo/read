@@ -1,17 +1,20 @@
 import { Link } from 'react-router-dom';
 
 export const EmptyLibrary = () => {
+  // TO-DO
+  // - Change image for something else, more aesthetic...
   return (
     <div className="mt-auto flex h-full flex-col items-center justify-center gap-4">
-      <img
-        src="https://raw.githubusercontent.com/vicsantizo/remote/main/images/students-library.png"
-        width={250}
-        height={197}
-        alt=""
-      />
+      <div className="mb-1">
+        <div className="h-[12px] w-[50px] bg-[var(--primary-500)]"></div>
+        <div className="flex h-[80px] w-[120px] flex-col items-center justify-center bg-[var(--primary-500)] text-sm italic leading-tight text-gray-300 [box-shadow:0_0_5px_hsl(0_0%_0%/.7)]">
+          books
+        </div>
+      </div>
+
       <div className="text-center text-sm">
-        <div className="text-base font-bold">You don&apos;t have any books yet</div>
-        <div className="text-gray-500">Add a book to start tracking your progress</div>
+        <div className="text-base font-bold text-gray-400">Empty Book Library</div>
+        <div className="text-gray-500">Add a book to track your progress</div>
       </div>
       <div className="w-[120px] rounded-md bg-[var(--success-500)] py-2 pl-2 pr-3 hover:opacity-50">
         <Link to={'/books/create'} className="flex items-center text-center text-sm font-bold">
