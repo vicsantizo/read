@@ -14,14 +14,16 @@ export const EmptyLibrary = () => {
         <div className="text-base font-bold text-gray-400">Empty Book Library</div>
         <div className="text-gray-500">Add a book to track your progress</div>
       </div>
-      <div className="w-[120px] rounded-md bg-[var(--success-500)] py-2 pl-2 pr-3 hover:opacity-50">
-        <Link to={'/books/create'} className="flex items-center text-center text-sm font-bold">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="mr-auto fill-white" width={20}>
-            <path d="M298.7 213.3V0h-85.4v213.3H0v85.4h213.3V512h85.4V298.7H512v-85.4z" />
-          </svg>
-          <span className="mr-auto w-full text-white">Add book</span>
-        </Link>
-      </div>
+
+      <Link
+        to={'/books/create'}
+        className="flex w-[120px] items-center rounded-md bg-[var(--success-500)] py-2 pl-2 pr-3 text-center text-sm font-bold hover:opacity-50"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="mr-auto fill-white" width={20}>
+          <path d="M298.7 213.3V0h-85.4v213.3H0v85.4h213.3V512h85.4V298.7H512v-85.4z" />
+        </svg>
+        <span className="mr-auto w-full text-white">Add book</span>
+      </Link>
     </div>
   );
 };
