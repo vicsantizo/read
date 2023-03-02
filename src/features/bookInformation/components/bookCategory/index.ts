@@ -1,1 +1,0 @@
-export { BookCategory } from './BookCategory';
