@@ -13,6 +13,8 @@ export const Accordion = ({ label, children }: AccordionProps) => {
   const { isContentShowing, setIsContentShowing } = useAccordion();
   const controlId = uuidv4();
 
+  const stylingHiddenContent = !isContentShowing ? { display: 'none' } : undefined;
+
   return (
     <div className="accordion" aria-label={`${label} Accordion`} data-testid="accordion">
       <button
@@ -24,11 +26,10 @@ export const Accordion = ({ label, children }: AccordionProps) => {
         <span className="accordion__text">{label}</span>
         <AccordionArrowIcon isContentShowing={isContentShowing} />
       </button>
-      {isContentShowing && (
-        <div className="accordion__content" id={controlId} aria-hidden={!isContentShowing}>
-          {children}
-        </div>
-      )}
+
+      <div style={stylingHiddenContent} className="accordion__content" id={controlId} aria-hidden={!isContentShowing}>
+        {children}
+      </div>
     </div>
   );
 };
