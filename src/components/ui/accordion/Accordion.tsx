@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { useAccordion } from './useAccordion';
-import { AccordionArrowIcon } from './AccordionArrowIcon';
+import { ArrowIcon } from '../arrowIcon/';
 import { v4 as uuidv4 } from 'uuid';
 import './accordion.css';
 
@@ -24,7 +24,7 @@ export const Accordion = ({ label, children }: AccordionProps) => {
         aria-controls={controlId}
       >
         <span className="accordion__text">{label}</span>
-        <AccordionArrowIcon isContentShowing={isContentShowing} />
+        <ArrowIcon isArrowUp={isContentShowing} />
       </button>
 
       <div style={stylingHiddenContent} className="accordion__content" id={controlId} aria-hidden={!isContentShowing}>
