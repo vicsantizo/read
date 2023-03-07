@@ -5,6 +5,17 @@ import { Accordion } from './Accordion';
 describe('Tests the Accordion component', () => {
   const user = userEvent.setup();
 
+  it('should render component', () => {
+    render(
+      <Accordion label="test">
+        <div>content</div>
+      </Accordion>,
+    );
+
+    const accordion = screen.queryByTestId('accordion');
+    expect(accordion).toBeInTheDocument();
+  });
+
   it('should not show content after rendering', () => {
     render(
       <Accordion label="test">

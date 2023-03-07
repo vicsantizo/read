@@ -5,6 +5,12 @@ import { Toggle } from './Toggle';
 describe('tests the Toggle component', () => {
   const user = userEvent.setup();
 
+  it('should render component', () => {
+    render(<Toggle label="Toggle Test" />);
+    const toggleElement = screen.getByTestId('toggle');
+    expect(toggleElement).toBeInTheDocument();
+  });
+
   it('should indicate whether the element is checked/unchecked', async () => {
     render(<Toggle label="Toggle Test" />);
     const toggleElement = screen.getByTestId('toggle');
