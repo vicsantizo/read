@@ -18,6 +18,7 @@ export const Accordion = ({ label, children }: AccordionProps) => {
   return (
     <div className="accordion" aria-label={`${label} Accordion`} data-testid="accordion">
       <button
+        type="button"
         className="accordion__button"
         onClick={setIsContentShowing}
         aria-expanded={isContentShowing}
