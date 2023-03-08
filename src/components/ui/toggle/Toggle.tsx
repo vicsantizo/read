@@ -17,7 +17,14 @@ export const Toggle = ({ label, initialValue = false, toggleAction }: ToggleProp
         {label}
       </span>
 
-      <button onClick={handleClick} role="switch" aria-checked={toggleStatus} data-testid="toggle">
+      <button
+        type="button"
+        onClick={handleClick}
+        role="switch"
+        aria-label={label}
+        aria-checked={toggleStatus}
+        data-testid="toggle"
+      >
         <ToggleIcon isToggled={toggleStatus} />
       </button>
     </div>
