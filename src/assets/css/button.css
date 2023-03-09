@@ -1,0 +1,19 @@
+.button--increase-click-area:before {
+  position: absolute;
+  content: '';
+  top: -10px;
+  right: -10px;
+  left: -10px;
+  bottom: -10px;
+  z-index: 20;
+}
+
+.button--min-increase-click-area:before {
+  position: absolute;
+  content: '';
+  top: -3px;
+  right: -3px;
+  left: -3px;
+  bottom: -3px;
+  z-index: 20;
+}
