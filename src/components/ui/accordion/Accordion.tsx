@@ -28,7 +28,13 @@ export const Accordion = ({ label, children }: AccordionProps) => {
         <ArrowIcon isArrowUp={isContentShowing} />
       </button>
 
-      <div style={stylingHiddenContent} className="accordion__content" id={controlId} aria-hidden={!isContentShowing}>
+      <div
+        style={stylingHiddenContent}
+        className="accordion__content"
+        id={controlId}
+        aria-hidden={!isContentShowing}
+        data-testid="content"
+      >
         {children}
       </div>
     </div>

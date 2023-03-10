@@ -1,11 +1,11 @@
-import { getByTestId, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Accordion } from './Accordion';
 
 describe('Tests the Accordion component', () => {
   const user = userEvent.setup();
 
-  it('should render component', () => {
+  it('renders component', () => {
     render(
       <Accordion label="test">
         <div>content</div>
@@ -16,7 +16,7 @@ describe('Tests the Accordion component', () => {
     expect(accordion).toBeInTheDocument();
   });
 
-  it('should not show content after rendering', () => {
+  it('does not show content after rendering', () => {
     render(
       <Accordion label="test">
         <div>content</div>
@@ -26,7 +26,7 @@ describe('Tests the Accordion component', () => {
     expect(accordionContent).not.toBeVisible();
   });
 
-  it('should show the content after clicking the accordion', async () => {
+  it('shows the content after clicking the accordion', async () => {
     render(
       <Accordion label="test">
         <div>content</div>
@@ -39,67 +39,64 @@ describe('Tests the Accordion component', () => {
     expect(accordionContent).toBeVisible();
   });
 
-  it('should hide the content when clicking the accordion', async () => {
+  it('hides the content when clicking the accordion', async () => {
     render(
       <Accordion label="test">
-        <div data-testid="content">content</div>
+        <div data-testid="item">Item</div>
       </Accordion>,
     );
 
     const accordionButton = screen.getByRole('button');
     await user.click(accordionButton);
     await user.click(accordionButton);
-    const accordionContent = screen.queryByTestId('content');
-    expect(accordionContent).not.toBeVisible();
+    const accordionContentItem = screen.getByTestId('item');
+    expect(accordionContentItem).not.toBeVisible();
   });
 
-  it('should set attribute aria-expanded to false when rendered', async () => {
+  it('sets attribute aria-expanded to false when rendered', async () => {
     render(
       <Accordion label="test">
         <div>content</div>
       </Accordion>,
     );
 
-    const accordion = screen.getByTestId('accordion');
-    const ariaExpandedElement = accordion.querySelector('[aria-expanded]');
-    expect(ariaExpandedElement).toHaveAttribute('aria-expanded', 'false');
+    const accordioButton = screen.getByRole('button');
+    expect(accordioButton).toHaveAttribute('aria-expanded', 'false');
   });
 
-  it('should set attribute aria-hidden to true when rendered', async () => {
+  it('sets attribute aria-hidden to true when rendered', async () => {
     render(
       <Accordion label="test">
         <div>content</div>
       </Accordion>,
     );
 
-    const accordion = screen.getByTestId('accordion');
-    const ariaExpandedElement = accordion.querySelector('[aria-hidden]');
-    expect(ariaExpandedElement).toHaveAttribute('aria-hidden', 'true');
+    const accordionContent = screen.getByTestId('content');
+    expect(accordionContent).toHaveAttribute('aria-hidden', 'true');
   });
 
-  it('should set attribute aria-expanded to true when accordion is opened', async () => {
+  it('sets attribute aria-expanded to true when accordion is opened', async () => {
     render(
       <Accordion label="test">
         <div>content</div>
       </Accordion>,
     );
-    const accordion = screen.getByTestId('accordion');
+
     const accordionButton = screen.getByRole('button');
     await user.click(accordionButton);
-    const ariaExpandedElement = accordion.querySelector('[aria-expanded]');
-    expect(ariaExpandedElement).toHaveAttribute('aria-expanded', 'true');
+    expect(accordionButton).toHaveAttribute('aria-expanded', 'true');
   });
 
-  it('should set attribute aria-hidden to false when accordion is opened', async () => {
+  it('sets attribute aria-hidden to false when accordion is opened', async () => {
     render(
       <Accordion label="test">
         <div>content</div>
       </Accordion>,
     );
-    const accordion = screen.getByTestId('accordion');
     const accordionButton = screen.getByRole('button');
     await user.click(accordionButton);
-    const ariaExpandedElement = accordion.querySelector('[aria-hidden]');
-    expect(ariaExpandedElement).toHaveAttribute('aria-hidden', 'false');
+
+    const accordionContent = screen.getByTestId('content');
+    expect(accordionContent).toHaveAttribute('aria-hidden', 'false');
   });
 });
