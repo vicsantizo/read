@@ -1,0 +1,89 @@
+.select {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 32px;
+  cursor: pointer;
+  border: 1px solid var(--gray-700);
+  width: 100%;
+}
+
+.select__placeholder {
+  font-size: 0.9rem;
+  color: var(--gray-300);
+}
+
+.select__selections {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: auto;
+  overflow-x: scroll;
+}
+
+.select--light {
+  border: 1px solid var(--gray-500);
+}
+
+.select__arrow {
+  position: relative;
+  display: flex;
+  width: fit-content;
+  margin-left: 0.85rem;
+}
+
+.select__options {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 0.35rem;
+  max-height: 120px;
+  overflow-y: scroll;
+  background-color: var(--dark);
+  border: 1px solid var(--gray-700);
+}
+
+.select__option {
+  width: 100%;
+  text-align: left;
+  padding: 0.1rem 0.5rem;
+  cursor: pointer;
+}
+
+.select__option:focus {
+  background-color: var(--primary-600);
+}
+
+.select__option--highlight {
+  background-color: var(--primary-400);
+}
+
+.select__option:hover {
+  background-color: var(--primary-600);
+}
+
+.selection {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
+  background: var(--primary-500);
+  font-size: 0.85rem;
+}
+
+.selection:hover {
+  color: var(--gray-400);
+}
+
+.selection:hover .selection__x {
+  font-weight: bold;
+  color: white;
+}
+
+.selection__x {
+  margin-left: 0.5rem;
+  color: var(--gray-400);
+}
