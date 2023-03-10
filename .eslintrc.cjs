@@ -12,9 +12,11 @@ module.exports = {
       version: 'detect',
     },
   },
+  plugins: ['jest-dom'],
   extends: [
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:testing-library/react',
     'plugin:@typescript-eslint/recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
@@ -32,5 +34,10 @@ module.exports = {
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'jest-dom/prefer-checked': 'error',
+    'jest-dom/prefer-enabled-disabled': 'error',
+    'jest-dom/prefer-required': 'error',
+    'jest-dom/prefer-to-have-attribute': 'error',
+    'jest-dom/prefer-to-have-value': 'error',
   },
 };
