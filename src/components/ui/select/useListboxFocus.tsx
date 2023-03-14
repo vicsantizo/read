@@ -31,7 +31,7 @@ export const useListboxFocus = (
 
   const focusOnFirstListboxOption = () => {
     const firstOption = listboxRef.current?.children[0] as HTMLElement;
-    firstOption?.focus();
+    firstOption?.focus({ preventScroll: true });
     setFocusOptionIndex(0);
   };
 
