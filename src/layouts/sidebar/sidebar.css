@@ -1,0 +1,35 @@
+.sidebar {
+  position: absolute;
+  left: 0;
+  z-index: 10;
+  height: 100%;
+  width: 60vw;
+  max-width: 350px;
+  min-height: 100vh;
+  gap: 1.25rem;
+  background-color: #2c2b2b;
+  color: #fff;
+  transition: left 0.4s;
+}
+
+.sidebar__content {
+  display: flex;
+  flex-direction: column;
+  padding: var(--page-padding);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.sidebar--hide {
+  display: none;
+  left: -100%;
+  transition: left 0.4s;
+}
+
+.sidebar .arrow--down {
+  border-top: 5px solid #fff;
+}
+
+.sidebar .arrow--up {
+  border-bottom: 5px solid #fff;
+}
