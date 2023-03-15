@@ -1,0 +1,15 @@
+.nav {
+  display: flex;
+  align-items: center;
+  padding: var(--padding-page);
+  padding-bottom: 0.75em;
+  padding-top: 0.75em;
+  background-color: var(--primary-500);
+  color: #fff;
+}
+
+.nav__logo {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
