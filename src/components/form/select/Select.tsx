@@ -1,5 +1,5 @@
 import { forwardRef, Ref, useEffect, useState } from 'react';
-import { ArrowIcon } from '../arrowIcon';
+import { ArrowIcon } from '../../ui/arrowIcon';
 import { SelectedOption } from './SelectedOption';
 import { v4 as uuidv4 } from 'uuid';
 import { useSelection } from './useSelection';
