@@ -2,19 +2,13 @@ import { Book, SerializedBook } from '../features/BooksLibrary/models/book';
 import { IBooksLibraryPersistentStorage } from './IBooksLibraryPersistentStorage';
 
 export class LocalStoragePersistentStorage implements IBooksLibraryPersistentStorage {
-  private key = 'books';
-
-  constructor() {
-    localStorage.setItem(this.key, '[]');
-  }
-
   private saveBooks(books: Book[]) {
     const serializedBooks = books.map((books: Book) => Book.serialize(books));
-    localStorage.setItem(this.key, JSON.stringify(serializedBooks));
+    localStorage.setItem('books', JSON.stringify(serializedBooks));
   }
 
   getAllBooks(): Book[] {
-    const localStorageBooks = JSON.parse(localStorage.getItem(this.key) ?? '[]');
+    const localStorageBooks = JSON.parse(localStorage.getItem('books') ?? '[]');
     const books = localStorageBooks.map((book: SerializedBook) => Book.deserialize(book));
     return books;
   }
