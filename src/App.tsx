@@ -1,14 +1,21 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { BaseLayout } from './layouts/baseLayout';
-import './App.css';
-import './assets/css/input.css';
-import './assets/css/button.css';
+import { PersistentStorageContext } from './context/persistentStorage/PersistentStorageContext';
+import { IBooksLibraryPersistentStorage } from './store/IBooksLibraryPersistentStorage';
 
 const Error404 = lazy(() => import('./pages/Error404'));
 const Home = lazy(() => import('./pages/Home'));
 
-function App() {
+import './App.css';
+import './assets/css/input.css';
+import './assets/css/button.css';
+
+export type AppProps = {
+  persistentStorage: IBooksLibraryPersistentStorage;
+};
+
+function App({ persistentStorage }: AppProps) {
   const router = createBrowserRouter([
     {
       element: <BaseLayout />,
@@ -25,12 +32,17 @@ function App() {
               <Home />
             </Suspense>
           ),
+          loader: persistentStorage.getAllBooks,
         },
       ],
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <PersistentStorageContext.Provider value={persistentStorage}>
+      <RouterProvider router={router} />
+    </PersistentStorageContext.Provider>
+  );
 }
 
 export default App;
