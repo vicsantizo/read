@@ -13,12 +13,6 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #1f1f23;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-
   --primary-800: #182947;
   --primary-700: #264070;
   --primary-600: #335594;
@@ -71,6 +65,7 @@
 
   --padding-page: 0 2em;
 
+  --progress: #31e000;
   --dark: #1f1f23;
 }
 
@@ -79,6 +74,10 @@ html {
 }
 
 body {
+  height: 100%;
+}
+
+#root {
   height: 100%;
 }
 
