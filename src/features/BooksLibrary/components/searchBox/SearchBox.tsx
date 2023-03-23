@@ -4,10 +4,9 @@ import './searchBox.css';
 type SearchBoxProps = {
   searchValue: string;
   setSearchValue: (value: string) => void;
-  disabled?: boolean;
 };
 
-export const SearchBox = ({ searchValue, setSearchValue, disabled }: SearchBoxProps) => {
+export const SearchBox = ({ searchValue, setSearchValue }: SearchBoxProps) => {
   return (
     <div className="library__filter">
       <div className="search">
@@ -18,7 +17,6 @@ export const SearchBox = ({ searchValue, setSearchValue, disabled }: SearchBoxPr
           onChange={(e) => setSearchValue(e.target.value)}
           placeholder="Search book..."
           className="input search__input"
-          disabled={disabled || false}
         />
       </div>
     </div>
