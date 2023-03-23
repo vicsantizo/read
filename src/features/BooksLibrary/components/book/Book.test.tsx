@@ -3,7 +3,7 @@ import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { Book as BookComponent } from './Book';
 import { Book } from '../../models/book';
 
-describe('tests the logo component', () => {
+describe('tests the Book component', () => {
   it('renders the component', () => {
     const genericBook = new Book({
       title: 'Lorem Ipsum',
