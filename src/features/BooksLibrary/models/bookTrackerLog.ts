@@ -70,9 +70,11 @@ export class BookTrackerLog {
 
   // calculation based on the last entry
   calculateBookCompletionPercentage(bookTotalPages: number): number {
-    if (bookTotalPages === 0) return 0;
-
     const numberOfEntries = this.entries.length;
+
+    if (bookTotalPages === 0) return 0;
+    if (numberOfEntries === 0) return 0;
+
     const lastEntry = this.entries[numberOfEntries - 1];
     const lastPageRead = lastEntry.getToPage();
 
