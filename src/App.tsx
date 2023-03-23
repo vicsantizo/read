@@ -36,6 +36,14 @@ function App({ persistentStorage }: AppProps) {
         },
       ],
     },
+    {
+      path: '*',
+      element: (
+        <Suspense fallback="Loading...">
+          <Error404 />
+        </Suspense>
+      ),
+    },
   ]);
 
   return (
