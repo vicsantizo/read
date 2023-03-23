@@ -1,0 +1,49 @@
+.book-container {
+  position: relative;
+}
+
+.book {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 180px;
+  max-height: 180px;
+  max-width: 150px;
+  min-width: 150px;
+  background-color: var(--primary-500);
+  padding: 0.5em;
+}
+
+.book-container:hover,
+.book-container:focus {
+  scale: 1.05;
+}
+
+.book-container:hover {
+  opacity: 0.85;
+}
+
+.book__title {
+  font-size: 1rem;
+  text-align: center;
+  word-break: break-word;
+  font-weight: bold;
+  color: #fff;
+  z-index: 1;
+}
+
+.book__author {
+  font-size: 0.85rem;
+  text-align: center;
+  word-break: break-word;
+  color: #fff;
+  z-index: 1;
+}
+
+.book__title::selection,
+.book__author::selection {
+  color: white;
+  background-color: #272626;
+}
