@@ -16,7 +16,7 @@ export const BaseLayout = () => {
         </Accordion>
       </Sidebar>
 
-      <div className="content">
+      <div className="content h-full">
         <Outlet />
       </div>
     </>
