@@ -21,7 +21,7 @@ export type BookData = {
   pages?: number;
   isFavorite?: boolean;
   id?: string;
-  trackerLog: BookTrackerLog;
+  trackerLog?: BookTrackerLog;
 };
 
 export class Book {
@@ -42,7 +42,7 @@ export class Book {
     this.pages = pages ?? 0;
     this.isFavorite = isFavorite ?? false;
     this.id = id ?? uuid();
-    this.trackerLog = trackerLog;
+    this.trackerLog = trackerLog ?? new BookTrackerLog();
   }
 
   static serialize(book: Book): SerializedBook {
