@@ -2,6 +2,8 @@ import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { SearchBox } from './SearchBox';
 
+const mockSetSearchValue = jest.fn();
+
 describe('tests the SearchBox component', () => {
   it('renders the component', () => {
     render(
@@ -30,12 +32,11 @@ describe('tests the SearchBox component', () => {
 
   it('input field updates correctly', async () => {
     const user = userEvent.setup();
-    const setSearchValueMock = jest.fn();
 
-    render(<SearchBox searchValue="" setSearchValue={setSearchValueMock} />);
+    render(<SearchBox searchValue="" setSearchValue={mockSetSearchValue} />);
 
     const inputElement = screen.getByRole('textbox');
     await user.type(inputElement, 'T');
-    expect(setSearchValueMock).toHaveBeenCalledWith('T');
+    expect(mockSetSearchValue).toHaveBeenCalledWith('T');
   });
 });

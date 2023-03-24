@@ -2,6 +2,8 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Burger } from './Burger';
 
+const mockAction = jest.fn();
+
 describe('tests the burger component', () => {
   const user = userEvent.setup();
 
@@ -12,11 +14,10 @@ describe('tests the burger component', () => {
   });
 
   it('calls the function passed to the burger when clicked', async () => {
-    const justAFunction = jest.fn();
-    render(<Burger isActive={false} action={justAFunction} />);
+    render(<Burger isActive={false} action={mockAction} />);
     const burger = screen.getByRole('button');
     await user.click(burger);
     await user.click(burger);
-    expect(justAFunction).toBeCalledTimes(2);
+    expect(mockAction).toBeCalledTimes(2);
   });
 });

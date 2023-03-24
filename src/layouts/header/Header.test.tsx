@@ -3,10 +3,12 @@ import userEvent from '@testing-library/user-event';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { Header, HeaderProps } from './Header';
 
+const mockSetIsSidebasShowing = jest.fn();
+
 describe('Header', () => {
   const defaultProps: HeaderProps = {
     isSidebarShowing: false,
-    setIsSidebarShowing: jest.fn(),
+    setIsSidebarShowing: mockSetIsSidebasShowing,
   };
 
   const user = userEvent.setup();
