@@ -13,6 +13,7 @@ export const BaseLayout = () => {
       <Sidebar isSidebarShowing={isSidebarShowing}>
         <Accordion label="Settings">
           <Toggle label="Dark mode" />
+          <Toggle label="Reduce motion" />
         </Accordion>
       </Sidebar>
 
