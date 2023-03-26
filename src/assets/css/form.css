@@ -1,0 +1,10 @@
+.form {
+}
+
+.form__message {
+  font-size: 0.85rem;
+}
+
+.form__message--error {
+  color: var(--error-200);
+}

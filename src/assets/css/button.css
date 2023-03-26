@@ -1,4 +1,29 @@
-.button--increase-click-area:before {
+.btn {
+  width: 100%;
+  font-size: 0.85rem;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.btn--primary-action {
+  background-color: var(--action-500);
+}
+
+.btn--simple {
+  font-weight: normal;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+}
+
+.btn--increase-click-area:before {
   position: absolute;
   content: '';
   top: -10px;
@@ -8,7 +33,7 @@
   z-index: 20;
 }
 
-.button--min-increase-click-area:before {
+.btn--min-increase-click-area:before {
   position: absolute;
   content: '';
   top: -3px;
