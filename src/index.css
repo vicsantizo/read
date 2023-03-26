@@ -57,11 +57,12 @@
   --warning-200: #fde68a;
   --warning-100: #fef3c7;
 
-  --error-500: #961b30;
-  --error-400: #a12a3c;
-  --error-300: #a32e41;
-  --error-200: #a8394a;
-  --error-100: #ad4756;
+  --error-600: #961b30;
+  --error-500: #a12a3c;
+  --error-400: #a32e41;
+  --error-300: #a8394a;
+  --error-200: #ad4756;
+  --error-100: #c5283d;
 
   --padding-page: 0 2em;
 
@@ -78,6 +79,10 @@ body {
 }
 
 #root {
+  height: 100%;
+}
+
+.content {
   height: 100%;
 }
 
