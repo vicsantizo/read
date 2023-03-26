@@ -1,4 +1,4 @@
-import { Library } from '../features/BooksLibrary/components/library';
+import { Library } from '../features/booksLibrary/components/library';
 import '../assets/css/homePage.css';
 
 const Home = () => {
