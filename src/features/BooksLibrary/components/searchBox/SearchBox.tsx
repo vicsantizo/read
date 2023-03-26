@@ -12,11 +12,11 @@ export const SearchBox = ({ searchValue, setSearchValue }: SearchBoxProps) => {
       <div className="search">
         <SearchIcon />
         <input
-          type="text"
+          type="search"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
           placeholder="Search book..."
-          className="input search__input"
+          className="input search__input input--dark"
         />
       </div>
     </div>
