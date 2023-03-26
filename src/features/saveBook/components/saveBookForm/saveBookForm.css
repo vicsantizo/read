@@ -1,0 +1,58 @@
+.savebook {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: var(--padding-page);
+  margin-top: 1.15rem;
+}
+
+.savebook__title {
+  font-weight: bold;
+  font-size: 1.15rem;
+}
+
+.savebook__description {
+  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+  color: var(--gray-500);
+}
+
+.savebook__separator {
+  margin-bottom: 1rem;
+  color: var(--gray-500);
+}
+
+.savebook__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 1.5rem;
+  padding: 0 0.25rem;
+}
+
+.savebook__form .label {
+  margin-top: 1rem;
+}
+
+.savebook__form .form__message {
+  margin-top: 0.25rem;
+}
+
+.savebook__form .input[type='number'] {
+  max-width: 10ch;
+}
+
+.savebook__form textarea {
+  min-height: 5rem;
+}
+
+.savebook__form a {
+  margin-top: 3rem;
+}
+
+.savebook__form button {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
