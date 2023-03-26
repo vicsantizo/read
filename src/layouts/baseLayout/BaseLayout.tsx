@@ -13,11 +13,11 @@ export const BaseLayout = () => {
       <Sidebar isSidebarShowing={isSidebarShowing}>
         <Accordion label="Settings">
           <Toggle label="Dark mode" />
-          <Toggle label="Reduce motion" />
+          <Toggle label="No animations" />
         </Accordion>
       </Sidebar>
 
-      <div className="content h-full">
+      <div className="content">
         <Outlet />
       </div>
     </>
