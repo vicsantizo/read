@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { Book } from '../../features/BooksLibrary/models/book';
+import { Book } from '../../features/booksLibrary/models/book';
 
 type BooksContextValue = {
   books: Book[];
