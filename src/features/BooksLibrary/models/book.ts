@@ -36,9 +36,9 @@ export class Book {
 
   constructor({ title, author, description, category, pages, isFavorite, id, trackerLog }: BookData) {
     this.title = title;
-    this.author = author || '';
-    this.description = description || '';
-    this.category = category || [];
+    this.author = author ?? '';
+    this.description = description ?? '';
+    this.category = category ?? [];
     this.pages = pages ?? 0;
     this.isFavorite = isFavorite ?? false;
     this.id = id ?? uuid();
