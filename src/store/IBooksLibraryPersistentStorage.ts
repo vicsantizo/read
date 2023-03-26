@@ -1,4 +1,4 @@
-import { Book } from '../features/BooksLibrary/models/book';
+import { Book } from '../features/booksLibrary/models/book';
 
 export interface IBooksLibraryPersistentStorage {
   getAllBooks(): Book[];

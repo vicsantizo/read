@@ -1,4 +1,4 @@
-import { Book, SerializedBook } from '../features/BooksLibrary/models/book';
+import { Book, SerializedBook } from '../features/booksLibrary/models/book';
 import { IBooksLibraryPersistentStorage } from './IBooksLibraryPersistentStorage';
 
 export class LocalStoragePersistentStorage implements IBooksLibraryPersistentStorage {
