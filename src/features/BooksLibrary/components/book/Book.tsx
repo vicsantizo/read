@@ -25,12 +25,12 @@ export const Book = ({ book }: BookProps) => {
 
   return (
     <div className="book-container">
-      <OptionsButton execute={toggleOptionsPopover} />
       <Link to={`/books/${book.getId()}`} className="book" aria-label={`Book ${title} by ${author}`}>
         <span className="book__title">{title}</span>
         <span className="book__author">{author}</span>
       </Link>
       <BookProgress progress={progress} />
+      <OptionsButton execute={toggleOptionsPopover} />
       {showOptionsPopover && <PopoverOptions bookId={id} handleClickout={toggleOptionsPopover} />}
     </div>
   );
