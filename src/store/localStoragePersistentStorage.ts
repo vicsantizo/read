@@ -47,9 +47,10 @@ export class LocalStoragePersistentStorage implements IBooksLibraryPersistentSto
 
     for (let i = 0; i < books.length; i++) {
       if (books[i].getId() === id) {
-        const booksWithoutDeletedBook = [...books].splice(i, 1);
-        this.saveBooks(booksWithoutDeletedBook);
-        return books[i];
+        const deletedBook = books[i];
+        books.splice(i, 1);
+        this.saveBooks(books);
+        return deletedBook;
       }
     }
     return false;
