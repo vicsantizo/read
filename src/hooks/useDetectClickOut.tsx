@@ -1,25 +1,20 @@
-import { useEffect } from 'react';
+import { RefObject, useEffect } from 'react';
 
-export function useDetectClickOut(htmlElementId: string, action?: () => void) {
+export function useDetectClickOut(htmlElement: RefObject<HTMLDivElement>, action: () => void) {
+  const handleClickoutDetection = (e: MouseEvent) => {
+    const target = e.target as Node;
+    if (!htmlElement.current?.contains(target)) {
+      setTimeout(action);
+    }
+  };
+
   useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-
-    const handleClickOutside = (e: MouseEvent) => {
-      const element = document.querySelector(`#${htmlElementId}`);
-      const target = e.target as Node;
-
-      if (!element?.contains(target)) {
-        if (action !== undefined) action();
-      }
-    };
-
-    document.addEventListener('click', handleClickOutside, { signal: signal });
+    document.addEventListener('click', handleClickoutDetection, true);
 
     return () => {
-      controller.abort();
+      document.removeEventListener('click', handleClickoutDetection, true);
     };
-  }, [htmlElementId]);
+  }, []);
 }
 
 export default useDetectClickOut;
