@@ -1,6 +1,9 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useBooksContext } from '../../../../context/books/useBooksContext';
+import { PersistentStorageContext } from '../../../../context/persistentStorage/PersistentStorageContext';
 import { useDetectClickOut } from '../../../../hooks/useDetectClickOut';
+import { IBooksLibraryPersistentStorage } from '../../../../store/IBooksLibraryPersistentStorage';
 import { EditIcon, InfoIcon, TrackIcon, DeleteIcon } from '../icons';
 
 type PopoverOptionsProps = {
@@ -9,6 +12,8 @@ type PopoverOptionsProps = {
 };
 
 export const PopoverOptions = ({ bookId, handleClickout }: PopoverOptionsProps) => {
+  const persistentStorage = useContext(PersistentStorageContext);
+  const { deleteBook } = useBooksContext(persistentStorage as IBooksLibraryPersistentStorage);
   const popoverRef = useRef<HTMLDivElement>(null);
   useDetectClickOut(popoverRef, handleClickout);
 
@@ -45,7 +50,7 @@ export const PopoverOptions = ({ bookId, handleClickout }: PopoverOptionsProps) 
         </li>
 
         <li className="book__popover-item">
-          <button className="book__popover-button">
+          <button className="book__popover-button" onClick={() => deleteBook(bookId)}>
             Delete book
             <div className="book__popover-button-icon-box">
               <DeleteIcon className="book__popover-button-icon book__popover-button-icon--dark" />
