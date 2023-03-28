@@ -5,6 +5,7 @@ import { PersistentStorageContext } from './context/persistentStorage/Persistent
 import { IBooksLibraryPersistentStorage } from './store/IBooksLibraryPersistentStorage';
 import { BooksContext } from './context/books/BooksContext';
 import { Book } from './features/booksLibrary/models/book';
+import { Skeleton } from './features/booksLibrary/components/skeleton';
 
 const Error404 = lazy(() => import('./pages/Error404'));
 const Home = lazy(() => import('./pages/Home'));
@@ -35,7 +36,7 @@ function App({ persistentStorage }: AppProps) {
         {
           path: '/',
           element: (
-            <Suspense fallback="Loading...">
+            <Suspense fallback={<Skeleton />}>
               <Home />
             </Suspense>
           ),
