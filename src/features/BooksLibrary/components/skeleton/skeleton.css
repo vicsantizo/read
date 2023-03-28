@@ -1,5 +1,4 @@
 .skeleton {
-  padding: var(--padding-page);
   overflow-y: clip;
   max-height: 100vh;
 }
