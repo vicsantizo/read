@@ -6,6 +6,7 @@ import { IBooksLibraryPersistentStorage } from './store/IBooksLibraryPersistentS
 import { BooksContext } from './context/books/BooksContext';
 import { Book } from './features/booksLibrary/models/book';
 import { Skeleton } from './features/booksLibrary/components/skeleton';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 const Error404 = lazy(() => import('./pages/Error404'));
 const Home = lazy(() => import('./pages/Home'));
@@ -21,6 +22,13 @@ export type AppProps = {
   persistentStorage: IBooksLibraryPersistentStorage;
 };
 
+const Loading = (
+  <div className="flex h-full w-full flex-col items-center justify-center">
+    <ClipLoader color="#3d65af" size={22} />
+    <p className="mt-2 text-center">Loading...</p>
+  </div>
+);
+
 function App({ persistentStorage }: AppProps) {
   const [books, setBooks] = useState<Book[]>(persistentStorage.getAllBooks());
 
@@ -28,7 +36,7 @@ function App({ persistentStorage }: AppProps) {
     {
       element: <BaseLayout />,
       errorElement: (
-        <Suspense fallback="Loading...">
+        <Suspense fallback={Loading}>
           <Error404 />
         </Suspense>
       ),
@@ -44,7 +52,7 @@ function App({ persistentStorage }: AppProps) {
         {
           path: '/books/new',
           element: (
-            <Suspense fallback="Loading...">
+            <Suspense fallback={Loading}>
               <AddBook />
             </Suspense>
           ),
@@ -54,7 +62,7 @@ function App({ persistentStorage }: AppProps) {
     {
       path: '*',
       element: (
-        <Suspense fallback="Loading...">
+        <Suspense fallback={Loading}>
           <Error404 />
         </Suspense>
       ),
