@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Params, RouterProvider } from 'react-router-dom';
 import { lazy, Suspense, useState } from 'react';
 import { BaseLayout } from './layouts/baseLayout';
 import { PersistentStorageContext } from './context/persistentStorage/PersistentStorageContext';
@@ -11,6 +11,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 const Error404 = lazy(() => import('./pages/Error404'));
 const Home = lazy(() => import('./pages/Home'));
 const AddBook = lazy(() => import('./pages/AddBook'));
+const BookDetails = lazy(() => import('./pages/BookDetails'));
 
 import './App.css';
 import './assets/css/form.css';
@@ -31,6 +32,18 @@ const Loading = (
 
 function App({ persistentStorage }: AppProps) {
   const [books, setBooks] = useState<Book[]>(persistentStorage.getAllBooks());
+
+  const bookLoader = ({ params }: { params: Params; request: Request }) => {
+    let book: Book | boolean = false;
+    const bookId = params?.bookId;
+
+    if (typeof bookId === 'string') {
+      book = persistentStorage.getBook(bookId);
+    }
+
+    if (book === false) throw new Error("Book doesn't exist");
+    return book;
+  };
 
   const router = createBrowserRouter([
     {
@@ -56,6 +69,15 @@ function App({ persistentStorage }: AppProps) {
               <AddBook />
             </Suspense>
           ),
+        },
+        {
+          path: '/books/:bookId',
+          element: (
+            <Suspense fallback={Loading}>
+              <BookDetails />
+            </Suspense>
+          ),
+          loader: bookLoader,
         },
       ],
     },
