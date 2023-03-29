@@ -35,7 +35,7 @@ export class LocalStoragePersistentStorage implements IBooksLibraryPersistentSto
     const isBookDeleted = this.deleteBook(id);
 
     if (isBookDeleted) {
-      this.addBook(newBook);
+      this.addBook(newBook.setIdentifier(id));
       return true;
     }
 
