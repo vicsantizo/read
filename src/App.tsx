@@ -7,6 +7,7 @@ import { BooksContext } from './context/books/BooksContext';
 import { Book } from './features/booksLibrary/models/book';
 import { Skeleton } from './features/booksLibrary/components/skeleton';
 import ClipLoader from 'react-spinners/ClipLoader';
+import { ToastContainer } from 'react-toastify';
 
 const Error404 = lazy(() => import('./pages/Error404'));
 const Home = lazy(() => import('./pages/Home'));
@@ -100,6 +101,7 @@ function App({ persistentStorage }: AppProps) {
         }}
       >
         <RouterProvider router={router} />
+        <ToastContainer />
       </BooksContext.Provider>
     </PersistentStorageContext.Provider>
   );

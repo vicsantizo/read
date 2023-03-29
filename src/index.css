@@ -68,6 +68,8 @@
 
   --progress: #31e000;
   --dark: #1f1f23;
+
+  --toastify-color-dark: #1f1f23;
 }
 
 html {
