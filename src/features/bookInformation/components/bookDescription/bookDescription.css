@@ -1,0 +1,29 @@
+.book__description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.book__description-text--dark {
+  color: var(--gray-300);
+  background-color: #2f2f35;
+}
+
+.book__description-text--light {
+  border: 1px solid var(--gray-400);
+  background-color: white;
+  color: black;
+}
+
+.book__description-title {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+}
+
+.book__description-text {
+  max-height: 10rem;
+  overflow-y: scroll;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+}
