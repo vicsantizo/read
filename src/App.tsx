@@ -13,6 +13,7 @@ const Error404 = lazy(() => import('./pages/Error404'));
 const Home = lazy(() => import('./pages/Home'));
 const AddBook = lazy(() => import('./pages/AddBook'));
 const BookDetails = lazy(() => import('./pages/BookDetails'));
+const EditBook = lazy(() => import('./pages/EditBook'));
 
 import './App.css';
 import './assets/css/form.css';
@@ -76,6 +77,15 @@ function App({ persistentStorage }: AppProps) {
           element: (
             <Suspense fallback={Loading}>
               <BookDetails />
+            </Suspense>
+          ),
+          loader: bookLoader,
+        },
+        {
+          path: '/books/edit/:bookId',
+          element: (
+            <Suspense fallback={Loading}>
+              <EditBook />
             </Suspense>
           ),
           loader: bookLoader,
