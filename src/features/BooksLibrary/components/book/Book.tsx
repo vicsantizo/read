@@ -9,9 +9,10 @@ import './book.css';
 
 type BookProps = {
   book: BookType;
+  disableActions?: boolean;
 };
 
-export const Book = ({ book }: BookProps) => {
+export const Book = ({ book, disableActions = false }: BookProps) => {
   const [showOptionsPopover, setShowOptionsPopover] = useState<boolean>(false);
   const title = shortenText(book.getTitle(), 30);
   const author = shortenText(book.getAuthor(), 30);
@@ -30,8 +31,13 @@ export const Book = ({ book }: BookProps) => {
         <span className="book__author">{author}</span>
       </Link>
       <BookProgress progress={progress} />
-      <OptionsButton execute={toggleOptionsPopover} />
-      {showOptionsPopover && <PopoverOptions bookId={id} handleClickout={toggleOptionsPopover} />}
+
+      {!disableActions && (
+        <>
+          <OptionsButton execute={toggleOptionsPopover} />
+          {showOptionsPopover && <PopoverOptions bookId={id} handleClickout={toggleOptionsPopover} />}
+        </>
+      )}
     </div>
   );
 };
