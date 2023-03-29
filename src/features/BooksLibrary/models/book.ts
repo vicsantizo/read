@@ -39,7 +39,7 @@ export class Book {
     this.author = author ?? '';
     this.description = description ?? '';
     this.category = category ?? [];
-    this.pages = pages ?? 0;
+    this.pages = pages || 0;
     this.isFavorite = isFavorite ?? false;
     this.id = id ?? uuid();
     this.trackerLog = trackerLog ?? new BookTrackerLog();
