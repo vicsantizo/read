@@ -18,7 +18,7 @@ export const AddButton = ({ execute, disabled, to }: AddButtonProps) => {
         if (execute) execute();
       }}
     >
-      <AddIcon className="fill-white stroke-2" width={24} />
+      <AddIcon className="stroke-2" width={24} />
     </Link>
   );
 };

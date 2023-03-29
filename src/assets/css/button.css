@@ -9,6 +9,7 @@
 
 .btn--primary-action {
   background-color: var(--action-500);
+  color: white;
 }
 
 .btn--simple {

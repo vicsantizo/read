@@ -34,13 +34,13 @@ describe('tests the Toggle component', () => {
     expect(mockOnClick).toHaveBeenCalledTimes(1);
   });
 
-  it('does not call the action when toggle goes from on to off', async () => {
+  it('call the action when toggle goes from on to off', async () => {
     render(<Toggle label="Toggle Test" toggleAction={mockOnClick} />);
     const toggleElement = screen.getByTestId('toggle');
 
     await user.click(toggleElement);
     await user.click(toggleElement);
-    expect(mockOnClick).toHaveBeenCalledTimes(1);
+    expect(mockOnClick).toHaveBeenCalledTimes(2);
   });
 
   it('calls the action when clicking the label and toggle goes from off to on', async () => {
@@ -52,13 +52,13 @@ describe('tests the Toggle component', () => {
     expect(mockOnClick).toHaveBeenCalledTimes(1);
   });
 
-  it('does not call the action when clicking the label and toggle goes from on to off', async () => {
+  it('call the action when clicking the label and toggle goes from on to off', async () => {
     const mockOnClick = jest.fn();
     render(<Toggle label="Toggle Test" toggleAction={mockOnClick} />);
     const toggleLabel = screen.getByTestId('toggle-label');
 
     await user.click(toggleLabel);
     await user.click(toggleLabel);
-    expect(mockOnClick).toHaveBeenCalledTimes(1);
+    expect(mockOnClick).toHaveBeenCalledTimes(2);
   });
 });

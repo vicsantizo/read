@@ -6,3 +6,8 @@
 .input--dark {
   background-color: #343434;
 }
+
+.input--light {
+  background-color: light;
+  border: 1px solid #c8c7c7;
+}

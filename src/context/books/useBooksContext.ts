@@ -2,10 +2,12 @@ import { useContext } from 'react';
 import { Book, BookData } from '../../features/booksLibrary/models/book';
 import { IBooksLibraryPersistentStorage } from '../../store/IBooksLibraryPersistentStorage';
 import { notify } from '../../utils/toastNotifications';
+import { useTheme } from '../theme/useTheme';
 import { BooksContext } from './BooksContext';
 
 export const useBooksContext = (persistentStorage: IBooksLibraryPersistentStorage) => {
   const { books, setBooks } = useContext(BooksContext);
+  const { theme } = useTheme();
 
   const addBook = (details: BookData) => {
     const book = new Book(details);
@@ -14,9 +16,9 @@ export const useBooksContext = (persistentStorage: IBooksLibraryPersistentStorag
 
     if (wasBookAdded) {
       setBooks(newBooks);
-      notify('Book added!', 'success');
+      notify('Book added!', 'success', theme);
     } else {
-      notify('Could not add the book', 'error');
+      notify('Could not add the book', 'error', theme);
     }
   };
 
@@ -25,9 +27,9 @@ export const useBooksContext = (persistentStorage: IBooksLibraryPersistentStorag
 
     if (wasBookUpdated) {
       setBooks(persistentStorage.getAllBooks());
-      notify('Book updated!', 'success');
+      notify('Book updated!', 'success', theme);
     } else {
-      notify('Could not update the book', 'error');
+      notify('Could not update the book', 'error', theme);
     }
   };
 
@@ -35,10 +37,10 @@ export const useBooksContext = (persistentStorage: IBooksLibraryPersistentStorag
     const wasBookDeleted = persistentStorage.deleteBook(id);
 
     if (wasBookDeleted === false) {
-      notify('Could not delete the book', 'error');
+      notify('Could not delete the book', 'error', theme);
     } else {
       setBooks(persistentStorage.getAllBooks());
-      notify('Book deleted!', 'success');
+      notify('Book deleted!', 'success', theme);
     }
   };
 

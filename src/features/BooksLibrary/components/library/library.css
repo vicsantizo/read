@@ -36,6 +36,13 @@
   height: 100%;
   gap: 0.75rem;
   padding: 1rem 0;
+}
+
+.library__body--light {
+  border: 1px solid #f3f3f3;
+}
+
+.library__body--dark {
   border: 1px solid #242526;
 }
 
@@ -49,8 +56,16 @@
   border: 1px solid #242526;
 }
 
+.library__no-results--light {
+  border: 1px solid #f3f3f3;
+}
+
+.library__no-results--dark {
+  border: 1px solid #242526;
+}
+
 .library__no-results-icon {
-  fill: white;
+  fill: currentColor;
 }
 
 .library-empty {
@@ -72,7 +87,7 @@
   margin-top: 1.25rem;
   font-size: 0.9rem;
   text-align: center;
-  color: var(--gray-400);
+  color: currentColor;
 }
 
 .library-empty__link {
@@ -87,4 +102,5 @@
   font-weight: bold;
   text-align: center;
   background-color: var(--action-500);
+  color: white;
 }

@@ -3,8 +3,8 @@ import { Book as BookType } from '../../../booksLibrary/models/book';
 import { Book } from '../../../booksLibrary';
 import { BookCategories } from '../bookCategories';
 import { StatCard } from '../../../../components/common/statCard';
-import './bookInformation.css';
 import { BookDescription } from '../bookDescription';
+import './bookInformation.css';
 
 export const BookInformation = () => {
   const book = useLoaderData();

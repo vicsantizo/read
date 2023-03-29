@@ -10,7 +10,6 @@
   height: 100%;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
   background-color: #1f1f23;
 
   --primary-800: #182947;
@@ -90,10 +89,14 @@ body {
 
 .dark {
   background-color: var(--dark);
+  color-scheme: dark;
+  color: white;
 }
 
 .light {
+  color-scheme: light;
   background-color: #fff;
+  color: dark;
 }
 
 .no-selection {

@@ -2,6 +2,7 @@ import { useContext, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useBooksContext } from '../../../../context/books/useBooksContext';
 import { PersistentStorageContext } from '../../../../context/persistentStorage/PersistentStorageContext';
+import { useTheme } from '../../../../context/theme/useTheme';
 import { useDetectClickOut } from '../../../../hooks/useDetectClickOut';
 import { IBooksLibraryPersistentStorage } from '../../../../store/IBooksLibraryPersistentStorage';
 import { EditIcon, InfoIcon, TrackIcon, DeleteIcon } from '../icons';
@@ -17,14 +18,20 @@ export const PopoverOptions = ({ bookId, handleClickout }: PopoverOptionsProps) 
   const popoverRef = useRef<HTMLDivElement>(null);
   useDetectClickOut(popoverRef, handleClickout);
 
+  const { theme } = useTheme();
+  const popoverTheme = theme == 'dark' ? 'book__popover--dark' : 'book__popover--light';
+  const popoverLinkIconTheme = theme == 'dark' ? 'book__popover-link-icon--dark' : 'book__popover-link-icon--light';
+  const popoverBtnIconTheme = theme == 'dark' ? 'book__popover-button-icon--dark' : 'book__popover-button-icon--light';
+  const popoverSeparatorTheme = theme == 'dark' ? 'book__popover-separator--dark' : 'book__popover-separator--light';
+
   return (
-    <div ref={popoverRef} className="book__popover book__popover--dark">
+    <div ref={popoverRef} className={`book__popover ${popoverTheme}`}>
       <ul className="book__popover-list">
         <li className="book__popover-item book__popover-item--border">
           <Link to={`/books/${bookId}`} className="book__popover-link">
             See more
             <div className="book__popover-link-icon-box">
-              <InfoIcon className="book__popover-link-icon book__popover-link-icon--dark" />
+              <InfoIcon className={`book__popover-link-icon ${popoverLinkIconTheme}`} />
             </div>
           </Link>
         </li>
@@ -33,18 +40,18 @@ export const PopoverOptions = ({ bookId, handleClickout }: PopoverOptionsProps) 
           <Link to={`/books/edit/${bookId}`} className="book__popover-link">
             Edit book
             <div className="book__popover-link-icon-box">
-              <EditIcon className="book__popover-link-icon book__popover-link-icon--dark" />
+              <EditIcon className={`book__popover-link-icon ${popoverLinkIconTheme}`} />
             </div>
           </Link>
         </li>
 
-        <li className="book__popover-separator book__popover-separator--dark"></li>
+        <li className={`book__popover-separator ${popoverSeparatorTheme}`}></li>
 
         <li className="book__popover-item book__popover-item--border">
           <Link to={`/books/track/${bookId}`} className="book__popover-link">
             Track progress
             <div className="book__popover-link-icon-box">
-              <TrackIcon className="book__popover-link-icon book__popover-link-icon--dark" />
+              <TrackIcon className={`book__popover-link-icon ${popoverLinkIconTheme}`} />
             </div>
           </Link>
         </li>
@@ -53,7 +60,7 @@ export const PopoverOptions = ({ bookId, handleClickout }: PopoverOptionsProps) 
           <button className="book__popover-button" onClick={() => deleteBook(bookId)}>
             Delete book
             <div className="book__popover-button-icon-box">
-              <DeleteIcon className="book__popover-button-icon book__popover-button-icon--dark" />
+              <DeleteIcon className={`book__popover-button-icon ${popoverBtnIconTheme}`} />
             </div>
           </button>
         </li>

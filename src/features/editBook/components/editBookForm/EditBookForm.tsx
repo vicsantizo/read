@@ -5,6 +5,7 @@ import { Book as BookType } from '../../../booksLibrary/models/book';
 import { useBooksContext } from '../../../../context/books/useBooksContext';
 import { PersistentStorageContext } from '../../../../context/persistentStorage/PersistentStorageContext';
 import { IBooksLibraryPersistentStorage } from '../../../../store/IBooksLibraryPersistentStorage';
+import { useTheme } from '../../../../context/theme/useTheme';
 import './editBookForm.css';
 
 type Inputs = {
@@ -26,6 +27,9 @@ export const EditBookForm = () => {
   const pages = book.getPages();
   const isFavorite = book.getIsFavorite();
   const trackerLog = book.getTrackerLog();
+
+  const { theme } = useTheme();
+  const inputTheme = theme == 'dark' ? 'input--dark' : 'input--light';
 
   const {
     register,
@@ -61,7 +65,7 @@ export const EditBookForm = () => {
           Title
         </label>
         <input
-          className="input input--dark"
+          className={`input ${inputTheme}`}
           id="title"
           {...register('title', { required: 'Please, enter a valid title' })}
         />
@@ -74,12 +78,12 @@ export const EditBookForm = () => {
         <label className="label" htmlFor="author">
           Author
         </label>
-        <input className="input input--dark" id="author" {...register('author')} />
+        <input className={`input ${inputTheme}`} id="author" {...register('author')} />
 
         <label className="label" htmlFor="category">
           Genre
         </label>
-        <select multiple className="input input--dark" id="category" {...register('category')}>
+        <select multiple className={`input ${inputTheme}`} id="category" {...register('category')}>
           <option value="bibliography">Bibliography</option>
           <option value="fiction">Fiction</option>
           <option value="philosophy">Philosophy</option>
@@ -93,7 +97,7 @@ export const EditBookForm = () => {
           Description
         </label>
         <textarea
-          className="input input--dark"
+          className={`input ${inputTheme}`}
           id="description"
           cols={30}
           rows={5}
@@ -105,7 +109,7 @@ export const EditBookForm = () => {
           Pages
         </label>
         <input
-          className="input input--dark"
+          className={`input ${inputTheme}`}
           type="number"
           inputMode="numeric"
           id="pages"

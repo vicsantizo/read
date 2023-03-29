@@ -8,6 +8,8 @@ import { Book } from './features/booksLibrary/models/book';
 import { Skeleton } from './features/booksLibrary/components/skeleton';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { ToastContainer } from 'react-toastify';
+import { ThemeContext, Theme as ThemeType } from './context/theme/ThemeContext';
+import { getInitialThemeValue } from './utils/cookies';
 
 const Error404 = lazy(() => import('./pages/Error404'));
 const Home = lazy(() => import('./pages/Home'));
@@ -34,6 +36,8 @@ const Loading = (
 
 function App({ persistentStorage }: AppProps) {
   const [books, setBooks] = useState<Book[]>(persistentStorage.getAllBooks());
+  const initialTheme = getInitialThemeValue();
+  const [theme, setTheme] = useState<ThemeType>(initialTheme);
 
   const bookLoader = ({ params }: { params: Params; request: Request }) => {
     let book: Book | boolean = false;
@@ -103,17 +107,14 @@ function App({ persistentStorage }: AppProps) {
   ]);
 
   return (
-    <PersistentStorageContext.Provider value={persistentStorage}>
-      <BooksContext.Provider
-        value={{
-          books,
-          setBooks,
-        }}
-      >
-        <RouterProvider router={router} />
-        <ToastContainer />
-      </BooksContext.Provider>
-    </PersistentStorageContext.Provider>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <PersistentStorageContext.Provider value={persistentStorage}>
+        <BooksContext.Provider value={{ books, setBooks }}>
+          <RouterProvider router={router} />
+          <ToastContainer />
+        </BooksContext.Provider>
+      </PersistentStorageContext.Provider>
+    </ThemeContext.Provider>
   );
 }
 
