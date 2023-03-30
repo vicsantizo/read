@@ -14,8 +14,8 @@ export const Error404 = () => {
         <h1 className="error-page__title">404</h1>
         <h2 className="error-page__msg">Something went wrong!</h2>
         <p className="error-page__desc">
-          Sorry, an unexpected error has occurred. The page you&apos;re loooking for does not exist or it might have
-          been removed
+          Sorry, an unexpected error has occurred. The page you&apos;re looking for does not exist or it might have been
+          removed
         </p>
 
         <Link to="/" title="Go to Home Page" className="error-page__link">
