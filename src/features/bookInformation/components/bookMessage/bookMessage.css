@@ -1,0 +1,35 @@
+.bookinfo__message {
+  display: flex;
+  position: relative;
+  padding: 0.5rem 0.5rem;
+  border: 1px solid var(--gray-800);
+}
+
+.bookinfo__message--dark {
+  color: var(--gray-300);
+  background-color: #2f2f35;
+}
+
+.bookinfo__message--light {
+  border: 1px solid var(--gray-400);
+  background-color: white;
+  color: black;
+}
+
+.bookinfo__message-text {
+  font-size: 0.875rem;
+  margin-left: 1rem;
+}
+
+.bookinfo__message-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 13px;
+  height: 100%;
+  background-color: var(--primary-500);
+}
+
+.bookinfo__message-title {
+  color: currentColor;
+}
