@@ -16,11 +16,6 @@
   color: black;
 }
 
-.book__description-title {
-  font-size: 0.85rem;
-  color: var(--gray-500);
-}
-
 .book__description-text {
   max-height: 10rem;
   overflow-y: scroll;

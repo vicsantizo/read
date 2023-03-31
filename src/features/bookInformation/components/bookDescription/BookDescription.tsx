@@ -11,7 +11,6 @@ export const BookDescription = ({ description }: BookDescriptionProps) => {
 
   return (
     <div className="book__description">
-      <h2 className="book__description-title">Description</h2>
       <p className={`book__description-text ${descriptionTextTheme}`}>{description || 'No description available.'}</p>
     </div>
   );
