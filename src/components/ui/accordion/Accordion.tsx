@@ -7,10 +7,11 @@ import './accordion.css';
 type AccordionProps = {
   children: ReactNode;
   label: string;
+  isOpen?: boolean;
 };
 
-export const Accordion = ({ label, children }: AccordionProps) => {
-  const { isContentShowing, setIsContentShowing } = useAccordion();
+export const Accordion = ({ label, children, isOpen = false }: AccordionProps) => {
+  const { isContentShowing, setIsContentShowing } = useAccordion(isOpen);
   const controlId = uuidv4();
 
   const stylingHiddenContent = !isContentShowing ? { display: 'none' } : undefined;

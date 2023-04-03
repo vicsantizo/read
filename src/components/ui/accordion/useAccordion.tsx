@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-export const useAccordion = () => {
-  const [isContentShowing, setIsContentShowing] = useState<boolean>(false);
+export const useAccordion = (isOpen: boolean) => {
+  const [isContentShowing, setIsContentShowing] = useState<boolean>(isOpen);
 
   const handleClick = () => {
     setIsContentShowing(!isContentShowing);
