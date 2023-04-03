@@ -3,6 +3,10 @@
   border-radius: 0.25rem;
 }
 
+.input[type='date'] {
+  height: 2rem;
+}
+
 .input--dark {
   background-color: #343434;
 }
