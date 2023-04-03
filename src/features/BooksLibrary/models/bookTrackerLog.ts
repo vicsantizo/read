@@ -68,6 +68,11 @@ export class BookTrackerLog {
     return false;
   }
 
+  getLastRecord() {
+    const lastItemIndex = this.entries.length - 1;
+    return this.entries[lastItemIndex];
+  }
+
   // calculation based on the last entry
   calculateBookCompletionPercentage(bookTotalPages: number): number {
     const numberOfEntries = this.entries.length;
@@ -90,5 +95,22 @@ export class BookTrackerLog {
   countEntries(): number {
     const numberOfEntries = this.entries.length;
     return numberOfEntries;
+  }
+
+  isEmpty() {
+    return this.entries.length === 0;
+  }
+
+  getStartDate(): Date | false {
+    if (this.isEmpty()) return false;
+    const firstEntry = this.entries[0];
+    return firstEntry.getDate();
+  }
+
+  getCompletionDate(bookPages: number): Date | false {
+    if (this.getLastRecord()?.getToPage() >= bookPages) {
+      return this.getLastRecord()?.getDate();
+    }
+    return false;
   }
 }
