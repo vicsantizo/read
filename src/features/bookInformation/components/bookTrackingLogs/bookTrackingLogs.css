@@ -1,0 +1,47 @@
+.bookinfo__tracker {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.bookinfo__tracker-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.bookinfo__tracker table {
+  margin: 1.5rem 0;
+}
+
+.bookinfo__tracker thead th:nth-child(1) {
+  text-align: left;
+  width: 45%;
+}
+
+.bookinfo__tracker thead th:nth-child(2),
+.bookinfo__tracker thead th:nth-child(3) {
+  text-align: right;
+  width: 27.5%;
+}
+
+.bookinfo__tracker tbody tr :nth-child(2),
+.bookinfo__tracker table tbody tr :nth-child(3) {
+  text-align: right;
+}
+
+.bookinfo__tracker-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  border-radius: 0.25rem;
+  min-height: 8rem;
+  box-shadow: 0 0 4px hsl(0 0% 0% / 0.2);
+  margin-top: 2rem;
+}
+
+.bookinfo__tracker-empty-icon {
+  fill: var(--gray-500);
+}
