@@ -37,6 +37,7 @@ describe('tests the SearchBox component', () => {
 
     const inputElement = screen.getByRole('searchbox');
     await user.type(inputElement, 'T');
+
     expect(mockSetSearchValue).toHaveBeenCalledWith('T');
   });
 });
