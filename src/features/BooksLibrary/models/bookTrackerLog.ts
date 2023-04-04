@@ -70,6 +70,7 @@ export class BookTrackerLog {
 
   getLastRecord() {
     const lastItemIndex = this.entries.length - 1;
+    if (lastItemIndex === -1) return false;
     return this.entries[lastItemIndex];
   }
 
@@ -108,8 +109,10 @@ export class BookTrackerLog {
   }
 
   getCompletionDate(bookPages: number): Date | false {
-    if (this.getLastRecord()?.getToPage() >= bookPages) {
-      return this.getLastRecord()?.getDate();
+    const lastRecord = this.getLastRecord();
+    if (!lastRecord) return false;
+    if (lastRecord.getToPage() >= bookPages) {
+      return lastRecord.getDate();
     }
     return false;
   }
