@@ -15,7 +15,14 @@
   align-items: center;
   max-width: 230px;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+.bookinfo__pages {
+  text-align: center;
+  width: 100%;
+  font-size: 0.85rem;
+  color: var(--gray-400);
 }
 
 .bookinfo__stats {
@@ -27,5 +34,5 @@
 }
 
 .bookinfo__links {
-  margin-top: 3rem;
+  padding: 3rem 0 5rem 0;
 }
