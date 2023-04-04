@@ -1,0 +1,20 @@
+.search {
+  position: relative;
+  width: 100%;
+  min-width: 25ch;
+  max-width: 40ch;
+}
+
+.search__icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  fill: var(--gray-500);
+}
+
+.search__input {
+  width: 100%;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+}
