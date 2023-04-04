@@ -22,6 +22,7 @@ import './assets/css/form.css';
 import './assets/css/label.css';
 import './assets/css/input.css';
 import './assets/css/button.css';
+import './assets/css/table.css';
 
 export type AppProps = {
   persistentStorage: IBooksLibraryPersistentStorage;
