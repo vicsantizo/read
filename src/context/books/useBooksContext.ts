@@ -44,9 +44,22 @@ export const useBooksContext = (persistentStorage: IBooksLibraryPersistentStorag
     }
   };
 
+  const addBookLogEntry = (id: string, fromPage: number, toPage: number, date: Date) => {
+    const book = persistentStorage.getBook(id);
+    if (book) {
+      book.getTrackerLog().addEntry(fromPage, toPage, date);
+      persistentStorage.updateBook(id, book);
+      setBooks(persistentStorage.getAllBooks());
+      notify('Logged book progress!', 'success', theme);
+    } else {
+      notify('Could not log progress', 'error', theme);
+    }
+  };
+
   return {
     addBook,
     updateBook,
     deleteBook,
+    addBookLogEntry,
   };
 };
