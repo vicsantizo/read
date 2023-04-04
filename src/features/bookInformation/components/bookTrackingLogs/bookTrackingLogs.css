@@ -11,6 +11,11 @@
 }
 
 .bookinfo__tracker table {
+}
+
+.bookinfo__tracker .table-wrapper {
+  max-height: 200px;
+  overflow-y: scroll;
   margin: 1.5rem 0;
 }
 
