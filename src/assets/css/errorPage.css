@@ -44,7 +44,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   width: fit-content;
   margin-top: 1rem;
   border-radius: 0.375rem;
