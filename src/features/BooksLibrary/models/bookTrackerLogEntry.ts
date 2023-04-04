@@ -25,7 +25,10 @@ export class BookTrackerLogEntry {
   };
 
   static deserialize = (serializedBookTrackerLogEntry: SerializedBookTrackerLogEntry) => {
-    return new BookTrackerLogEntry(serializedBookTrackerLogEntry);
+    return new BookTrackerLogEntry({
+      ...serializedBookTrackerLogEntry,
+      date: new Date(serializedBookTrackerLogEntry.date),
+    });
   };
 
   constructor({ date, fromPage, toPage, id }: BookTrackerLogEntryData) {
