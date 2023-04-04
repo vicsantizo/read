@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
-import { Book as BookComponent } from './Book';
+import { BookCover } from './BookCover';
 import { Book } from '../../models/book';
 
 describe('tests the Book component', () => {
@@ -12,7 +12,7 @@ describe('tests the Book component', () => {
     const routes = [
       {
         path: '/test',
-        element: <BookComponent book={genericBook} />,
+        element: <BookCover book={genericBook} />,
       },
     ];
 
@@ -35,7 +35,7 @@ describe('tests the Book component', () => {
     const routes = [
       {
         path: '/test',
-        element: <BookComponent book={genericBook} />,
+        element: <BookCover book={genericBook} />,
       },
     ];
 
@@ -59,7 +59,7 @@ describe('tests the Book component', () => {
     const routes = [
       {
         path: '/test',
-        element: <BookComponent book={genericBook} />,
+        element: <BookCover book={genericBook} />,
       },
     ];
 

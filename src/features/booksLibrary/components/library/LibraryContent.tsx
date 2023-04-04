@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { BooksContext } from '../../../../context/books/BooksContext';
 import { useTheme } from '../../../../context/theme/useTheme';
 import { filterLibraryBooks } from '../../utils/filter';
-import { Book } from '../book';
+import { BookCover } from '../bookCover';
 import { LibraryNoResults } from './LibraryNoResults';
 
 type LibraryContentProps = {
@@ -21,7 +21,7 @@ export const LibraryContent = ({ searchValue }: LibraryContentProps) => {
   return (
     <div className={`library__body ${libraryBodyTheme}`}>
       {filteredBooks.map((book) => (
-        <Book key={book.getId()} book={book} />
+        <BookCover key={book.getId()} book={book} />
       ))}
     </div>
   );

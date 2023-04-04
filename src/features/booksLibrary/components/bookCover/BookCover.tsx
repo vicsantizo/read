@@ -7,12 +7,12 @@ import { useState } from 'react';
 import { PopoverOptions } from './PopoverOptions';
 import './book.css';
 
-type BookProps = {
+type BookCoverProps = {
   book: BookType;
   disableActions?: boolean;
 };
 
-export const Book = ({ book, disableActions = false }: BookProps) => {
+export const BookCover = ({ book, disableActions = false }: BookCoverProps) => {
   const [showOptionsPopover, setShowOptionsPopover] = useState<boolean>(false);
   const title = shortenText(book.getTitle(), 30);
   const author = shortenText(book.getAuthor(), 30);
@@ -42,4 +42,4 @@ export const Book = ({ book, disableActions = false }: BookProps) => {
   );
 };
 
-export default Book;
+export default BookCover;

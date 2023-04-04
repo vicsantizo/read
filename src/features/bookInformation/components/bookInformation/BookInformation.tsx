@@ -1,6 +1,6 @@
 import { Link, useLoaderData, useLocation } from 'react-router-dom';
 import { Book as BookType } from '../../../booksLibrary/models/book';
-import { Book } from '../../../booksLibrary';
+import { BookCover } from '../../../booksLibrary';
 import { BookCategories } from '../bookCategories';
 import { StatCard } from '../../../../components/common/statCard';
 import { BookDescription } from '../bookDescription';
@@ -29,7 +29,7 @@ export const BookInformation = () => {
   return (
     <div className="bookinfo">
       <div className="bookinfo__book">
-        <Book book={book} disableActions={true} />
+        <BookCover book={book} disableActions={true} />
         <BookCategories categories={book.getCategory()} />
         <p className="bookinfo__pages">{bookPages} pages</p>
       </div>
