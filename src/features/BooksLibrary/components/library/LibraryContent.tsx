@@ -21,7 +21,7 @@ export const LibraryContent = ({ searchValue }: LibraryContentProps) => {
   return (
     <div className={`library__body ${libraryBodyTheme}`}>
       {filteredBooks.map((book) => (
-        <Book key={Math.random()} book={book} />
+        <Book key={book.getId()} book={book} />
       ))}
     </div>
   );
