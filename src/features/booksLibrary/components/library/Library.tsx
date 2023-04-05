@@ -12,7 +12,13 @@ export const Library = () => {
   const isLibraryEmpty = books.length === 0;
 
   if (isLibraryEmpty) {
-    return <LibraryEmpty />;
+    return (
+      <div className="library">
+        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} isDisabled={true} />
+        <LibraryHeading />
+        <LibraryEmpty />
+      </div>
+    );
   }
 
   return (
