@@ -116,6 +116,6 @@ describe('tests the Library component', () => {
 
     render(<RouterProvider router={router} />);
 
-    expect(screen.getByText('No books')).toBeInTheDocument();
+    expect(screen.getByText('Add book')).toBeInTheDocument();
   });
 });
