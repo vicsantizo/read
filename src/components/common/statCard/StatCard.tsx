@@ -14,8 +14,8 @@ export const StatCard = ({ title, text }: StatCardProps) => {
 
   return (
     <div className={`statcard ${cardTheme}`}>
-      <h2 className={`statcard__title ${titleTheme}`}>{title}</h2>
       <p className={`statcard__text ${textTheme}`}>{text}</p>
+      <h2 className={`statcard__title ${titleTheme}`}>{title}</h2>
     </div>
   );
 };
