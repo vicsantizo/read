@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useBooksContext } from '../../../../context/books/useBooksContext';
 import { PersistentStorageContext } from '../../../../context/persistentStorage/PersistentStorageContext';
 import useTheme from '../../../../context/theme/useTheme';
@@ -30,10 +30,12 @@ export const SaveBookForm = (props: SaveBookFormProps) => {
 
   const persistentStorage = useContext(PersistentStorageContext);
   const { addBook } = useBooksContext(persistentStorage as IBooksLibraryPersistentStorage);
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     addBook(data);
     reset();
+    navigate('/');
   };
 
   const { theme } = useTheme();
