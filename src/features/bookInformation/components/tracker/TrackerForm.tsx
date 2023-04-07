@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { GreekLibraryIcon } from '../../../../components/ui/greekLibraryIcon';
 import { useBooksContext } from '../../../../context/books/useBooksContext';
 import { PersistentStorageContext } from '../../../../context/persistentStorage/PersistentStorageContext';
 import { useTheme } from '../../../../context/theme/useTheme';
@@ -33,6 +34,7 @@ export const TrackerForm = ({ book }: TrackerFormProps) => {
 
   const { theme } = useTheme();
   const inputTheme = theme === 'dark' ? 'input--dark' : 'input--light';
+  const btnWrapperTheme = theme === 'dark' ? 'tracker__form-btn-wrapper--dark' : 'tracker__form-btn-wrapper--light';
 
   const persistentStorage = useContext(PersistentStorageContext);
   const { addBookLogEntry } = useBooksContext(persistentStorage as IBooksLibraryPersistentStorage);
@@ -43,19 +45,22 @@ export const TrackerForm = ({ book }: TrackerFormProps) => {
   };
 
   return (
-    <form className="tracker__form" onSubmit={handleSubmit(onSubmit)}>
-      <p className="tracker__form-desc">Enter the date and range of pages you have read</p>
-      <div className="tracker__form-inputs">
-        <div className="tracker__form-date-wrapper">
-          <input
-            id="date"
-            type="date"
-            required
-            className={`input ${inputTheme}`}
-            {...register('date', { required: 'Please, enter a valid date' })}
-          />
+    <form className="" onSubmit={handleSubmit(onSubmit)}>
+      <div className="tracker__form">
+        <div className="tracker__form-img-wrapper">
+          <GreekLibraryIcon width={150} className="tracker__form-img tracker__form-img--dark" />
         </div>
-        <div className="tracker__form-last-row">
+
+        <div className="tracker__form-inputs">
+          <div className="tracker__form-date-wrapper">
+            <input
+              id="date"
+              type="date"
+              required
+              className={`input ${inputTheme}`}
+              {...register('date', { required: 'Please, enter a valid date' })}
+            />
+          </div>
           <input
             className={`input ${inputTheme}`}
             id="fromPage"
@@ -67,7 +72,6 @@ export const TrackerForm = ({ book }: TrackerFormProps) => {
             autoComplete="off"
             required
           />
-          <span className="tracker__form-pages-separator">-</span>
           <input
             className={`input ${inputTheme}`}
             id="toPage"
@@ -79,8 +83,10 @@ export const TrackerForm = ({ book }: TrackerFormProps) => {
             min={0}
             autoComplete="off"
           />
-          <button className="tracker__form-btn btn btn--primary-action">Track</button>
         </div>
+      </div>
+      <div className={`tracker__form-btn-wrapper ${btnWrapperTheme}`}>
+        <button className="tracker__form-btn btn btn--primary-action2">Track</button>
       </div>
     </form>
   );

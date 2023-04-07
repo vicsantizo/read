@@ -1,35 +1,14 @@
 .tracker {
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  margin: 1rem 0;
-  box-shadow: inset 0 1px 3px hsl(0 0% 0% /0.1);
+  border-radius: 0.25rem;
 }
 
 .tracker--dark {
-  border: 1px solid var(--gray-800);
-  background-color: hsl(0 0% 10%);
+  background-color: var(--dark-on-dark);
 }
 
 .tracker--light {
-  border: 1px solid var(--gray-400);
+  border: 1px solid var(--gray-200);
   background-color: white;
-}
-
-.tracker__form {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.tracker__form-desc {
-  font-size: 0.85rem;
-  margin-top: 0.25rem;
-  color: var(--gray-500);
-}
-
-.tracker span {
-  font-weight: bold;
 }
 
 .accordion__content:has(.tracker__form) {
@@ -38,16 +17,79 @@
   width: 100%;
 }
 
-.accordiont__content .tracker__form-desc {
-  font-size: 0.85rem;
-  color: var(--gray-400);
+.tracker .accordion__button {
+  font-size: 1rem;
+  padding: 0.65rem 1rem 0.65rem 1rem;
+}
+
+.tracker__form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+  padding: 0 1rem;
+  margin: 1rem 0;
+}
+
+.tracker__form-btn-wrapper {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 0.75rem 1rem;
+}
+
+.tracker__form-btn-wrapper--light {
+  border-top: 1px solid var(--gray-200);
+}
+
+.tracker__form-btn-wrapper--dark {
+  border-top: 1px solid var(--gray-700);
+}
+
+.tracker__form-btn-wrapper .tracker__form-btn {
+  width: fit-content;
+}
+
+.tracker__desc {
+  font-size: var(--font-size-secondary);
+  margin-top: -0.6rem;
+  padding: 0 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.tracker__desc--light {
+  color: black;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.tracker__desc--dark {
+  color: var(--gray-300);
+  border-bottom: 1px solid var(--gray-700);
+}
+
+.tracker span {
+  font-weight: bold;
 }
 
 .tracker__form-inputs {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin: 0.5rem 0;
+  gap: 0.65rem;
+}
+
+.tracker__form-img-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tracker__form-img {
+}
+
+.tracker__form-img--dark {
+  fill: #9d9d9d;
 }
 
 .tracker__form-date-wrapper {
@@ -56,29 +98,11 @@
 
 .tracker__form input[type='date'] {
   flex: 1;
-}
-
-.tracker__form-last-row {
-  display: flex;
-  margin-top: 0.5rem;
-  align-items: center;
-}
-
-.tracker__form-pages-separator {
-  margin: 0 0.5rem;
-  color: var(--gray-400);
+  text-align: center;
 }
 
 .tracker__form input[type='number'] {
-  width: 25%;
+  width: 100%;
   min-width: 6ch;
-}
-
-.tracker__form-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 1rem;
-  height: 2rem;
-  flex: 1;
+  text-align: center;
 }

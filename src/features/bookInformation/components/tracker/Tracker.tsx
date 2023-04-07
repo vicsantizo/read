@@ -14,6 +14,7 @@ export const Tracker = ({ book, isOpen = false }: TrackerProps) => {
   const divRef = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
   const trackerTheme = theme === 'dark' ? 'tracker--dark' : 'tracker--light';
+  const trackerDescTheme = theme === 'dark' ? 'tracker__desc--dark' : 'tracker__desc--light';
 
   useEffect(() => {
     if (isOpen) divRef.current?.scrollIntoView();
@@ -22,6 +23,7 @@ export const Tracker = ({ book, isOpen = false }: TrackerProps) => {
   return (
     <div ref={divRef} className={`tracker ${trackerTheme}`}>
       <Accordion isOpen={isOpen} label="Log progress">
+        <p className={`tracker__desc ${trackerDescTheme}`}>Enter the date and range of pages you have read</p>
         <TrackerForm book={book} />
       </Accordion>
     </div>
