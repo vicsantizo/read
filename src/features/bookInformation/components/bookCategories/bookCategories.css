@@ -6,7 +6,7 @@
 }
 
 .book__category {
-  border-radius: 1rem;
+  border-radius: 0.25rem;
   background-color: var(--primary-500);
   padding: 0.25rem 0.75rem;
   font-size: 0.85rem;
