@@ -28,6 +28,8 @@ export class BookTrackerLogEntry {
     return new BookTrackerLogEntry({
       ...serializedBookTrackerLogEntry,
       date: new Date(serializedBookTrackerLogEntry.date),
+      fromPage: Number(serializedBookTrackerLogEntry.fromPage),
+      toPage: Number(serializedBookTrackerLogEntry.toPage),
     });
   };
 
