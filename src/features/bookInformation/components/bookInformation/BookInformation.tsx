@@ -5,7 +5,6 @@ import { BookCategories } from '../bookCategories';
 import { StatCard } from '../../../../components/common/statCard';
 import { BookDescription } from '../bookDescription';
 import { BookTrackingLogs } from '../bookTrackingLogs';
-import { BookMessage } from '../bookMessage/BookMessage';
 import { formatDate } from '../../../../utils/dateFormat';
 import { Tracker } from '../tracker';
 import './bookInformation.css';
@@ -19,6 +18,7 @@ export const BookInformation = () => {
   const bookProgress = trackerLog.calculateBookCompletionPercentage(bookPages);
   let startDate: Date | false | string = trackerLog.getStartDate();
   let completionDate: Date | false | string = trackerLog.getCompletionDate(bookPages);
+  const bookPagesTag = book.getPages() + ' pages';
 
   if (startDate !== false) startDate = formatDate(startDate);
   else startDate = '...';
@@ -30,8 +30,7 @@ export const BookInformation = () => {
     <div className="bookinfo">
       <div className="bookinfo__book">
         <BookCover book={book} disableActions={true} />
-        <BookCategories categories={book.getCategory()} />
-        <p className="bookinfo__pages">{bookPages} pages</p>
+        <BookCategories categories={[...book.getCategory(), bookPagesTag]} />
       </div>
 
       <div className="bookinfo__stats">
@@ -43,12 +42,7 @@ export const BookInformation = () => {
       <BookDescription description={book.getDescription()} />
 
       <div className="bookinfo__tracker">
-        <h2 className="bookinfo__tracker-title">Tracking History</h2>
         <Tracker book={book} isOpen={state?.isOpen} />
-        <BookMessage
-          text={'the progress is measured by getting the last tracked entry and the total number of pages of the book'}
-        />
-
         <BookTrackingLogs trackerLog={trackerLog} />
       </div>
 
