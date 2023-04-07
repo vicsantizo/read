@@ -41,11 +41,11 @@
 }
 
 .tracker__form-btn-wrapper--light {
-  border-top: 1px solid var(--gray-200);
+  background-color: #fafafa;
 }
 
 .tracker__form-btn-wrapper--dark {
-  border-top: 1px solid var(--gray-700);
+  background-color: #2d2d3674;
 }
 
 .tracker__form-btn-wrapper .tracker__form-btn {
@@ -61,12 +61,12 @@
 
 .tracker__desc--light {
   color: black;
-  border-bottom: 1px solid var(--gray-200);
+  border-bottom: 1px solid #f7f4f4;
 }
 
 .tracker__desc--dark {
   color: var(--gray-300);
-  border-bottom: 1px solid var(--gray-700);
+  border-bottom: 1px solid #2d2d3674;
 }
 
 .tracker span {
