@@ -1,5 +1,4 @@
 import { BookTrackerLog } from '../../../booksLibrary/models/bookTrackerLog';
-import { BookTrackingLogsEmpty } from './BookTrackingLogsEmpty';
 import { formatDate } from '../../../../utils/dateFormat';
 import './bookTrackingLogs.css';
 
@@ -13,7 +12,7 @@ export const BookTrackingLogs = ({ trackerLog }: BookTrackingLogsProps) => {
   const isTrackerLogEmpty = logs.length === 0;
 
   if (isTrackerLogEmpty) {
-    return <BookTrackingLogsEmpty />;
+    return null;
   }
 
   return (
