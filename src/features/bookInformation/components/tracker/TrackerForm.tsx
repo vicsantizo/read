@@ -86,7 +86,7 @@ export const TrackerForm = ({ book }: TrackerFormProps) => {
         </div>
       </div>
       <div className={`tracker__form-btn-wrapper ${btnWrapperTheme}`}>
-        <button className="tracker__form-btn btn btn--primary-action2">Track</button>
+        <button className="tracker__form-btn btn btn--primary-action">Track</button>
       </div>
     </form>
   );
