@@ -1,0 +1,1 @@
+export { GreekLibraryIcon } from './GreekLibraryIcon';
