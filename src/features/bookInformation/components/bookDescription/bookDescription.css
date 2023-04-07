@@ -1,24 +1,22 @@
 .book__description {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
   width: 100%;
 }
 
 .book__description-text--dark {
   color: var(--gray-300);
-  background-color: #2f2f35;
+  background-color: var(--dark-on-dark);
 }
 
 .book__description-text--light {
-  border: 1px solid var(--gray-400);
+  border: 1px solid var(--gray-200);
   background-color: white;
   color: black;
 }
 
 .book__description-text {
+  font-size: var(--font-size-primary);
   max-height: 10rem;
   overflow-y: scroll;
   border-radius: 0.25rem;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
 }
