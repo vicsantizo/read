@@ -2,13 +2,20 @@
   width: 100%;
   font-size: 0.85rem;
   border-radius: 0.25rem;
-  padding: 0.5rem;
+  padding: 0.5rem 1.5rem;
   font-weight: bold;
   text-align: center;
 }
 
 .btn--primary-action {
   background-color: var(--action-500);
+  color: white;
+}
+
+.btn--primary-action2 {
+  background-color: var(--action2-500);
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
   color: white;
 }
 
