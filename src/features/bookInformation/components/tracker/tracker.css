@@ -70,7 +70,7 @@
 }
 
 .tracker span {
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .tracker__form-inputs {
