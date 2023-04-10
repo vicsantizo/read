@@ -12,7 +12,23 @@
   font-size: 0.875rem;
 }
 
-.table--alternate-primary tbody tr:nth-child(even) {
-  background-color: var(--primary-500);
+.table-standard {
+}
+
+.table-standard--light thead th {
+  background-color: #fafafa;
+}
+
+.table-standard--dark thead th {
+  background-color: #2d2d3674;
+}
+
+.table-standard--light tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+  color: black;
+}
+
+.table-standard--dark tbody tr:nth-child(even) {
+  background-color: #2d2d3674;
   color: white;
 }
