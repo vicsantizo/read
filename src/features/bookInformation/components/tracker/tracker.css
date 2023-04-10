@@ -11,7 +11,7 @@
   background-color: white;
 }
 
-.accordion__content:has(.tracker__form) {
+.tracker .accordion__content {
   padding: 0;
   margin: 0;
   width: 100%;
@@ -35,7 +35,7 @@
 
 .tracker__form-btn-wrapper {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   padding: 0.75rem 1rem;
 }
