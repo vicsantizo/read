@@ -1,15 +1,16 @@
 import { createBrowserRouter, Params, RouterProvider } from 'react-router-dom';
 import { lazy, Suspense, useState } from 'react';
 import { BaseLayout } from './layouts/baseLayout';
+import { LocalStoragePersistentStorage } from './store/localStoragePersistentStorage';
 import { PersistentStorageContext } from './context/persistentStorage/PersistentStorageContext';
 import { IBooksLibraryPersistentStorage } from './store/IBooksLibraryPersistentStorage';
 import { BooksContext } from './context/books/BooksContext';
 import { Book } from './features/booksLibrary/models/book';
 import { Skeleton } from './features/booksLibrary/components/skeleton';
-import ClipLoader from 'react-spinners/ClipLoader';
 import { ToastContainer } from 'react-toastify';
 import { ThemeContext, Theme as ThemeType } from './context/theme/ThemeContext';
 import { getInitialThemeValue } from './utils/cookies';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 const Error404 = lazy(() => import('./pages/Error404'));
 const Home = lazy(() => import('./pages/Home'));
@@ -18,15 +19,12 @@ const BookDetails = lazy(() => import('./pages/BookDetails'));
 const EditBook = lazy(() => import('./pages/EditBook'));
 
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 import './assets/css/form.css';
 import './assets/css/label.css';
 import './assets/css/input.css';
 import './assets/css/button.css';
 import './assets/css/table.css';
-
-export type AppProps = {
-  persistentStorage: IBooksLibraryPersistentStorage;
-};
 
 const Loading = (
   <div className="flex h-full w-full flex-col items-center justify-center">
@@ -35,7 +33,11 @@ const Loading = (
   </div>
 );
 
-function App({ persistentStorage }: AppProps) {
+const localStoragePersistentStorage = new LocalStoragePersistentStorage();
+
+function App() {
+  const [persistentStorage, setPersistentStorage] =
+    useState<IBooksLibraryPersistentStorage>(localStoragePersistentStorage);
   const [books, setBooks] = useState<Book[]>(persistentStorage.getAllBooks());
   const initialTheme = getInitialThemeValue();
   const [theme, setTheme] = useState<ThemeType>(initialTheme);
