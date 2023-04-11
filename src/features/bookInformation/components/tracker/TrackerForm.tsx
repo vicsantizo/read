@@ -48,7 +48,7 @@ export const TrackerForm = ({ book }: TrackerFormProps) => {
     <form className="" onSubmit={handleSubmit(onSubmit)}>
       <div className="tracker__form">
         <div className="tracker__form-img-wrapper">
-          <GreekLibraryIcon width={150} className="tracker__form-img tracker__form-img--dark" />
+          <GreekLibraryIcon className="tracker__form-img tracker__form-img--dark" />
         </div>
 
         <div className="tracker__form-inputs">

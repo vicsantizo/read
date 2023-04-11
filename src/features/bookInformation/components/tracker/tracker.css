@@ -86,6 +86,8 @@
 }
 
 .tracker__form-img {
+  max-width: 150px;
+  width: 100%;
 }
 
 .tracker__form-img--dark {
