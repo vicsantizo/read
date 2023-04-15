@@ -1,0 +1,50 @@
+.modal {
+  border-radius: 1rem;
+  box-shadow: 5px 5px 3px hsl(0 0% 0% / 0.3);
+}
+
+.modal--dark::backdrop {
+  background-color: hsl(240 6% 13% / 0.8);
+}
+
+.modal--light::backdrop {
+  background-color: hsl(0 100% 100% / 0.8);
+}
+
+.modal--light {
+  background-color: white;
+}
+
+.modal--dark {
+  background-color: var(--dark);
+}
+
+.modal__container {
+  width: 300px;
+  height: 450px;
+  padding: 1rem;
+}
+
+.modal__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.modal__img {
+  margin-top: 2rem;
+}
+
+.modal__title {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.modal__text {
+}
+
+.modal__btn {
+  margin: 2rem 0;
+}
