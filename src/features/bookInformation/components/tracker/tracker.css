@@ -35,8 +35,8 @@
 
 .tracker__form-btn-wrapper {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: flex-end;
   padding: 0.75rem 1rem;
 }
 
@@ -46,6 +46,14 @@
 
 .tracker__form-btn-wrapper--dark {
   background-color: #2d2d3674;
+}
+
+.tracker__form-info-btn {
+  margin-right: 1rem;
+}
+
+.tracker__form-info {
+  fill: var(--gray-500);
 }
 
 .tracker__form-btn-wrapper .tracker__form-btn {
