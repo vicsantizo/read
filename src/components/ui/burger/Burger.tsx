@@ -21,7 +21,7 @@ export const Burger = (props: BurgerProps) => {
   );
 
   return (
-    <button className="burger" onClick={action}>
+    <button className="burger" onClick={action} title="Show menu">
       {isActive ? closeIcon : hamburgerIcon}
     </button>
   );
