@@ -51,8 +51,8 @@
 .book__options-button {
   position: absolute;
   top: 0;
-  right: -0.35rem;
-  padding: 0.25rem 0.75rem 0.75rem 0.5rem;
+  right: 0;
+  padding: 0.25rem 0.5rem 0.75rem 0.5rem;
   z-index: 2;
 }
 
