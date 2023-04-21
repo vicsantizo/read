@@ -5,6 +5,7 @@ import { useTheme } from '../../../../context/theme/useTheme';
 export const LibraryEmpty = () => {
   const { theme } = useTheme();
   const libraryEmptyTheme = theme === 'dark' ? 'library-empty--dark' : 'library-empty--light';
+  const libraryEmptyMessageTheme = theme === 'dark' ? 'library-empty__msg--dark' : 'library-empty__msg--light';
 
   return (
     <div className={`library-empty ${libraryEmptyTheme}`}>
@@ -12,7 +13,7 @@ export const LibraryEmpty = () => {
         <GreekLibraryIcon className="library-empty__icon" width={110} />
       </div>
 
-      <p className="library-empty__msg">Add a new book to start tracking your progress</p>
+      <p className={`library-empty__msg ${libraryEmptyMessageTheme}`}>Add a new book to start tracking your progress</p>
 
       <Link to={'/books/new'} className="library-empty__link">
         <svg className="library-empty__link-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" width={23}>

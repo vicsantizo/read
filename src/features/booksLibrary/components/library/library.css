@@ -117,7 +117,14 @@
   font-size: 0.9rem;
   text-align: center;
   margin-bottom: 1rem;
-  color: var(--gray-500);
+}
+
+.library-empty__msg--light {
+  color: var(--gray-600);
+}
+
+.library-empty__msg--dark {
+  color: var(--gray-300);
 }
 
 .library-empty__link {
