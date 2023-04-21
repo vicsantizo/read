@@ -47,7 +47,7 @@ export const Modal = ({ title, text, onClose }: ModalProps) => {
               closeModal();
             }}
           >
-            Understood
+            Got it!
           </button>
         </div>
       </div>
