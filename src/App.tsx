@@ -7,7 +7,7 @@ import { IBooksLibraryPersistentStorage } from './store/IBooksLibraryPersistentS
 import { BooksContext } from './context/books/BooksContext';
 import { Book } from './features/booksLibrary/models/book';
 import { Skeleton } from './features/booksLibrary/components/skeleton';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, Flip } from 'react-toastify';
 import { ThemeContext, Theme as ThemeType } from './context/theme/ThemeContext';
 import { getInitialThemeValue } from './utils/cookies';
 import ClipLoader from 'react-spinners/ClipLoader';
@@ -114,7 +114,7 @@ function App() {
       <PersistentStorageContext.Provider value={persistentStorage}>
         <BooksContext.Provider value={{ books, setBooks }}>
           <RouterProvider router={router} />
-          <ToastContainer />
+          <ToastContainer transition={Flip} />
         </BooksContext.Provider>
       </PersistentStorageContext.Provider>
     </ThemeContext.Provider>
