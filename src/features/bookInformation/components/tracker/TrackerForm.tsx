@@ -107,7 +107,7 @@ export const TrackerForm = ({ book }: TrackerFormProps) => {
         <Modal
           onClose={() => setShowInfo(false)}
           title="Book Progress"
-          text="The book progress is calculated by getting the last tracked entry and the total number of pages"
+          text="Your book progress is calculated by only getting the total number of pages and the last tracked entry"
         />
       )}
     </form>
