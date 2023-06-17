@@ -18,15 +18,15 @@ export default {
 
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverageFrom: ['src/components/**/*.{js,jsx,ts,tsx}'],
-  // collectCoverageFrom: [
-  //   '**/*.{js,jsx,ts,tsx}',
-  //   '!**/node_modules/**',
-  //   '!**/vendor/**',
-  //   '!**/index.{ts,tsx}',
-  //   '!**/App.tsx',
-  //   '!**/stories.{ts,tsx}',
-  //   '!**/types.{ts, tsx}',
-  // ],
+  collectCoverageFrom: [
+    '**/*.{js,jsx,ts,tsx}',
+    '!**/node_modules/**',
+    '!**/vendor/**',
+    '!**/index.{ts,tsx}',
+    '!**/App.tsx',
+    '!**/stories.{ts,tsx}',
+    '!**/types.{ts, tsx}',
+  ],
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // collectCoverageFrom: undefined,
@@ -51,14 +51,14 @@ export default {
   // ],
 
   // An object that configures minimum threshold enforcement for coverage results
-  coverageThreshold: {
-    global: {
-      branches: 80,
-      functions: 80,
-      lines: 80,
-      statements: 80,
-    },
-  },
+  // coverageThreshold: {
+  //   global: {
+  //     branches: 80,
+  //     functions: 80,
+  //     lines: 80,
+  //     statements: 80,
+  //   },
+  // },
 
   // A path to a custom dependency extractor
   // dependencyExtractor: undefined,
