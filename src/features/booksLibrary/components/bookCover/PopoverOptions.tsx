@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useBooksContext } from '../../../../context/books/useBooksContext';
 import { PersistentStorageContext } from '../../../../context/persistentStorage/PersistentStorageContext';
 import { useTheme } from '../../../../context/theme/useTheme';
-import { useDetectClickOut } from '../../../../hooks/useDetectClickOut';
+import { useOffInteractionHandle } from '../../../../hooks/useOffInteractionHandle';
 import { IBooksLibraryPersistentStorage } from '../../../../store/IBooksLibraryPersistentStorage';
 import { EditIcon, InfoIcon, TrackIcon, DeleteIcon } from '../icons';
 
@@ -16,7 +16,7 @@ export const PopoverOptions = ({ bookId, handleClickout }: PopoverOptionsProps) 
   const persistentStorage = useContext(PersistentStorageContext);
   const { deleteBook } = useBooksContext(persistentStorage as IBooksLibraryPersistentStorage);
   const popoverRef = useRef<HTMLDivElement>(null);
-  useDetectClickOut(popoverRef, handleClickout);
+  useOffInteractionHandle(popoverRef, handleClickout);
 
   const { theme } = useTheme();
   const popoverTheme = theme == 'dark' ? 'book__popover--dark' : 'book__popover--light';
